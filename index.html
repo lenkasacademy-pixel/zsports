@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Day-one performance of the AI Bat Fit Quiz lead campaign for Z-Bat, 8 September 2026.">
+<title>Bat Fit Quiz Day One — Z-Bat</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+
+/* ── Tokens ─────────────────────────────────────────────────────────────
+   Light is complete on bare :root. Dark redefines ONLY tokens, twice:
+   once for OS-dark (guarded so an explicit light stamp wins) and once
+   for the data-theme stamp. Components never read a raw hex.            */
+:root {
+  color-scheme: light;
+  --plane:        #eeece2;
+  --surface:      #faf9f5;
+  --surface-sunk: #f2f0e7;
+  --ink:          #151a13;
+  --ink-2:        #4a5247;
+  --ink-3:        #7d857a;
+  --rule:         #d9d7cb;
+  --rule-soft:    #e6e4da;
+  --accent:       #2f8a5d;
+  --accent-deep:  #14603c;
+  --accent-wash:  rgba(47,138,93,.13);
+  --warn:         #fab219;
+  --warn-ink:     #6b4a00;
+  --warn-wash:    rgba(250,178,25,.18);
+  --crit:         #d03b3b;
+  --crit-ink:     #8e1f1f;
+  --crit-wash:    rgba(208,59,59,.12);
+  --shadow:       0 1px 2px rgba(21,26,19,.05), 0 8px 24px -18px rgba(21,26,19,.35);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --plane:        #0d0f0c;
+    --surface:      #131611;
+    --surface-sunk: #191d17;
+    --ink:          #f2f4ef;
+    --ink-2:        #b8bfb3;
+    --ink-3:        #868d81;
+    --rule:         #2a2f26;
+    --rule-soft:    #21261e;
+    --accent:       #4aa878;
+    --accent-deep:  #9ccdb1;
+    --accent-wash:  rgba(74,168,120,.18);
+    --warn:         #fab219;
+    --warn-ink:     #fad48a;
+    --warn-wash:    rgba(250,178,25,.14);
+    --crit:         #d03b3b;
+    --crit-ink:     #f0a3a3;
+    --crit-wash:    rgba(208,59,59,.16);
+    --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --plane:        #0d0f0c;
+  --surface:      #131611;
+  --surface-sunk: #191d17;
+  --ink:          #f2f4ef;
+  --ink-2:        #b8bfb3;
+  --ink-3:        #868d81;
+  --rule:         #2a2f26;
+  --rule-soft:    #21261e;
+  --accent:       #4aa878;
+  --accent-deep:  #9ccdb1;
+  --accent-wash:  rgba(74,168,120,.18);
+  --warn:         #fab219;
+  --warn-ink:     #fad48a;
+  --warn-wash:    rgba(250,178,25,.14);
+  --crit:         #d03b3b;
+  --crit-ink:     #f0a3a3;
+  --crit-wash:    rgba(208,59,59,.16);
+  --shadow:       0 1px 2px rgba(0,0,0,.4), 0 8px 24px -18px rgba(0,0,0,.8);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--plane);
+  color: var(--ink);
+  font-family: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.wrap { max-width: 1140px; margin: 0 auto; padding: 28px 20px 80px; }
+
+/* ── Type roles ──────────────────────────────────────────────────────── */
+.display { font-family: "Archivo", ui-sans-serif, system-ui, sans-serif; font-variation-settings: "wdth" 88; font-weight: 800; letter-spacing: -.02em; text-wrap: balance; }
+.mono    { font-family: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace; font-variant-numeric: tabular-nums; }
+.eyebrow { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; font-weight: 500; letter-spacing: .13em; text-transform: uppercase; color: var(--ink-3); }
+
+/* ── Masthead ────────────────────────────────────────────────────────── */
+.masthead { border-top: 3px solid var(--ink); padding-top: 12px; margin-bottom: 26px; }
+.masthead-top { display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: baseline; justify-content: space-between; }
+.masthead h1 { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 80; font-weight: 900; letter-spacing: -.025em; font-size: clamp(28px, 4.6vw, 44px); line-height: 1.02; margin: 6px 0 0; text-wrap: balance; }
+.masthead .sub { color: var(--ink-2); margin: 8px 0 0; max-width: 62ch; }
+.rule-double { border: 0; border-top: 1px solid var(--rule); border-bottom: 3px solid var(--ink); height: 4px; margin: 14px 0 0; }
+
+/* ── Notice ──────────────────────────────────────────────────────────── */
+.notice { display: flex; gap: 11px; align-items: flex-start; padding: 13px 15px; border-radius: 3px; margin: 22px 0 0; background: var(--warn-wash); border-left: 3px solid var(--warn); }
+.notice .glyph { flex: none; width: 17px; height: 17px; margin-top: 1px; color: var(--warn-ink); }
+.notice p { margin: 0; font-size: 14px; color: var(--ink); }
+.notice strong { font-weight: 600; }
+
+/* ── Hero ────────────────────────────────────────────────────────────── */
+.hero { display: grid; grid-template-columns: minmax(0,auto) 1fr; gap: 10px 44px; align-items: end; margin: 30px 0 8px; }
+.hero-figure { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 78; font-weight: 900; font-size: clamp(64px, 13vw, 132px); line-height: .82; letter-spacing: -.045em; color: var(--accent-deep); }
+.hero-side { padding-bottom: 8px; }
+.hero-side p { margin: 0; color: var(--ink-2); max-width: 46ch; font-size: 15px; }
+.hero-side .lede { color: var(--ink); font-size: 17px; font-weight: 500; margin-bottom: 6px; }
+.hero-side .lede b { font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; font-weight: 600; }
+@media (max-width: 620px) { .hero { grid-template-columns: 1fr; } .hero-side { padding-bottom: 0; } }
+
+/* ── Stat tiles ──────────────────────────────────────────────────────── */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); margin: 26px 0 0; }
+.tile { background: var(--surface); padding: 14px 15px 15px; }
+.tile .k { display: block; margin-bottom: 7px; }
+.tile .v { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 92; font-weight: 700; font-size: 27px; line-height: 1; letter-spacing: -.02em; display: block; }
+.tile .n { display: block; margin-top: 6px; font-size: 12.5px; color: var(--ink-3); }
+
+/* ── Sections & cards ────────────────────────────────────────────────── */
+section { margin-top: 46px; }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 4px; }
+.sec-head h2 { font-family: "Archivo", sans-serif; font-variation-settings: "wdth" 84; font-weight: 800; letter-spacing: -.02em; font-size: 21px; margin: 0; }
+.sec-head .note { font-size: 13px; color: var(--ink-3); margin: 0; }
+.sec-intro { color: var(--ink-2); max-width: 66ch; margin: 14px 0 20px; font-size: 14.5px; }
+.card { background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow); padding: 20px; margin-top: 18px; }
+
+/* ── Chart chrome ────────────────────────────────────────────────────── */
+.chart-title { font-weight: 600; font-size: 13.5px; margin: 0 0 2px; }
+.chart-sub { font-size: 12.5px; color: var(--ink-3); margin: 0 0 14px; }
+
+/* Horizontal bar rows */
+.bars { display: flex; flex-direction: column; gap: 3px; }
+.brow { display: grid; grid-template-columns: var(--label-w, 150px) 1fr var(--num-w, 190px); align-items: center; gap: 14px; padding: 5px 6px; border-radius: 3px; cursor: default; }
+.brow:hover, .brow:focus-visible { background: var(--surface-sunk); outline: none; }
+.brow:focus-visible { box-shadow: inset 0 0 0 2px var(--accent); }
+.brow .lab { font-size: 13.5px; font-weight: 500; min-width: 0; }
+.brow .lab .qual { display: block; font-size: 11.5px; color: var(--ink-3); font-weight: 400; }
+.track { position: relative; height: 14px; background: var(--surface-sunk); border-radius: 2px; overflow: visible; }
+.fill { position: absolute; inset: 0 auto 0 0; background: var(--accent); border-radius: 0 4px 4px 0; min-width: 2px; }
+.fill.is-crit { background: var(--crit); }
+.tip-lab { position: absolute; top: 50%; transform: translateY(-50%); left: calc(var(--w) + 9px); font-family: "IBM Plex Mono", monospace; font-size: 11.5px; font-variant-numeric: tabular-nums; color: var(--ink-2); white-space: nowrap; }
+.brow .nums { text-align: right; font-family: "IBM Plex Mono", monospace; font-size: 12.5px; font-variant-numeric: tabular-nums; color: var(--ink-2); display: flex; gap: 14px; justify-content: flex-end; }
+.brow .nums b { color: var(--ink); font-weight: 600; }
+@media (max-width: 700px) {
+  .brow { grid-template-columns: 1fr; gap: 6px; padding: 9px 6px; border-bottom: 1px solid var(--rule-soft); border-radius: 0; }
+  .brow .nums { justify-content: flex-start; }
+  /* drop the numeric end-labels at this width, but keep the status chips —
+     they are what makes a flagged row readable without relying on colour */
+  .tip-lab { display: none; }
+  .tip-lab:has(.chip) { display: block; position: static; transform: none; left: auto; }
+}
+
+/* Chips */
+.chip { display: inline-flex; align-items: center; gap: 5px; font-family: "IBM Plex Mono", monospace; font-size: 10.5px; font-weight: 500; letter-spacing: .05em; text-transform: uppercase; padding: 2px 7px 2px 5px; border-radius: 2px; white-space: nowrap; }
+.chip svg { width: 11px; height: 11px; flex: none; }
+.chip.crit { background: var(--crit-wash); color: var(--crit-ink); }
+.chip.warn { background: var(--warn-wash); color: var(--warn-ink); }
+.chip.flat { background: var(--surface-sunk); color: var(--ink-3); }
+
+/* ── Hourly small multiples ──────────────────────────────────────────── */
+.hourly { display: flex; flex-direction: column; gap: 4px; }
+.hband { display: grid; grid-template-columns: 96px 1fr; gap: 14px; align-items: stretch; }
+.hband .hlab { padding-top: 4px; }
+.hband .hlab .t { font-size: 12.5px; font-weight: 600; display: block; line-height: 1.25; }
+.hband .hlab .s { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--ink-3); display: block; margin-top: 2px; }
+.plot { position: relative; height: 76px; border-bottom: 1px solid var(--rule); display: flex; align-items: flex-end; gap: 4px; }
+.plot .grid-line { position: absolute; left: 0; right: 0; border-top: 1px solid var(--rule-soft); }
+.col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; height: 100%; position: relative; cursor: default; }
+.col:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.col .mark { width: 100%; max-width: 22px; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 1px; }
+.col.dim .mark { background: var(--accent); opacity: .42; }
+.col .none { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 9px; border-top: 2px dotted var(--ink-3); }
+.col:hover .mark { filter: brightness(1.08); }
+.haxis { display: flex; gap: 4px; margin-top: 6px; }
+.haxis span { flex: 1 1 0; text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.hshade { position: absolute; top: 0; bottom: 0; background: var(--surface-sunk); border-radius: 2px; }
+@media (max-width: 700px) {
+  .hband { grid-template-columns: 1fr; gap: 4px; }
+  .hband .hlab { padding-top: 10px; }
+  .haxis span { font-size: 8.5px; }
+}
+
+/* ── Tooltip ─────────────────────────────────────────────────────────── */
+#tip { position: fixed; z-index: 50; pointer-events: none; opacity: 0; transform: translate(-50%, -100%); transition: opacity .09s ease; background: var(--ink); color: var(--plane); padding: 8px 10px; border-radius: 3px; font-family: "IBM Plex Mono", monospace; font-size: 11.5px; line-height: 1.55; font-variant-numeric: tabular-nums; white-space: nowrap; box-shadow: 0 6px 20px -8px rgba(0,0,0,.5); }
+#tip.on { opacity: 1; }
+#tip .th { font-weight: 600; display: block; margin-bottom: 3px; }
+@media (prefers-reduced-motion: reduce) { #tip { transition: none; } * { animation: none !important; } }
+
+/* ── Tables ──────────────────────────────────────────────────────────── */
+details { margin-top: 16px; border-top: 1px solid var(--rule-soft); padding-top: 12px; }
+summary { cursor: pointer; font-size: 12.5px; color: var(--ink-2); font-weight: 500; list-style: none; display: inline-flex; align-items: center; gap: 6px; }
+summary::-webkit-details-marker { display: none; }
+summary::before { content: "+"; font-family: "IBM Plex Mono", monospace; color: var(--ink-3); }
+details[open] summary::before { content: "−"; }
+summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.tscroll { overflow-x: auto; margin-top: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 12.5px; min-width: 560px; }
+th, td { text-align: right; padding: 6px 10px; border-bottom: 1px solid var(--rule-soft); font-family: "IBM Plex Mono", monospace; font-variant-numeric: tabular-nums; white-space: nowrap; }
+th { color: var(--ink-3); font-weight: 500; font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase; border-bottom: 1px solid var(--rule); }
+th:first-child, td:first-child { text-align: left; font-family: "Public Sans", sans-serif; }
+tbody tr:hover { background: var(--surface-sunk); }
+
+/* ── Actions ─────────────────────────────────────────────────────────── */
+
+/* ── Footer ──────────────────────────────────────────────────────────── */
+footer { margin-top: 52px; border-top: 1px solid var(--rule); padding-top: 16px; }
+footer p { font-size: 12.5px; color: var(--ink-3); margin: 0 0 7px; max-width: 78ch; }
+footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-top">
+      <span class="eyebrow">Shah Sports Tech · zbats · act 1811409506889048</span>
+      <span class="eyebrow">Day 1 of 1 · 8 Sep 2026 · INR</span>
+    </div>
+    <h1>AI Bat Fit Quiz — Website Leads</h1>
+    <p class="sub">One campaign, one ad set, three reels, ₹1,000 a day. This is everything the first full day of delivery reported.</p>
+    <hr class="rule-double">
+  </header>
+
+  <div class="notice">
+    <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M8 5v3.6M8 11h.01"/></svg>
+    <p><strong>Nothing has been reported for today (9&nbsp;Sep) yet</strong> — zero spend, zero impressions, two landing-page views. The campaign, ad set and all three ads still read <span class="mono">ACTIVE</span>, so this is most likely just an early-in-the-day gap in reporting. Worth confirming delivery actually restarted before reading anything into it.</p>
+  </div>
+
+  <div class="hero">
+    <div class="hero-figure">119</div>
+    <div class="hero-side">
+      <p class="lede">quiz leads on day one, at <b>₹9.09</b> each.</p>
+      <p>From <b class="mono">₹1,082.08</b> of spend and 13,012 impressions. The ad set left the learning phase's first day with volume most accounts take a week to reach.</p>
+    </div>
+  </div>
+
+  <div class="tiles">
+    <div class="tile"><span class="k eyebrow">Spend</span><span class="v mono">₹1,082</span><span class="n">₹1,000 daily budget · 8% over, normal pacing</span></div>
+    <div class="tile"><span class="k eyebrow">Cost per lead</span><span class="v mono">₹9.09</span><span class="n">119 website leads</span></div>
+    <div class="tile"><span class="k eyebrow">Reach</span><span class="v mono">11,034</span><span class="n">1.18 frequency — audience barely touched</span></div>
+    <div class="tile"><span class="k eyebrow">CPM</span><span class="v mono">₹83.16</span><span class="n">13,012 impressions</span></div>
+    <div class="tile"><span class="k eyebrow">Link CTR</span><span class="v mono">2.67%</span><span class="n">347 link clicks · ₹2.26 CPC</span></div>
+    <div class="tile"><span class="k eyebrow">Quiz completion</span><span class="v mono">39.1%</span><span class="n">119 of 304 landing-page views</span></div>
+  </div>
+
+  <!-- ────────────── HOUR BY HOUR ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>The day, hour by hour</h2>
+      <p class="note">Advertiser time zone · 09:00–21:00</p>
+    </div>
+    <p class="sec-intro">This is the most useful thing in the account right now. Auction prices fell all day — CPM went from ₹283.71 at 09:00 to ₹22.76 by 18:00 — but the budget was already mostly gone by then. <b>Leads bought before noon cost ₹15.10; leads bought from noon on cost ₹6.98.</b> Same ads, same audience, 2.2× the price.</p>
+
+    <div class="card">
+      <p class="chart-title">Spend, leads and cost per lead by hour</p>
+      <p class="chart-sub">Three measures, three scales, one shared hour axis — shaded band marks the pre-noon hours. Hover or focus any column for that hour's full numbers.</p>
+
+      <div class="hourly">
+        <div class="hband">
+          <div class="hlab"><span class="t">Spend</span><span class="s">0 – ₹240</span></div>
+          <div>
+            <div class="plot" data-plot>
+              <div class="hshade" style="left:0; width:23.08%;"></div>
+              <div class="col" tabindex="0" data-h="09:00" data-tip="Spend ₹144.41|Impressions 509|CPM ₹283.71|Leads 7|Cost per lead ₹20.63"><div class="mark" style="height:60.2%"></div></div>
+              <div class="col" tabindex="0" data-h="10:00" data-tip="Spend ₹240.00|Impressions 1,514|CPM ₹158.52|Leads 18|Cost per lead ₹13.33"><div class="mark" style="height:100%"></div></div>
+              <div class="col" tabindex="0" data-h="11:00" data-tip="Spend ₹83.63|Impressions 677|CPM ₹123.53|Leads 6|Cost per lead ₹13.94"><div class="mark" style="height:34.8%"></div></div>
+              <div class="col" tabindex="0" data-h="12:00" data-tip="Spend ₹102.58|Impressions 935|CPM ₹109.71|Leads 15|Cost per lead ₹6.84"><div class="mark" style="height:42.7%"></div></div>
+              <div class="col" tabindex="0" data-h="13:00" data-tip="Spend ₹155.33|Impressions 1,757|CPM ₹88.41|Leads 12|Cost per lead ₹12.94"><div class="mark" style="height:64.7%"></div></div>
+              <div class="col" tabindex="0" data-h="14:00" data-tip="Spend ₹151.28|Impressions 2,162|CPM ₹69.97|Leads 23|Cost per lead ₹6.58"><div class="mark" style="height:63.0%"></div></div>
+              <div class="col" tabindex="0" data-h="15:00" data-tip="Spend ₹121.01|Impressions 2,192|CPM ₹55.21|Leads 18|Cost per lead ₹6.72"><div class="mark" style="height:50.4%"></div></div>
+              <div class="col" tabindex="0" data-h="16:00" data-tip="Spend ₹43.64|Impressions 1,455|CPM ₹29.99|Leads 8|Cost per lead ₹5.46"><div class="mark" style="height:18.2%"></div></div>
+              <div class="col" tabindex="0" data-h="17:00" data-tip="No spend this hour|2 leads attributed back to earlier impressions"><div class="none"></div></div>
+              <div class="col" tabindex="0" data-h="18:00" data-tip="Spend ₹37.25|Impressions 1,637|CPM ₹22.76|Leads 6|Cost per lead ₹6.21"><div class="mark" style="height:15.5%"></div></div>
+              <div class="col" tabindex="0" data-h="19:00" data-tip="Spend ₹3.00|Impressions 175|CPM ₹17.14|Leads 2|Cost per lead ₹1.50"><div class="mark" style="height:1.3%"></div></div>
+              <div class="col" tabindex="0" data-h="20:00" data-tip="No spend this hour|1 lead attributed back to earlier impressions"><div class="none"></div></div>
+              <div class="col" tabindex="0" data-h="21:00" data-tip="No spend this hour|1 lead attributed back to earlier impressions"><div class="none"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hband">
+          <div class="hlab"><span class="t">Leads</span><span class="s">0 – 23</span></div>
+          <div>
+            <div class="plot" data-plot>
+              <div class="hshade" style="left:0; width:23.08%;"></div>
+              <div class="col" tabindex="0" data-h="09:00" data-tip="Leads 7|Cost per lead ₹20.63|Spend ₹144.41"><div class="mark" style="height:30.4%"></div></div>
+              <div class="col" tabindex="0" data-h="10:00" data-tip="Leads 18|Cost per lead ₹13.33|Spend ₹240.00"><div class="mark" style="height:78.3%"></div></div>
+              <div class="col" tabindex="0" data-h="11:00" data-tip="Leads 6|Cost per lead ₹13.94|Spend ₹83.63"><div class="mark" style="height:26.1%"></div></div>
+              <div class="col" tabindex="0" data-h="12:00" data-tip="Leads 15|Cost per lead ₹6.84|Spend ₹102.58"><div class="mark" style="height:65.2%"></div></div>
+              <div class="col" tabindex="0" data-h="13:00" data-tip="Leads 12|Cost per lead ₹12.94|Spend ₹155.33"><div class="mark" style="height:52.2%"></div></div>
+              <div class="col" tabindex="0" data-h="14:00" data-tip="Leads 23 — best hour of the day|Cost per lead ₹6.58|Spend ₹151.28"><div class="mark" style="height:100%"></div></div>
+              <div class="col" tabindex="0" data-h="15:00" data-tip="Leads 18|Cost per lead ₹6.72|Spend ₹121.01"><div class="mark" style="height:78.3%"></div></div>
+              <div class="col" tabindex="0" data-h="16:00" data-tip="Leads 8|Cost per lead ₹5.46|Spend ₹43.64"><div class="mark" style="height:34.8%"></div></div>
+              <div class="col dim" tabindex="0" data-h="17:00" data-tip="Leads 2|No spend this hour — attributed back to earlier impressions"><div class="mark" style="height:8.7%"></div></div>
+              <div class="col" tabindex="0" data-h="18:00" data-tip="Leads 6|Cost per lead ₹6.21|Spend ₹37.25"><div class="mark" style="height:26.1%"></div></div>
+              <div class="col" tabindex="0" data-h="19:00" data-tip="Leads 2|Cost per lead ₹1.50|Spend ₹3.00"><div class="mark" style="height:8.7%"></div></div>
+              <div class="col dim" tabindex="0" data-h="20:00" data-tip="Leads 1|No spend this hour — attributed back to earlier impressions"><div class="mark" style="height:4.3%"></div></div>
+              <div class="col dim" tabindex="0" data-h="21:00" data-tip="Leads 1|No spend this hour — attributed back to earlier impressions"><div class="mark" style="height:4.3%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hband">
+          <div class="hlab"><span class="t">Cost per lead</span><span class="s">₹0 – ₹20.63</span></div>
+          <div>
+            <div class="plot" data-plot>
+              <div class="hshade" style="left:0; width:23.08%;"></div>
+              <div class="col" tabindex="0" data-h="09:00" data-tip="Cost per lead ₹20.63 — worst hour|Spend ₹144.41|Leads 7"><div class="mark" style="height:100%"></div></div>
+              <div class="col" tabindex="0" data-h="10:00" data-tip="Cost per lead ₹13.33|Spend ₹240.00|Leads 18"><div class="mark" style="height:64.6%"></div></div>
+              <div class="col" tabindex="0" data-h="11:00" data-tip="Cost per lead ₹13.94|Spend ₹83.63|Leads 6"><div class="mark" style="height:67.6%"></div></div>
+              <div class="col" tabindex="0" data-h="12:00" data-tip="Cost per lead ₹6.84|Spend ₹102.58|Leads 15"><div class="mark" style="height:33.2%"></div></div>
+              <div class="col" tabindex="0" data-h="13:00" data-tip="Cost per lead ₹12.94|Spend ₹155.33|Leads 12"><div class="mark" style="height:62.7%"></div></div>
+              <div class="col" tabindex="0" data-h="14:00" data-tip="Cost per lead ₹6.58|Spend ₹151.28|Leads 23"><div class="mark" style="height:31.9%"></div></div>
+              <div class="col" tabindex="0" data-h="15:00" data-tip="Cost per lead ₹6.72|Spend ₹121.01|Leads 18"><div class="mark" style="height:32.6%"></div></div>
+              <div class="col" tabindex="0" data-h="16:00" data-tip="Cost per lead ₹5.46|Spend ₹43.64|Leads 8"><div class="mark" style="height:26.5%"></div></div>
+              <div class="col" tabindex="0" data-h="17:00" data-tip="No cost per lead — no spend this hour"><div class="none"></div></div>
+              <div class="col" tabindex="0" data-h="18:00" data-tip="Cost per lead ₹6.21|Spend ₹37.25|Leads 6"><div class="mark" style="height:30.1%"></div></div>
+              <div class="col" tabindex="0" data-h="19:00" data-tip="Cost per lead ₹1.50|Spend ₹3.00|Leads 2"><div class="mark" style="height:7.3%"></div></div>
+              <div class="col" tabindex="0" data-h="20:00" data-tip="No cost per lead — no spend this hour"><div class="none"></div></div>
+              <div class="col" tabindex="0" data-h="21:00" data-tip="No cost per lead — no spend this hour"><div class="none"></div></div>
+            </div>
+            <div class="haxis">
+              <span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <details>
+        <summary>Show the hourly numbers</summary>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Hour</th><th>Spend</th><th>Impr.</th><th>CPM</th><th>Clicks</th><th>CTR</th><th>Link clicks</th><th>LP views</th><th>Leads</th><th>Cost/lead</th></tr></thead>
+            <tbody>
+              <tr><td>09:00</td><td>₹144.41</td><td>509</td><td>₹283.71</td><td>43</td><td>8.45%</td><td>34</td><td>27</td><td>7</td><td>₹20.63</td></tr>
+              <tr><td>10:00</td><td>₹240.00</td><td>1,514</td><td>₹158.52</td><td>63</td><td>4.16%</td><td>33</td><td>29</td><td>18</td><td>₹13.33</td></tr>
+              <tr><td>11:00</td><td>₹83.63</td><td>677</td><td>₹123.53</td><td>32</td><td>4.73%</td><td>17</td><td>14</td><td>6</td><td>₹13.94</td></tr>
+              <tr><td>12:00</td><td>₹102.58</td><td>935</td><td>₹109.71</td><td>51</td><td>5.45%</td><td>34</td><td>27</td><td>15</td><td>₹6.84</td></tr>
+              <tr><td>13:00</td><td>₹155.33</td><td>1,757</td><td>₹88.41</td><td>80</td><td>4.55%</td><td>57</td><td>43</td><td>12</td><td>₹12.94</td></tr>
+              <tr><td>14:00</td><td>₹151.28</td><td>2,162</td><td>₹69.97</td><td>83</td><td>3.84%</td><td>65</td><td>60</td><td>23</td><td>₹6.58</td></tr>
+              <tr><td>15:00</td><td>₹121.01</td><td>2,192</td><td>₹55.21</td><td>62</td><td>2.83%</td><td>50</td><td>41</td><td>18</td><td>₹6.72</td></tr>
+              <tr><td>16:00</td><td>₹43.64</td><td>1,455</td><td>₹29.99</td><td>27</td><td>1.86%</td><td>26</td><td>27</td><td>8</td><td>₹5.46</td></tr>
+              <tr><td>17:00</td><td>₹0.00</td><td>0</td><td>—</td><td>0</td><td>—</td><td>0</td><td>7</td><td>2</td><td>—</td></tr>
+              <tr><td>18:00</td><td>₹37.25</td><td>1,637</td><td>₹22.76</td><td>34</td><td>2.08%</td><td>28</td><td>22</td><td>6</td><td>₹6.21</td></tr>
+              <tr><td>19:00</td><td>₹3.00</td><td>175</td><td>₹17.14</td><td>4</td><td>2.29%</td><td>3</td><td>2</td><td>2</td><td>₹1.50</td></tr>
+              <tr><td>20:00</td><td>₹0.00</td><td>0</td><td>—</td><td>0</td><td>—</td><td>0</td><td>2</td><td>1</td><td>—</td></tr>
+              <tr><td>21:00</td><td>₹0.00</td><td>0</td><td>—</td><td>0</td><td>—</td><td>0</td><td>2</td><td>1</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ────────────── FUNNEL ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>Where the 13,012 impressions went</h2>
+      <p class="note">Each bar is the share surviving the previous step</p>
+    </div>
+    <p class="sec-intro">Plotting raw volume would leave every step after the first as a sliver, so each bar here shows what share of the <em>previous</em> step made it through. Read down: the auction step is the expensive one, and everything after the click is unusually healthy.</p>
+
+    <div class="card">
+      <p class="chart-title">Step-to-step conversion</p>
+      <p class="chart-sub">Counts in the right-hand column. Impressions are the 100% baseline.</p>
+      <div class="bars" style="--label-w:170px; --num-w:150px;">
+        <div class="brow"><div class="lab">Impressions<span class="qual">the baseline</span></div><div class="track"><div class="fill" style="width:100%"></div></div><div class="nums"><b>13,012</b><span>100%</span></div></div>
+        <div class="brow"><div class="lab">Clicks (all)<span class="qual">of impressions</span></div><div class="track"><div class="fill" style="--w:3.68%; width:3.68%"></div><span class="tip-lab" style="--w:3.68%">3.68%</span></div><div class="nums"><b>479</b><span>3.68%</span></div></div>
+        <div class="brow"><div class="lab">Link clicks<span class="qual">of all clicks</span></div><div class="track"><div class="fill" style="--w:72.44%; width:72.44%"></div><span class="tip-lab" style="--w:72.44%">72.4%</span></div><div class="nums"><b>347</b><span>72.4%</span></div></div>
+        <div class="brow"><div class="lab">Landing-page views<span class="qual">of link clicks</span></div><div class="track"><div class="fill" style="--w:87.61%; width:87.61%"></div><span class="tip-lab" style="--w:87.61%">87.6%</span></div><div class="nums"><b>304</b><span>87.6%</span></div></div>
+        <div class="brow"><div class="lab">Quiz leads<span class="qual">of landing-page views</span></div><div class="track"><div class="fill" style="--w:39.14%; width:39.14%"></div><span class="tip-lab" style="--w:39.14%">39.1%</span></div><div class="nums"><b>119</b><span>39.1%</span></div></div>
+        <div class="brow"><div class="lab">Adds to cart<span class="qual">of quiz leads</span></div><div class="track"><div class="fill" style="--w:27.73%; width:27.73%"></div><span class="tip-lab" style="--w:27.73%">27.7%</span></div><div class="nums"><b>33</b><span>27.7%</span></div></div>
+      </div>
+      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">Two numbers stand out. <b>87.6% of link clicks became a landing-page view</b> — the page loads fast enough that almost nobody bounces on the way in. And <b>39.1% of visitors finished the quiz</b>. Neither is the constraint. The constraint is the 3.68% click rate, which is a media and creative problem, not a site problem.</p>
+    </div>
+  </section>
+
+  <!-- ────────────── PLACEMENTS ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>Placements</h2>
+      <p class="note">Bar length = spend · ₹1,083 across 11 positions</p>
+    </div>
+    <p class="sec-intro">Facebook Reels carried three quarters of the budget and 78% of the leads. But the notable thing is what is missing: <b>Instagram delivered nothing at all.</b> Not a rupee, not an impression — no Instagram position appears anywhere in the day's data.</p>
+
+    <div class="card">
+      <p class="chart-title">Spend and cost per lead by placement</p>
+      <p class="chart-sub">Placements that produced no leads are marked. Hover any row for detail.</p>
+      <div class="bars" style="--label-w:165px; --num-w:230px;">
+        <div class="brow" tabindex="0" data-tip="Facebook Reels|Spend ₹820.06|Impressions 6,976|CPM ₹117.55|CTR 4.16%|Link clicks 205|LP views 193|Leads 93|Cost per lead ₹8.82">
+          <div class="lab">Facebook Reels<span class="qual">75.7% of spend</span></div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="nums"><span>₹820.06</span><span>93 leads</span><b>₹8.82</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Facebook Feed|Spend ₹165.21|Impressions 2,063|CPM ₹80.08|CTR 6.01%|Link clicks 78|LP views 68|Leads 21|Cost per lead ₹7.87">
+          <div class="lab">Facebook Feed<span class="qual">15.3% of spend</span></div>
+          <div class="track"><div class="fill" style="--w:20.15%; width:20.15%"></div><span class="tip-lab" style="--w:20.15%">₹7.87 / lead</span></div>
+          <div class="nums"><span>₹165.21</span><span>21 leads</span><b>₹7.87</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Audience Network|Spend ₹46.20|Impressions 91|CPM ₹507.69|CTR 9.89%|Link clicks 12|LP views 8|Leads 0">
+          <div class="lab">Audience Network<span class="qual">CPM ₹507.69 — 6× Reels</span></div>
+          <div class="track"><div class="fill is-crit" style="--w:5.63%; width:5.63%"></div><span class="tip-lab" style="--w:5.63%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads</span></span></div>
+          <div class="nums"><span>₹46.20</span><span>0 leads</span><b>—</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Facebook Stories|Spend ₹25.71|Impressions 111|CPM ₹231.62|CTR 13.51%|Link clicks 13|LP views 11|Leads 5|Cost per lead ₹5.14">
+          <div class="lab">Facebook Stories<span class="qual">cheapest leads on the day</span></div>
+          <div class="track"><div class="fill" style="--w:3.14%; width:3.14%"></div><span class="tip-lab" style="--w:3.14%">₹5.14 / lead</span></div>
+          <div class="nums"><span>₹25.71</span><span>5 leads</span><b>₹5.14</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="WhatsApp Status|Spend ₹23.39|Impressions 3,767|CPM ₹6.21|CTR 1.09%|Link clicks 39|LP views 26|Leads 0">
+          <div class="lab">WhatsApp Status<span class="qual">3,767 impressions for ₹23</span></div>
+          <div class="track"><div class="fill is-crit" style="--w:2.85%; width:2.85%"></div><span class="tip-lab" style="--w:2.85%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads</span></span></div>
+          <div class="nums"><span>₹23.39</span><span>0 leads</span><b>—</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Instream video, Marketplace, Notifications, Reels overlay, Profile feed|Combined spend ₹2.47|32 impressions|0 leads">
+          <div class="lab">Five other positions<span class="qual">rounding error</span></div>
+          <div class="track"><div class="fill" style="--w:0.3%; width:0.3%"></div></div>
+          <div class="nums"><span>₹2.47</span><span>0 leads</span><b>—</b></div>
+        </div>
+        <div class="brow">
+          <div class="lab" style="color:var(--ink-3)">Instagram<span class="qual">every position</span></div>
+          <div class="track"><span class="tip-lab" style="--w:0px"><span class="chip warn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.5l5.5 10h-11z"/><path d="M8 6.6v2.6M8 11h.01"/></svg>no delivery at all</span></span></div>
+          <div class="nums"><span>₹0.00</span><span>0 leads</span><b>—</b></div>
+        </div>
+      </div>
+
+      <details>
+        <summary>Show the placement numbers</summary>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Placement</th><th>Spend</th><th>Share</th><th>Impr.</th><th>CPM</th><th>CTR</th><th>Link clicks</th><th>LP views</th><th>Leads</th><th>Cost/lead</th></tr></thead>
+            <tbody>
+              <tr><td>Facebook Reels</td><td>₹820.06</td><td>75.7%</td><td>6,976</td><td>₹117.55</td><td>4.16%</td><td>205</td><td>193</td><td>93</td><td>₹8.82</td></tr>
+              <tr><td>Facebook Feed</td><td>₹165.21</td><td>15.3%</td><td>2,063</td><td>₹80.08</td><td>6.01%</td><td>78</td><td>68</td><td>21</td><td>₹7.87</td></tr>
+              <tr><td>Audience Network</td><td>₹46.20</td><td>4.3%</td><td>91</td><td>₹507.69</td><td>9.89%</td><td>12</td><td>8</td><td>0</td><td>—</td></tr>
+              <tr><td>Facebook Stories</td><td>₹25.71</td><td>2.4%</td><td>111</td><td>₹231.62</td><td>13.51%</td><td>13</td><td>11</td><td>5</td><td>₹5.14</td></tr>
+              <tr><td>WhatsApp Status</td><td>₹23.39</td><td>2.2%</td><td>3,767</td><td>₹6.21</td><td>1.09%</td><td>39</td><td>26</td><td>0</td><td>—</td></tr>
+              <tr><td>Five other FB positions</td><td>₹2.47</td><td>0.2%</td><td>32</td><td>₹77.19</td><td>0.00%</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+              <tr><td>Instagram (all positions)</td><td>₹0.00</td><td>0.0%</td><td>0</td><td>—</td><td>—</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ────────────── AUDIENCE ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>Who bought the leads</h2>
+      <p class="note">Bar length = spend · targeting is broad India, 18–45</p>
+    </div>
+    <p class="sec-intro">Meta pushed the budget almost entirely at men — 96.8% of spend — and it was right to. The two middle age bands bought 94 of the 119 leads at close to identical efficiency. Two edges are worth acting on.</p>
+
+    <div class="card">
+      <p class="chart-title">Spend and cost per lead by age band</p>
+      <p class="chart-sub">Men unless marked. Cost per lead labelled at each bar end.</p>
+      <div class="bars" style="--label-w:150px; --num-w:220px;">
+        <div class="brow" tabindex="0" data-tip="Men 18–24|Spend ₹116.75|Impressions 2,650|CPM ₹44.06|CTR 2.49%|LP views 34|Leads 8|Cost per lead ₹14.59">
+          <div class="lab">Men 18–24<span class="qual">10.8% spend · 6.7% leads</span></div>
+          <div class="track"><div class="fill" style="--w:23.8%; width:23.8%"></div><span class="tip-lab" style="--w:23.8%">₹14.59</span></div>
+          <div class="nums"><span>₹116.75</span><span>8 leads</span><b>₹14.59</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Men 25–34|Spend ₹294.28|Impressions 4,003|CPM ₹73.51|CTR 3.37%|LP views 81|Leads 35|Cost per lead ₹8.41">
+          <div class="lab">Men 25–34<span class="qual">27.2% of spend</span></div>
+          <div class="track"><div class="fill" style="--w:59.99%; width:59.99%"></div><span class="tip-lab" style="--w:59.99%">₹8.41</span></div>
+          <div class="nums"><span>₹294.28</span><span>35 leads</span><b>₹8.41</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Men 35–44|Spend ₹490.58|Impressions 3,903|CPM ₹125.69|CTR 4.74%|LP views 134|Leads 59|Cost per lead ₹8.31">
+          <div class="lab">Men 35–44<span class="qual">45.3% of spend · best band</span></div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="nums"><span>₹490.58</span><span>59 leads</span><b>₹8.31</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Men 45–54|Spend ₹129.31|Impressions 891|CPM ₹145.13|CTR 5.72%|LP views 34|Leads 14|Cost per lead ₹9.24|Outside the 18–45 target — delivering on the boundary">
+          <div class="lab">Men 45–54<span class="qual">above the 18–45 target</span></div>
+          <div class="track"><div class="fill" style="--w:26.36%; width:26.36%"></div><span class="tip-lab" style="--w:26.36%">₹9.24</span></div>
+          <div class="nums"><span>₹129.31</span><span>14 leads</span><b>₹9.24</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Men 55+|Spend ₹16.90|Impressions 225|Leads 2|Cost per lead ₹8.45|Sample too small to act on">
+          <div class="lab">Men 55+<span class="qual">too small to read</span></div>
+          <div class="track"><div class="fill" style="--w:3.45%; width:3.45%"></div><span class="tip-lab" style="--w:3.45%">₹8.45</span></div>
+          <div class="nums"><span>₹16.90</span><span>2 leads</span><b>₹8.45</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Women, all ages|Spend ₹30.67|Impressions 1,292|CTR 2.32%|LP views 13|Leads 1|Cost per lead ₹30.67">
+          <div class="lab">Women, all ages<span class="qual">2.8% of spend</span></div>
+          <div class="track"><div class="fill" style="--w:6.25%; width:6.25%"></div><span class="tip-lab" style="--w:6.25%">₹30.67</span></div>
+          <div class="nums"><span>₹30.67</span><span>1 lead</span><b>₹30.67</b></div>
+        </div>
+      </div>
+      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">Men 18–24 are the leak: <b>they took 10.8% of the budget and returned 6.7% of the leads</b>, at ₹14.59 apiece against a ₹8.31 best. Their CPM is the cheapest in the account (₹44.06) and their click rate the worst (2.49%) — cheap attention that does not convert. At the other end, men 45–54 sit outside the 18–45 target and still delivered 14 leads at ₹9.24; the age cap is costing volume, not protecting quality.</p>
+
+      <details>
+        <summary>Show the audience numbers</summary>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Segment</th><th>Spend</th><th>Share</th><th>Impr.</th><th>CPM</th><th>CTR</th><th>LP views</th><th>Leads</th><th>Cost/lead</th></tr></thead>
+            <tbody>
+              <tr><td>Men 18–24</td><td>₹116.75</td><td>10.8%</td><td>2,650</td><td>₹44.06</td><td>2.49%</td><td>34</td><td>8</td><td>₹14.59</td></tr>
+              <tr><td>Men 25–34</td><td>₹294.28</td><td>27.2%</td><td>4,003</td><td>₹73.51</td><td>3.37%</td><td>81</td><td>35</td><td>₹8.41</td></tr>
+              <tr><td>Men 35–44</td><td>₹490.58</td><td>45.3%</td><td>3,903</td><td>₹125.69</td><td>4.74%</td><td>134</td><td>59</td><td>₹8.31</td></tr>
+              <tr><td>Men 45–54</td><td>₹129.31</td><td>12.0%</td><td>891</td><td>₹145.13</td><td>5.72%</td><td>34</td><td>14</td><td>₹9.24</td></tr>
+              <tr><td>Men 55–64</td><td>₹10.24</td><td>0.9%</td><td>130</td><td>₹78.77</td><td>2.31%</td><td>2</td><td>0</td><td>—</td></tr>
+              <tr><td>Men 65+</td><td>₹6.66</td><td>0.6%</td><td>95</td><td>₹70.11</td><td>6.32%</td><td>7</td><td>2</td><td>₹3.33</td></tr>
+              <tr><td>Women, all ages</td><td>₹30.67</td><td>2.8%</td><td>1,292</td><td>₹23.74</td><td>2.32%</td><td>13</td><td>1</td><td>₹30.67</td></tr>
+              <tr><td>Undeclared</td><td>₹3.59</td><td>0.3%</td><td>48</td><td>₹74.79</td><td>6.25%</td><td>1</td><td>0</td><td>—</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ────────────── CREATIVE ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>The three reels</h2>
+      <p class="note">Bar length = spend</p>
+    </div>
+    <p class="sec-intro">Two reels split the budget almost evenly and produced very different results. The third never got off the ground.</p>
+
+    <div class="card">
+      <p class="chart-title">Spend, leads and cost per lead by ad</p>
+      <div class="bars" style="--label-w:170px; --num-w:225px;">
+        <div class="brow" tabindex="0" data-tip="Reel 2 — Archetype|Spend ₹525.66|Impressions 5,777|Reach 4,777|Frequency 1.21|CPM ₹90.99|CTR 4.14%|Link clicks 185|LP views 170|Adds to cart 22|Leads 73|Cost per lead ₹7.20">
+          <div class="lab">Reel 2 — Archetype<span class="qual">73 leads · 22 adds to cart</span></div>
+          <div class="track"><div class="fill" style="width:95.64%"></div></div>
+          <div class="nums"><span>₹525.66</span><span>4.14% CTR</span><b>₹7.20</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Reel 3 — Direct|Spend ₹549.63|Impressions 7,206|Reach 6,538|Frequency 1.10|CPM ₹76.27|CTR 3.32%|Link clicks 162|LP views 136|Adds to cart 11|Leads 46|Cost per lead ₹11.95">
+          <div class="lab">Reel 3 — Direct<span class="qual">46 leads · 11 adds to cart</span></div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="nums"><span>₹549.63</span><span>3.32% CTR</span><b>₹11.95</b></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Reel 1 Hook 1 — Mismatch|Spend ₹6.84|Impressions 30|1 click|No link clicks, no leads|Status ACTIVE — it simply never won the auction">
+          <div class="lab">Reel 1 — Mismatch<span class="qual">30 impressions all day</span></div>
+          <div class="track"><div class="fill" style="--w:1.24%; width:1.24%"></div><span class="tip-lab" style="--w:1.24%"><span class="chip warn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.5l5.5 10h-11z"/><path d="M8 6.6v2.6M8 11h.01"/></svg>never delivered</span></span></div>
+          <div class="nums"><span>₹6.84</span><span>3.33% CTR</span><b>—</b></div>
+        </div>
+      </div>
+      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;"><b>Archetype beat Direct on every step that matters</b> — a higher click rate (4.14% vs 3.32%), a better landing-page-view-to-lead rate (42.9% vs 33.8%), twice the adds to cart, and a cost per lead 40% lower — while Direct got the cheaper impressions and the wider reach. Meta split the budget on delivery signals, not on outcome; it has not yet worked out which one wins.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Source.</strong> Meta Ads API, ad account <code>1811409506889048</code> (zbats), owned by Shah Sports Tech Private Limited. All figures are the complete reported day of 8 September 2026 in the advertiser's time zone, pulled 9 September 2026. Currency INR.</p>
+    <p><strong>Reading the numbers.</strong> "Leads" are the campaign's optimisation event, <code>offsite_conversion.fb_pixel_lead</code>, on Meta's default attribution window. Placement, age and hour figures are separate breakdown queries and each sums to within ₹1 of the ₹1,082.08 campaign total; small gaps are Meta's rounding, not missing spend. Cost per lead is spend ÷ leads within each row, so rows with no leads show no cost per lead rather than a zero.</p>
+    <p><strong>Caveats.</strong> One day, one ad set, still inside the learning phase — every split below the campaign level is a small sample, and the 55+, undeclared and Stories rows in particular are too thin to act on alone. Region-level lead counts were withheld by Meta's privacy thresholds and are not shown.</p>
+  </footer>
+</div>
+
+<div id="tip" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  var tip = document.getElementById('tip');
+  var current = null;
+
+  function show(el, x, y) {
+    var raw = el.getAttribute('data-tip');
+    if (!raw) return;
+    var head = el.getAttribute('data-h');
+    var parts = raw.split('|');
+    var html = head ? '<span class="th">' + head + '</span>' : '';
+    if (!head) { html = '<span class="th">' + parts.shift() + '</span>'; }
+    html += parts.join('<br>');
+    tip.innerHTML = html;
+    tip.classList.add('on');
+    place(x, y);
+    current = el;
+  }
+
+  function place(x, y) {
+    var w = tip.offsetWidth, pad = 10;
+    var left = Math.min(Math.max(x, w / 2 + pad), window.innerWidth - w / 2 - pad);
+    var top = y - 12;
+    if (top - tip.offsetHeight < pad) { top = y + tip.offsetHeight + 22; }
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+  }
+
+  function hide() { tip.classList.remove('on'); current = null; }
+
+  document.addEventListener('mousemove', function (e) {
+    var el = e.target.closest('[data-tip]');
+    if (el) { if (el !== current) { show(el, e.clientX, e.clientY); } else { place(e.clientX, e.clientY); } }
+    else if (current) { hide(); }
+  });
+
+  document.addEventListener('focusin', function (e) {
+    var el = e.target.closest('[data-tip]');
+    if (!el) { hide(); return; }
+    var r = el.getBoundingClientRect();
+    show(el, r.left + r.width / 2, r.top);
+  });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('scroll', hide, true);
+  window.addEventListener('resize', hide);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+})();
+</script>
+</body>
+</html>
