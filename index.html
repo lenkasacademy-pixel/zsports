@@ -110,8 +110,8 @@ body {
 .rule-double { border: 0; border-top: 1px solid var(--rule); border-bottom: 3px solid var(--ink); height: 4px; margin: 14px 0 0; }
 
 /* ── Notice ──────────────────────────────────────────────────────────── */
-.notice { display: flex; gap: 11px; align-items: flex-start; padding: 13px 15px; border-radius: 3px; margin: 22px 0 0; background: var(--crit-wash); border-left: 3px solid var(--crit); }
-.notice .glyph { flex: none; width: 17px; height: 17px; margin-top: 1px; color: var(--crit-ink); }
+.notice { display: flex; gap: 11px; align-items: flex-start; padding: 13px 15px; border-radius: 3px; margin: 22px 0 0; background: var(--accent-wash); border-left: 3px solid var(--accent); }
+.notice .glyph { flex: none; width: 17px; height: 17px; margin-top: 1px; color: var(--accent-deep); }
 .notice p { margin: 0; font-size: 14px; color: var(--ink); }
 .notice strong { font-weight: 600; }
 
@@ -183,6 +183,8 @@ section { margin-top: 46px; }
 .col .mark { width: 100%; max-width: 22px; background: var(--accent); border-radius: 4px 4px 0 0; min-height: 1px; }
 .col .none { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 9px; border-top: 2px dotted var(--ink-3); }
 .col:hover .mark { filter: brightness(1.08); }
+.hshade { position: absolute; top: 0; bottom: 0; left: 0; background: var(--crit-wash); border-radius: 2px; }
+.hshade-lab { position: absolute; top: 2px; left: 24%; font-family: "IBM Plex Mono", monospace; font-size: 9.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--crit-ink); }
 .haxis { display: flex; gap: 3px; margin-top: 6px; }
 .haxis span { flex: 1 1 0; text-align: center; font-family: "IBM Plex Mono", monospace; font-size: 10px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
 @media (max-width: 700px) {
@@ -220,6 +222,12 @@ td.hi { color: var(--ink); font-weight: 600; }
 .cmp .d2 { color: var(--ink); font-weight: 600; }
 .cmp tr.flag td { background: var(--crit-wash); }
 
+.ph td.metric { font-family: "Public Sans", sans-serif; text-align: left; font-weight: 500; font-size: 13px; }
+.ph td.metric span { display: block; font-size: 11.5px; color: var(--ink-3); font-weight: 400; }
+.ph th.bad, .ph td.bad { background: var(--crit-wash); }
+.ph th.good, .ph td.good { background: var(--accent-wash); }
+.ph td.big { font-weight: 600; color: var(--ink); }
+
 /* ── Pair tiles ──────────────────────────────────────────────────────── */
 .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
 .pair > div { background: var(--surface); padding: 16px 17px; }
@@ -246,160 +254,114 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
       <span class="eyebrow">Days 1–2 · 8–9 Sep 2026 · INR</span>
     </div>
     <h1>AI Bat Fit Quiz — Website Leads</h1>
-    <p class="sub">One campaign, one ad set, three reels, ₹1,000 a day. Day one worked. Day two did not, and the reason is now known.</p>
+    <p class="sub">One quiz, three reels. Day one worked, day two broke in the morning, and it was diagnosed and rebuilt the same afternoon. Leads are back.</p>
     <hr class="rule-double">
   </header>
 
   <div class="notice">
-    <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="8" cy="8" r="6.4"/><path d="M8 5v3.6M8 11h.01"/></svg>
-    <p><strong>9 Sep spent ₹464.92 and returned one lead.</strong> The campaign was paused at 7:04 PM on 8 Sep and switched back on at 7:17 AM on 9 Sep. That restart reset the learning phase, and within about 43 minutes Meta spent <span class="mono">₹463.50</span> — 99.7% of the day — on the cheapest inventory it could find. The quiz and the website were checked end to end and are working correctly.</p>
+    <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5L6.2 11.8 2.5 8.1"/></svg>
+    <p><strong>Fixed the same day.</strong> On the morning of 9 Sep a restart sent the campaign after very cheap, very low-quality traffic — ₹527.57 for three leads. The cause was found, the wasteful placements were removed and the campaign was rebuilt at 1:40 PM. From that point to the end of the evening it produced <strong>24 leads at ₹9.97</strong>, back in line with day one. The website and the quiz were tested end to end and were never at fault.</p>
   </div>
 
   <div class="hero">
-    <div class="hero-figure">120</div>
+    <div class="hero-figure">146</div>
     <div class="hero-side">
-      <p class="lede">quiz leads over two days, at <b>₹12.91</b> each.</p>
-      <p>But the two days are nothing alike. Day one produced <b>119 leads at ₹9.11</b>. Day two produced <b>1 lead at ₹464.92</b> — a lead cost <b>51×</b> what it cost the day before.</p>
+      <p class="lede">quiz leads in two days, at <b>₹12.69</b> each.</p>
+      <p>That blended figure carries one bad morning. Excluding it, the campaign has run at <b>₹9.12</b> and <b>₹9.97</b> a lead across its two working stretches.</p>
     </div>
   </div>
 
   <div class="tiles">
-    <div class="tile"><span class="k eyebrow">Spend, 2 days</span><span class="v mono">₹1,550</span><span class="n">₹1,084.60 + ₹464.92</span></div>
-    <div class="tile"><span class="k eyebrow">Leads</span><span class="v mono">120</span><span class="n">119 on day one, 1 on day two</span></div>
-    <div class="tile"><span class="k eyebrow">Blended cost per lead</span><span class="v mono">₹12.91</span><span class="n">₹9.11 day one · ₹464.92 day two</span></div>
-    <div class="tile"><span class="k eyebrow">Impressions</span><span class="v mono">38,382</span><span class="n">two thirds of them on day two</span></div>
-    <div class="tile"><span class="k eyebrow">Landing-page views</span><span class="v mono">444</span><span class="n">304 + 140</span></div>
-    <div class="tile"><span class="k eyebrow">Adds to cart</span><span class="v mono">33</span><span class="n">all on day one</span></div>
+    <div class="tile"><span class="k eyebrow">Spend, 2 days</span><span class="v mono">₹1,853</span><span class="n">₹1,085.72 + ₹766.89</span></div>
+    <div class="tile"><span class="k eyebrow">Leads</span><span class="v mono">146</span><span class="n">119 + 27</span></div>
+    <div class="tile"><span class="k eyebrow">Blended cost per lead</span><span class="v mono">₹12.69</span><span class="n">₹9.97 since the rebuild</span></div>
+    <div class="tile"><span class="k eyebrow">Landing-page views</span><span class="v mono">563</span><span class="n">304 + 259</span></div>
+    <div class="tile"><span class="k eyebrow">Adds to cart</span><span class="v mono">45</span><span class="n">33 + 12</span></div>
+    <div class="tile"><span class="k eyebrow">Impressions</span><span class="v mono">46,253</span><span class="n">most of them in one wasted hour</span></div>
   </div>
 
-  <!-- ────────────── TWO DAYS ────────────── -->
+  <!-- ────────────── THREE PHASES ────────────── -->
   <section>
     <div class="sec-head">
-      <h2>The two days, side by side</h2>
-      <p class="note">Same campaign, same ad set, same three reels</p>
+      <h2>Three phases, not two days</h2>
+      <p class="note">The middle column is the one that went wrong</p>
     </div>
-    <p class="sec-intro">Nothing about the campaign's setup changed between these two columns. What changed is the inventory Meta bought. Day two bought roughly twice as many impressions for less than half the money — and almost none of it was worth having.</p>
+    <p class="sec-intro">Reading this as "a good day and a bad day" misses what happened. Day two contains both the worst and the best cost per lead of the campaign so far, separated by about half an hour of work in the afternoon.</p>
 
     <div class="card">
-      <p class="chart-title">Every headline metric, day one against day two</p>
-      <p class="chart-sub">Highlighted rows are the ones that broke.</p>
+      <p class="chart-title">Day one, the broken morning, and everything after the rebuild</p>
+      <p class="chart-sub">Same quiz, same three reels throughout.</p>
       <div class="tscroll">
-        <table class="cmp">
-          <thead><tr><th>Metric</th><th>8 Sep</th><th>9 Sep</th><th>Change</th></tr></thead>
+        <table class="ph">
+          <thead><tr><th>Metric</th><th>8 Sep<br><span style="font-weight:400;text-transform:none;letter-spacing:0">all day</span></th><th class="bad">9 Sep<br><span style="font-weight:400;text-transform:none;letter-spacing:0">07:00–12:59</span></th><th class="good">9 Sep<br><span style="font-weight:400;text-transform:none;letter-spacing:0">13:00–21:59</span></th></tr></thead>
           <tbody>
-            <tr><td class="metric">Spend</td><td class="d1">₹1,084.60</td><td class="d2">₹464.92</td><td>−57%</td></tr>
-            <tr><td class="metric">Impressions</td><td class="d1">13,041</td><td class="d2">25,341</td><td>+94%</td></tr>
-            <tr><td class="metric">Reach</td><td class="d1">11,041</td><td class="d2">25,339</td><td>+130%</td></tr>
-            <tr><td class="metric">Frequency<span>impressions per person</span></td><td class="d1">1.18</td><td class="d2">1.00</td><td>one view each</td></tr>
-            <tr><td class="metric">CPM<span>cost per 1,000 impressions</span></td><td class="d1">₹83.17</td><td class="d2">₹18.35</td><td>−78%</td></tr>
-            <tr class="flag"><td class="metric">CTR (all)</td><td class="d1">3.69%</td><td class="d2">1.33%</td><td>−64%</td></tr>
-            <tr><td class="metric">Link clicks</td><td class="d1">348</td><td class="d2">261</td><td>−25%</td></tr>
-            <tr class="flag"><td class="metric">Landing-page views<span>share of link clicks that arrived</span></td><td class="d1">304 &nbsp;<span style="color:var(--ink-3)">87.4%</span></td><td class="d2">140 &nbsp;<span style="color:var(--ink-3)">53.6%</span></td><td>−34 pts</td></tr>
-            <tr class="flag"><td class="metric">Quiz completion<span>leads per landing-page view</span></td><td class="d1">39.1%</td><td class="d2">0.7%</td><td>−38 pts</td></tr>
-            <tr class="flag"><td class="metric">Leads</td><td class="d1">119</td><td class="d2">1</td><td>−99%</td></tr>
-            <tr class="flag"><td class="metric">Cost per lead</td><td class="d1">₹9.11</td><td class="d2">₹464.92</td><td>51× worse</td></tr>
-            <tr><td class="metric">Adds to cart</td><td class="d1">33</td><td class="d2">0</td><td>—</td></tr>
+            <tr><td class="metric">Spend</td><td>₹1,085.72</td><td class="bad">₹527.57</td><td class="good">₹239.32</td></tr>
+            <tr><td class="metric">Impressions</td><td>13,051</td><td class="bad">28,738</td><td class="good">4,464</td></tr>
+            <tr><td class="metric">CPM<span>cost per 1,000 impressions</span></td><td>₹83.19</td><td class="bad">₹18.36</td><td class="good">₹53.61</td></tr>
+            <tr><td class="metric">Quiz start rate<span>of everyone who landed</span></td><td class="big">9.3%</td><td class="bad">1.9%</td><td class="good big">9.3%</td></tr>
+            <tr><td class="metric">Quiz completion<span>of those who started</span></td><td>59.7%</td><td class="bad">55.6%</td><td class="good">56.9%</td></tr>
+            <tr><td class="metric">Leads</td><td class="big">119</td><td class="bad">3</td><td class="good big">24</td></tr>
+            <tr><td class="metric">Cost per lead</td><td class="big">₹9.12</td><td class="bad">₹175.86</td><td class="good big">₹9.97</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">The cheap CPM in the middle column is the tell. <b>₹18.36 per thousand impressions bought 28,738 impressions and three leads</b>; ₹53.61 bought 4,464 impressions and twenty-four. Paying more per impression for the right audience was six times cheaper per lead.</p>
     </div>
   </section>
 
   <!-- ────────────── HOUR BY HOUR ────────────── -->
   <section>
     <div class="sec-head">
-      <h2>Where day two went wrong</h2>
-      <p class="note">Advertiser time zone · both days on one shared scale</p>
+      <h2>9 September, hour by hour</h2>
+      <p class="note">Advertiser time zone</p>
     </div>
-    <p class="sec-intro">Day one spent steadily across eleven hours. Day two spent almost everything in a single 43-minute burst immediately after the campaign was switched back on, then went quiet for the rest of the day. Both charts below share one scale, so the bars are directly comparable.</p>
+    <p class="sec-intro">Almost the whole day's budget went in the 07:00 hour, immediately after the campaign was switched back on — 28,351 impressions in about 43 minutes at an ₹18.50 CPM. Spending stopped, the campaign was rebuilt at 1:40 PM, and from 14:00 onward leads arrived every hour on a fraction of the money.</p>
 
     <div class="card">
       <p class="chart-title">Spend and leads by hour</p>
-      <p class="chart-sub">Spend bands share a 0–₹463.50 scale; leads bands share a 0–23 scale. A dotted mark means no delivery in that hour. Hover or focus any column.</p>
-
+      <p class="chart-sub">The shaded window is the period before the rebuild. Hover or focus any column.</p>
       <div class="hourly">
         <div class="hband">
-          <div class="hlab"><span class="t">Spend · 8 Sep</span><span class="s">₹1,084.60</span></div>
+          <div class="hlab"><span class="t">Spend</span><span class="s">0 – ₹524.55</span></div>
           <div><div class="plot">
-            <div class="col" tabindex="0" data-h="8 Sep 07:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 08:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 09:00" data-tip="Spend ₹144.41|CPM ₹283.71|Leads 7|Cost per lead ₹20.63"><div class="mark" style="height:31.2%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 10:00" data-tip="Spend ₹240.00|CPM ₹158.52|Leads 18|Cost per lead ₹13.33"><div class="mark" style="height:51.8%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 11:00" data-tip="Spend ₹83.63|CPM ₹123.53|Leads 6|Cost per lead ₹13.94"><div class="mark" style="height:18.0%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 12:00" data-tip="Spend ₹102.58|CPM ₹109.71|Leads 15|Cost per lead ₹6.84"><div class="mark" style="height:22.1%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 13:00" data-tip="Spend ₹155.33|CPM ₹88.41|Leads 12|Cost per lead ₹12.94"><div class="mark" style="height:33.5%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 14:00" data-tip="Spend ₹151.28|CPM ₹69.97|Leads 23|Cost per lead ₹6.58"><div class="mark" style="height:32.6%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 15:00" data-tip="Spend ₹121.01|CPM ₹55.21|Leads 18|Cost per lead ₹6.72"><div class="mark" style="height:26.1%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 16:00" data-tip="Spend ₹43.64|CPM ₹29.99|Leads 8|Cost per lead ₹5.46"><div class="mark" style="height:9.4%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 17:00" data-tip="No spend this hour|2 leads attributed back to earlier impressions"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 18:00" data-tip="Spend ₹37.25|CPM ₹22.76|Leads 6|Cost per lead ₹6.21"><div class="mark" style="height:8.0%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 19:00" data-tip="Spend ₹3.00|CPM ₹17.14|Leads 2|Cost per lead ₹1.50"><div class="mark" style="height:0.7%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 20:00" data-tip="No spend this hour|1 lead attributed back to earlier impressions"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 21:00" data-tip="No spend this hour|1 lead attributed back to earlier impressions"><div class="none"></div></div>
+            <div class="hshade" style="width:40%"></div><span class="hshade-lab">before the rebuild</span>
+            <div class="col" tabindex="0" data-h="07:00" data-tip="Spend ₹524.55 — 68% of the day|Impressions 28,351|CPM ₹18.50|Leads 1|Campaign switched back on at 7:17 AM"><div class="mark" style="height:100%"></div></div>
+            <div class="col" tabindex="0" data-h="08:00" data-tip="Spend ₹0.71|Impressions 143|Leads 0"><div class="mark" style="height:0.5%"></div></div>
+            <div class="col" tabindex="0" data-h="09:00" data-tip="Spend ₹0.07|Impressions 11|Leads 0"><div class="mark" style="height:0.4%"></div></div>
+            <div class="col" tabindex="0" data-h="10:00" data-tip="Spend ₹0.13|Impressions 21|Leads 1"><div class="mark" style="height:0.4%"></div></div>
+            <div class="col" tabindex="0" data-h="11:00" data-tip="Spend ₹0.59|Impressions 59|Leads 0"><div class="mark" style="height:0.4%"></div></div>
+            <div class="col" tabindex="0" data-h="12:00" data-tip="Spend ₹1.52|Impressions 153|Leads 1"><div class="mark" style="height:0.5%"></div></div>
+            <div class="col" tabindex="0" data-h="13:00" data-tip="Rebuilt campaign goes live at 1:40 PM|Spend ₹32.24|Impressions 645|CPM ₹49.98|Leads 0"><div class="mark" style="height:6.2%"></div></div>
+            <div class="col" tabindex="0" data-h="14:00" data-tip="Spend ₹49.45|Impressions 1,045|CPM ₹47.32|Leads 2"><div class="mark" style="height:9.4%"></div></div>
+            <div class="col" tabindex="0" data-h="15:00" data-tip="Spend ₹42.72|Impressions 804|CPM ₹53.13|Leads 5"><div class="mark" style="height:8.1%"></div></div>
+            <div class="col" tabindex="0" data-h="16:00" data-tip="Spend ₹12.77|Impressions 225|CPM ₹56.76|Leads 3"><div class="mark" style="height:2.4%"></div></div>
+            <div class="col" tabindex="0" data-h="17:00" data-tip="Spend ₹21.84|Impressions 368|CPM ₹59.35|Leads 3"><div class="mark" style="height:4.2%"></div></div>
+            <div class="col" tabindex="0" data-h="18:00" data-tip="Spend ₹20.03|Impressions 334|CPM ₹59.97|Leads 4"><div class="mark" style="height:3.8%"></div></div>
+            <div class="col" tabindex="0" data-h="19:00" data-tip="Spend ₹19.74|Impressions 318|CPM ₹62.08|Leads 2"><div class="mark" style="height:3.8%"></div></div>
+            <div class="col" tabindex="0" data-h="20:00" data-tip="Spend ₹21.93|Impressions 386|CPM ₹56.81|Leads 5"><div class="mark" style="height:4.2%"></div></div>
+            <div class="col" tabindex="0" data-h="21:00" data-tip="Spend ₹18.60|Impressions 339|CPM ₹54.87|Leads 0 so far"><div class="mark" style="height:3.6%"></div></div>
           </div></div>
         </div>
-
         <div class="hband">
-          <div class="hlab"><span class="t">Spend · 9 Sep</span><span class="s">₹464.92</span></div>
-          <div><div class="plot">
-            <div class="col" tabindex="0" data-h="9 Sep 07:00" data-tip="Spend ₹463.50 — 99.7% of the day|Impressions 25,126|CPM ₹18.45|Link clicks 258|Leads 1|Campaign switched back on at 7:17 AM"><div class="mark" style="height:100%"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 08:00" data-tip="Spend ₹0.70|Impressions 142|CPM ₹4.93|Leads 0"><div class="mark" style="height:0.2%"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 09:00" data-tip="Spend ₹0.07|Impressions 11|Leads 0"><div class="mark" style="height:0.1%"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 10:00" data-tip="Spend ₹0.13|Impressions 18|Leads 0"><div class="mark" style="height:0.1%"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 11:00" data-tip="Spend ₹0.52|Impressions 44|Leads 0"><div class="mark" style="height:0.15%"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 12:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 13:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 14:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 15:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 16:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 17:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 18:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 19:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 20:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="9 Sep 21:00" data-tip="No delivery this hour"><div class="none"></div></div>
-          </div></div>
-        </div>
-
-        <div class="hband">
-          <div class="hlab"><span class="t">Leads · 8 Sep</span><span class="s">119</span></div>
-          <div><div class="plot">
-            <div class="col" tabindex="0" data-h="8 Sep 07:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 08:00" data-tip="No delivery this hour"><div class="none"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 09:00" data-tip="Leads 7|Cost per lead ₹20.63"><div class="mark" style="height:30.4%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 10:00" data-tip="Leads 18|Cost per lead ₹13.33"><div class="mark" style="height:78.3%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 11:00" data-tip="Leads 6|Cost per lead ₹13.94"><div class="mark" style="height:26.1%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 12:00" data-tip="Leads 15|Cost per lead ₹6.84"><div class="mark" style="height:65.2%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 13:00" data-tip="Leads 12|Cost per lead ₹12.94"><div class="mark" style="height:52.2%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 14:00" data-tip="Leads 23 — best hour of either day|Cost per lead ₹6.58"><div class="mark" style="height:100%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 15:00" data-tip="Leads 18|Cost per lead ₹6.72"><div class="mark" style="height:78.3%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 16:00" data-tip="Leads 8|Cost per lead ₹5.46"><div class="mark" style="height:34.8%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 17:00" data-tip="Leads 2|Attributed back to earlier impressions"><div class="mark" style="height:8.7%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 18:00" data-tip="Leads 6|Cost per lead ₹6.21"><div class="mark" style="height:26.1%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 19:00" data-tip="Leads 2|Cost per lead ₹1.50"><div class="mark" style="height:8.7%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 20:00" data-tip="Leads 1|Attributed back to earlier impressions"><div class="mark" style="height:4.3%"></div></div>
-            <div class="col" tabindex="0" data-h="8 Sep 21:00" data-tip="Leads 1|Attributed back to earlier impressions"><div class="mark" style="height:4.3%"></div></div>
-          </div></div>
-        </div>
-
-        <div class="hband">
-          <div class="hlab"><span class="t">Leads · 9 Sep</span><span class="s">1</span></div>
+          <div class="hlab"><span class="t">Leads</span><span class="s">0 – 5</span></div>
           <div>
             <div class="plot">
-              <div class="col" tabindex="0" data-h="9 Sep 07:00" data-tip="Leads 1|From ₹463.50 of spend and 25,126 impressions"><div class="mark" style="height:4.3%"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 08:00" data-tip="Leads 0|Spend ₹0.70"><div class="mark" style="height:0"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 09:00" data-tip="Leads 0|Spend ₹0.07"><div class="mark" style="height:0"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 10:00" data-tip="Leads 0|Spend ₹0.13"><div class="mark" style="height:0"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 11:00" data-tip="Leads 0|Spend ₹0.52"><div class="mark" style="height:0"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 12:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 13:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 14:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 15:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 16:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 17:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 18:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 19:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 20:00" data-tip="No delivery this hour"><div class="none"></div></div>
-              <div class="col" tabindex="0" data-h="9 Sep 21:00" data-tip="No delivery this hour"><div class="none"></div></div>
+              <div class="hshade" style="width:40%"></div>
+              <div class="col" tabindex="0" data-h="07:00" data-tip="Leads 1|From ₹524.55 of spend"><div class="mark" style="height:20%"></div></div>
+              <div class="col" tabindex="0" data-h="08:00" data-tip="Leads 0"><div class="mark" style="height:0"></div></div>
+              <div class="col" tabindex="0" data-h="09:00" data-tip="Leads 0"><div class="mark" style="height:0"></div></div>
+              <div class="col" tabindex="0" data-h="10:00" data-tip="Leads 1"><div class="mark" style="height:20%"></div></div>
+              <div class="col" tabindex="0" data-h="11:00" data-tip="Leads 0"><div class="mark" style="height:0"></div></div>
+              <div class="col" tabindex="0" data-h="12:00" data-tip="Leads 1"><div class="mark" style="height:20%"></div></div>
+              <div class="col" tabindex="0" data-h="13:00" data-tip="Leads 0|Rebuilt campaign live from 1:40 PM"><div class="mark" style="height:0"></div></div>
+              <div class="col" tabindex="0" data-h="14:00" data-tip="Leads 2|Cost per lead ₹24.73"><div class="mark" style="height:40%"></div></div>
+              <div class="col" tabindex="0" data-h="15:00" data-tip="Leads 5|Cost per lead ₹8.54"><div class="mark" style="height:100%"></div></div>
+              <div class="col" tabindex="0" data-h="16:00" data-tip="Leads 3|Cost per lead ₹4.26"><div class="mark" style="height:60%"></div></div>
+              <div class="col" tabindex="0" data-h="17:00" data-tip="Leads 3|Cost per lead ₹7.28"><div class="mark" style="height:60%"></div></div>
+              <div class="col" tabindex="0" data-h="18:00" data-tip="Leads 4|Cost per lead ₹5.01"><div class="mark" style="height:80%"></div></div>
+              <div class="col" tabindex="0" data-h="19:00" data-tip="Leads 2|Cost per lead ₹9.87"><div class="mark" style="height:40%"></div></div>
+              <div class="col" tabindex="0" data-h="20:00" data-tip="Leads 5|Cost per lead ₹4.39"><div class="mark" style="height:100%"></div></div>
+              <div class="col" tabindex="0" data-h="21:00" data-tip="Leads 0 reported so far this hour"><div class="mark" style="height:0"></div></div>
             </div>
             <div class="haxis">
               <span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span>
@@ -413,39 +375,27 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   <!-- ────────────── SITE CHECK ────────────── -->
   <section>
     <div class="sec-head">
-      <h2>The website is not the problem</h2>
-      <p class="note">Checked live, and confirmed in the pixel data</p>
+      <h2>The website was never the problem</h2>
+      <p class="note">Checked live, and confirmed three times over in the data</p>
     </div>
-    <p class="sec-intro">The obvious suspicion on a day like this is that the quiz broke. It did not. The store's own event data separates the two possibilities cleanly, because it records people <em>starting</em> the quiz as well as finishing it.</p>
+    <p class="sec-intro">The obvious suspicion on a morning like that is that the quiz broke. It did not, and the store's own event data proves it — because it records people <em>starting</em> the quiz separately from finishing it.</p>
 
     <div class="pair">
       <div>
         <p class="q">Did visitors start the quiz?</p>
-        <div class="vals"><b>9.3%</b><span class="arrow">→</span><b>1.3%</b></div>
-        <span class="cap">Of everyone who landed on the page. This collapsed — day two's visitors arrived and left without touching it.</span>
+        <div class="vals"><b>9.3%</b><span class="arrow">→</span><b>1.9%</b><span class="arrow">→</span><b>9.3%</b></div>
+        <span class="cap">Day one, the broken morning, then after the rebuild. It fell away and came back to exactly where it started.</span>
       </div>
       <div>
         <p class="q">Did the people who started it finish?</p>
-        <div class="vals"><b>59.7%</b><span class="arrow">→</span><b>60.0%</b></div>
-        <span class="cap">Unchanged, to within a third of a percentage point. Whoever started the quiz completed it exactly as reliably as the day before.</span>
+        <div class="vals"><b>59.7%</b><span class="arrow">→</span><b>55.6%</b><span class="arrow">→</span><b>56.9%</b></div>
+        <span class="cap">Steady across all three phases. Anyone who actually engaged with the quiz completed it just as reliably throughout.</span>
       </div>
     </div>
 
     <div class="card">
-      <p class="chart-title">Store events, both days</p>
-      <p class="chart-sub">Recorded by the store's own tracking, independent of what Meta reports.</p>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Event</th><th>8 Sep</th><th>9 Sep</th><th>What it means</th></tr></thead>
-          <tbody>
-            <tr><td>Page view</td><td>2,258</td><td>390</td><td style="text-align:left;font-family:'Public Sans',sans-serif">Landed on the quiz page</td></tr>
-            <tr><td>Quiz started</td><td class="hi">211</td><td class="hi">5</td><td style="text-align:left;font-family:'Public Sans',sans-serif">Pressed the start button</td></tr>
-            <tr><td>Lead</td><td>126</td><td>3</td><td style="text-align:left;font-family:'Public Sans',sans-serif">Finished all 12 questions</td></tr>
-            <tr><td>Add to cart</td><td>72</td><td>0</td><td style="text-align:left;font-family:'Public Sans',sans-serif">Went on to a product</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">Alongside this, the live site was checked directly: the homepage and the quiz page both load without errors, the start button works, the quiz advances through its questions, and the tracking fires correctly at every step. <b>The traffic Meta bought on day two simply had no interest in a cricket bat quiz.</b></p>
+      <p class="chart-title">What was checked</p>
+      <p class="sec-intro" style="margin:0; font-size:13.5px;">The live site was opened and tested directly: the homepage and the quiz page both load without errors, the start button works, the quiz advances through its questions, and the tracking fires correctly at each step. Combined with a completion rate that never moved, the conclusion is unambiguous — <b>the traffic bought on that morning simply had no interest in a cricket bat quiz.</b> Since the rebuild, checkout activity has resumed on the store as well.</p>
     </div>
   </section>
 
@@ -453,63 +403,45 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   <section>
     <div class="sec-head">
       <h2>Placements</h2>
-      <p class="note">Where the money actually went, both days</p>
+      <p class="note">Where the money went on 9 Sep</p>
     </div>
-    <p class="sec-intro">This is the mechanism behind day two. Facebook Reels produced 93 of day one's 119 leads and took three quarters of that day's budget. On day two it took an eighth, and Facebook Feed — buying cheap, one-impression-per-person reach — took nearly two thirds.</p>
+    <p class="sec-intro">Facebook Reels remains the placement that produces leads. Facebook Feed took the largest share of the day because of the morning burst, and returned very little for it. Two placements have now taken ₹164.34 across the two days and produced nothing at all.</p>
 
     <div class="card">
-      <p class="chart-title">Share of spend by placement</p>
-      <p class="chart-sub">Two days, each on its own 0–100% scale. Placements that produced no leads on either day are marked.</p>
-      <div class="bars" style="--label-w:170px; --num-w:250px;">
-        <div class="brow" tabindex="0" data-tip="Facebook Reels|8 Sep: ₹820.06, 93 leads at ₹8.82|9 Sep: ₹59.29, 1 lead at ₹59.29">
-          <div class="lab">Facebook Reels<span class="qual">the placement that works</span></div>
-          <div class="track"><div class="fill" style="width:75.6%"></div><span class="tip-lab" style="--w:75.6%">75.6% → 12.8%</span></div>
-          <div class="nums"><span>₹820.06</span><span>→</span><b>₹59.29</b></div>
+      <p class="chart-title">Spend and cost per lead by placement, 9 Sep</p>
+      <p class="chart-sub">Bar length is share of the day's spend. Placements with no leads are marked.</p>
+      <div class="bars" style="--label-w:170px; --num-w:240px;">
+        <div class="brow" tabindex="0" data-tip="Facebook Feed|Spend ₹397.40|Impressions 20,517|CPM ₹19.37|Leads 9|Cost per lead ₹44.16|Almost all of this was the morning burst">
+          <div class="lab">Facebook Feed<span class="qual">52.0% of the day</span></div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="nums"><span>₹397.40</span><span>9 leads</span><b>₹44.16</b></div>
         </div>
-        <div class="brow" tabindex="0" data-tip="Facebook Feed|8 Sep: ₹165.21, 21 leads at ₹7.87|9 Sep: ₹293.23, 0 leads|CPM fell to ₹17.95 with frequency 1.0">
-          <div class="lab">Facebook Feed<span class="qual">took over on day two</span></div>
-          <div class="track"><div class="fill" style="width:15.2%"></div><span class="tip-lab" style="--w:15.2%">15.2% → 63.1%</span></div>
-          <div class="nums"><span>₹165.21</span><span>→</span><b>₹293.23</b></div>
+        <div class="brow" tabindex="0" data-tip="Facebook Reels|Spend ₹240.68|Impressions 5,610|CPM ₹42.90|Leads 18|Cost per lead ₹13.37|Two thirds of the day's leads">
+          <div class="lab">Facebook Reels<span class="qual">two thirds of the leads</span></div>
+          <div class="track"><div class="fill" style="--w:60.6%; width:60.6%"></div><span class="tip-lab" style="--w:60.6%">₹13.37 / lead</span></div>
+          <div class="nums"><span>₹240.68</span><span>18 leads</span><b>₹13.37</b></div>
         </div>
-        <div class="brow" tabindex="0" data-tip="WhatsApp Status|8 Sep: ₹23.39, 0 leads|9 Sep: ₹55.57, 0 leads|Zero leads across both days">
-          <div class="lab">WhatsApp Status<span class="qual">₹78.96 over two days</span></div>
-          <div class="track"><div class="fill is-crit" style="width:2.2%"></div><span class="tip-lab" style="--w:2.2%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads, both days</span></span></div>
-          <div class="nums"><span>₹23.39</span><span>→</span><b>₹55.57</b></div>
+        <div class="brow" tabindex="0" data-tip="WhatsApp Status|Spend ₹57.86|Impressions 6,363|CPM ₹9.09|Link clicks 48|Leads 0|₹81.25 across both days, no leads">
+          <div class="lab">WhatsApp Status<span class="qual">₹81.25 over two days</span></div>
+          <div class="track"><div class="fill is-crit" style="--w:14.6%; width:14.6%"></div><span class="tip-lab" style="--w:14.6%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads, both days</span></span></div>
+          <div class="nums"><span>₹57.86</span><span>0 leads</span><b>—</b></div>
         </div>
-        <div class="brow" tabindex="0" data-tip="Audience Network|8 Sep: ₹46.20, 0 leads, CPM ₹507.69|9 Sep: ₹36.95, 0 leads|Zero leads across both days">
-          <div class="lab">Audience Network<span class="qual">₹83.15 over two days</span></div>
-          <div class="track"><div class="fill is-crit" style="width:4.3%"></div><span class="tip-lab" style="--w:4.3%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads, both days</span></span></div>
-          <div class="nums"><span>₹46.20</span><span>→</span><b>₹36.95</b></div>
+        <div class="brow" tabindex="0" data-tip="Audience Network|Spend ₹36.89|Impressions 210|CPM ₹175.67|Leads 0|₹83.09 across both days, no leads|Removed from the rebuilt campaign">
+          <div class="lab">Audience Network<span class="qual">removed at 1:32 PM</span></div>
+          <div class="track"><div class="fill is-crit" style="--w:9.3%; width:9.3%"></div><span class="tip-lab" style="--w:9.3%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>0 leads, both days</span></span></div>
+          <div class="nums"><span>₹36.89</span><span>0 leads</span><b>—</b></div>
         </div>
-        <div class="brow" tabindex="0" data-tip="Facebook Stories|8 Sep: ₹25.71, 5 leads at ₹5.14|9 Sep: ₹17.44, 0 leads">
-          <div class="lab">Facebook Stories<span class="qual">cheapest leads of day one</span></div>
-          <div class="track"><div class="fill" style="width:2.4%"></div><span class="tip-lab" style="--w:2.4%">2.4% → 3.8%</span></div>
-          <div class="nums"><span>₹25.71</span><span>→</span><b>₹17.44</b></div>
+        <div class="brow" tabindex="0" data-tip="Facebook Stories|Spend ₹28.40|Impressions 416|CPM ₹68.27|Leads 0 today|5 leads at ₹5.14 on day one">
+          <div class="lab">Facebook Stories<span class="qual">5 leads at ₹5.14 on day one</span></div>
+          <div class="track"><div class="fill" style="--w:7.1%; width:7.1%"></div><span class="tip-lab" style="--w:7.1%">0 leads today</span></div>
+          <div class="nums"><span>₹28.40</span><span>0 leads</span><b>—</b></div>
         </div>
         <div class="brow">
           <div class="lab" style="color:var(--ink-3)">Instagram<span class="qual">enabled, never delivered</span></div>
           <div class="track"><span class="tip-lab" style="--w:0px"><span class="chip warn"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.5l5.5 10h-11z"/><path d="M8 6.6v2.6M8 11h.01"/></svg>₹0.00 across both days</span></span></div>
-          <div class="nums"><span>₹0.00</span><span>→</span><b>₹0.00</b></div>
+          <div class="nums"><span>₹0.00</span><span>0 leads</span><b>—</b></div>
         </div>
       </div>
-
-      <details>
-        <summary>Show the placement numbers</summary>
-        <div class="tscroll">
-          <table>
-            <thead><tr><th>Placement</th><th>Spend 8 Sep</th><th>Leads</th><th>Cost/lead</th><th>Spend 9 Sep</th><th>Leads</th><th>Cost/lead</th></tr></thead>
-            <tbody>
-              <tr><td>Facebook Reels</td><td>₹820.06</td><td>93</td><td>₹8.82</td><td>₹59.29</td><td>1</td><td>₹59.29</td></tr>
-              <tr><td>Facebook Feed</td><td>₹165.21</td><td>21</td><td>₹7.87</td><td>₹293.23</td><td>0</td><td>—</td></tr>
-              <tr><td>Facebook Stories</td><td>₹25.71</td><td>5</td><td>₹5.14</td><td>₹17.44</td><td>0</td><td>—</td></tr>
-              <tr><td>WhatsApp Status</td><td>₹23.39</td><td>0</td><td>—</td><td>₹55.57</td><td>0</td><td>—</td></tr>
-              <tr><td>Audience Network</td><td>₹46.20</td><td>0</td><td>—</td><td>₹36.95</td><td>0</td><td>—</td></tr>
-              <tr><td>Other positions</td><td>₹2.47</td><td>0</td><td>—</td><td>₹2.44</td><td>0</td><td>—</td></tr>
-              <tr><td>Instagram (all)</td><td>₹0.00</td><td>0</td><td>—</td><td>₹0.00</td><td>0</td><td>—</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </details>
     </div>
   </section>
 
@@ -517,23 +449,22 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   <section>
     <div class="sec-head">
       <h2>The three reels</h2>
-      <p class="note">Both days</p>
+      <p class="note">Original campaign and the rebuild</p>
     </div>
-    <p class="sec-intro">Reel 2 is the best ad in the account and has been on both days. Reel 1 has still never meaningfully delivered — 54 impressions across two days, while marked active.</p>
+    <p class="sec-intro">Reel 2 was clearly the stronger ad on day one. In the rebuilt campaign the order has flipped and Reel 3 is ahead — on a small sample, and worth watching rather than acting on yet.</p>
 
     <div class="card">
-      <p class="chart-title">Spend and cost per lead by ad</p>
       <div class="tscroll">
         <table>
-          <thead><tr><th>Ad</th><th>Spend 8 Sep</th><th>CTR</th><th>Leads</th><th>Cost/lead</th><th>Spend 9 Sep</th><th>Leads</th></tr></thead>
+          <thead><tr><th>Ad</th><th>8 Sep spend</th><th>Leads</th><th>Cost/lead</th><th>9 Sep, rebuilt</th><th>Leads</th><th>Cost/lead</th></tr></thead>
           <tbody>
-            <tr><td>Reel 2 — Archetype</td><td>₹525.66</td><td>4.14%</td><td class="hi">73</td><td class="hi">₹7.20</td><td>₹207.64</td><td>1</td></tr>
-            <tr><td>Reel 3 — Direct</td><td>₹549.63</td><td>3.32%</td><td>46</td><td>₹11.95</td><td>₹254.61</td><td>0</td></tr>
-            <tr><td>Reel 1 — Mismatch</td><td>₹6.84</td><td>3.33%</td><td>0</td><td>—</td><td>₹2.67</td><td>0</td></tr>
+            <tr><td>Reel 3 — Direct</td><td>₹549.63</td><td>46</td><td>₹11.95</td><td>₹185.81</td><td class="hi">20</td><td class="hi">₹9.29</td></tr>
+            <tr><td>Reel 2 — Archetype</td><td>₹525.66</td><td class="hi">73</td><td class="hi">₹7.20</td><td>₹29.34</td><td>1</td><td>₹29.34</td></tr>
+            <tr><td>Reel 1 — Mismatch</td><td>₹6.84</td><td>0</td><td>—</td><td>₹5.65</td><td>0</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;"><b>Reel 2 beat Reel 3 on every step that matters on day one</b> — a higher click rate, a better landing-page-view-to-lead rate (42.9% vs 33.8%), twice the adds to cart, and a cost per lead 40% lower. Worth noting: its burned-in captions are cut off at both edges of the frame on every placement, so it is winning with a hook nobody can fully read.</p>
+      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">Reel 1 has still never meaningfully delivered — 122 impressions across everything so far, while marked active. Separately, Reel 2's burned-in captions are cut off at both edges of the frame on every placement, so the ad that won day one is doing it with a hook nobody can read in full.</p>
     </div>
   </section>
 
@@ -541,7 +472,7 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   <section>
     <div class="sec-head">
       <h2>Who bought the leads</h2>
-      <p class="note">Day one only — day two produced too few leads to split</p>
+      <p class="note">Day one — the only stretch with enough leads to split</p>
     </div>
     <p class="sec-intro">Targeting is broad India, 18–45. Meta pushed the budget almost entirely at men, and was right to: the two middle age bands bought 94 of day one's 119 leads at nearly identical efficiency.</p>
 
@@ -585,9 +516,9 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
   </section>
 
   <footer>
-    <p><strong>Source.</strong> Meta Ads API and the store's own event dataset, ad account <code>1811409506889048</code> (zbats), owned by Shah Sports Tech Private Limited. Figures cover 8 and 9 September 2026 in the advertiser's time zone; 9 September is complete up to 11:59 AM, after which delivery had stopped. Pulled 9 September 2026. Currency INR.</p>
-    <p><strong>Reading the numbers.</strong> "Leads" are the campaign's optimisation event, <code>offsite_conversion.fb_pixel_lead</code>, on Meta's default attribution window. Store-side event counts are slightly higher than Meta's attributed leads because they include visitors who did not arrive from an ad. Placement, age and hour figures are separate breakdown queries and each sums to within ₹1 of the campaign total; small gaps are Meta's rounding, not missing spend. Cost per lead is spend ÷ leads within each row, so rows with no leads show no cost per lead rather than a zero.</p>
-    <p><strong>Caveats.</strong> Two days, one ad set, still inside the learning phase. Every split below the campaign level is a small sample, and the 55+, Stories and women's rows in particular are too thin to act on alone. Day two produced too few leads to break down by audience at all. Region-level lead counts were withheld by Meta's privacy thresholds and are not shown.</p>
+    <p><strong>Source.</strong> Meta Ads API and the store's own event dataset, ad account <code>1811409506889048</code> (zbats), owned by Shah Sports Tech Private Limited. Figures cover 8 and 9 September 2026 in the advertiser's time zone; 9 September is reported to the end of the 21:00 hour and is still accruing. Currency INR.</p>
+    <p><strong>Reading the numbers.</strong> "Leads" are the campaign's optimisation event, <code>offsite_conversion.fb_pixel_lead</code>, on Meta's default attribution window. 9 September combines the original campaign (paused at 3:54 PM) and the rebuilt one that replaced it, since both ran that day. Store-side event counts run higher than Meta's attributed leads because they include visitors who did not arrive from an ad. Cost per lead is spend ÷ leads within each row, so rows with no leads show no cost per lead rather than a zero.</p>
+    <p><strong>Caveats.</strong> Two days, still inside the learning phase, and the rebuilt campaign is only a few hours old. Every split below the campaign level is a small sample; the Stories, 55+ and women's rows in particular are too thin to act on alone. Region-level lead counts were withheld by Meta's privacy thresholds and are not shown.</p>
   </footer>
 </div>
 
