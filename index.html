@@ -395,7 +395,52 @@ footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
 
     <div class="card">
       <p class="chart-title">What was checked</p>
-      <p class="sec-intro" style="margin:0; font-size:13.5px;">The live site was opened and tested directly: the homepage and the quiz page both load without errors, the start button works, the quiz advances through its questions, and the tracking fires correctly at each step. Combined with a completion rate that never moved, the conclusion is unambiguous — <b>the traffic bought on that morning simply had no interest in a cricket bat quiz.</b> Since the rebuild, checkout activity has resumed on the store as well.</p>
+      <p class="sec-intro" style="margin:0; font-size:13.5px;">The live site was opened and tested directly: the homepage and the quiz page both load without errors, the start button works, the quiz advances through its questions, and the tracking fires correctly at each step. Combined with a completion rate that never moved, the conclusion is unambiguous — <b>the traffic bought on that morning simply had no interest in a cricket bat quiz.</b> That covers the quiz itself. What happens <em>after</em> the quiz, once someone puts a bat in the cart, is a separate matter — and it is where the money currently stops.</p>
+    </div>
+  </section>
+
+  <!-- ────────────── CART TO CHECKOUT ────────────── -->
+  <section>
+    <div class="sec-head">
+      <h2>Where the money stops</h2>
+      <p class="note">Store events, all traffic — not only visitors from ads</p>
+    </div>
+    <p class="sec-intro">The campaign is doing its job: it produces leads, and a healthy number of those leads put a bat in the cart. Almost none of them reach a checkout. This is the single biggest thing standing between the campaign and revenue, and it sits on the store rather than in the ad account.</p>
+
+    <div class="card">
+      <p class="chart-title">Cart to checkout to purchase, since the campaign launched</p>
+      <p class="chart-sub">8–9 September. Bars are proportional to the counts beside them.</p>
+      <div class="bars" style="--label-w:190px; --num-w:170px;">
+        <div class="brow" tabindex="0" data-tip="Adds to cart|115 across 8–9 Sep|72 on day one, 43 on day two">
+          <div class="lab">Adds to cart<span class="qual">people who picked a bat</span></div>
+          <div class="track"><div class="fill" style="width:100%"></div></div>
+          <div class="nums"><b>115</b><span>100%</span></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Checkouts started|3 across 8–9 Sep|Zero on day one, despite 72 adds to cart">
+          <div class="lab">Checkouts started<span class="qual">of everyone who added to cart</span></div>
+          <div class="track"><div class="fill is-crit" style="--w:2.6%; width:2.6%"></div><span class="tip-lab" style="--w:2.6%"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M8 2.5l5.5 10h-11z"/><path d="M8 6.6v2.6M8 11h.01"/></svg>2.6% get this far</span></span></div>
+          <div class="nums"><b>3</b><span>2.6%</span></div>
+        </div>
+        <div class="brow" tabindex="0" data-tip="Purchases|0 since the campaign launched|The purchase event itself works — it last fired on 2 Sep">
+          <div class="lab">Purchases<span class="qual">since the campaign launched</span></div>
+          <div class="track"><span class="tip-lab" style="--w:0px"><span class="chip crit"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>none yet</span></span></div>
+          <div class="nums"><b>0</b><span>—</span></div>
+        </div>
+      </div>
+
+      <p class="sec-intro" style="margin:22px 0 0; font-size:13.5px;">On day one, <b>72 adds to cart produced not a single checkout</b>. For comparison, in the week before the campaign the store recorded 24 checkouts started and two completed purchases on far less traffic — so the checkout works, and the purchase tracking works. Something is stopping <em>this</em> traffic specifically.</p>
+    </div>
+
+    <div class="card">
+      <p class="chart-title">What a customer actually hits</p>
+      <p class="sec-intro" style="margin:0 0 14px; font-size:13.5px;">Adding a bat to the cart and pressing Checkout was tested directly. The cart works. Pressing Checkout then opens a Razorpay Magic Checkout window whose <b>first and only step is "enter mobile number to continue"</b>, followed by a one-time password. Before that is done there is no shipping information, no order total with delivery, no payment options and no guest option — just a request for a phone number.</p>
+      <p class="sec-intro" style="margin:0 0 14px; font-size:13.5px;">The bat in that test was <b>₹27,998</b>. Asking someone to hand over a phone number and verify it by OTP before they can even see what delivery costs is a heavy ask on a purchase of that size, and it lines up exactly with 115 adds to cart producing three checkouts.</p>
+      <p class="sec-intro" style="margin:0; font-size:13.5px;">There is a second, smaller consequence. Because the checkout events fire inside that window, the store only records a checkout <em>after</em> the phone step is completed — so the drop-off is largely invisible in reporting, and Meta cannot learn from it either.</p>
+    </div>
+
+    <div class="card">
+      <p class="chart-title">Worth keeping in proportion</p>
+      <p class="sec-intro" style="margin:0; font-size:13.5px;">A ₹27,998 English willow bat is not an impulse purchase. Even with a frictionless checkout, very few people buy one within hours of taking a quiz — the decision takes days, and usually a conversation. The campaign is optimised for leads, and it is delivering them at nine to ten rupees each. <b>The 146 leads are the asset here</b>; they arrived with a name, an email and a phone number. The checkout should still be fixed, but purchases in the first forty-eight hours were never the measure of whether this is working.</p>
     </div>
   </section>
 
