@@ -3,12 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Meta ads performance for the AI Bat Fit Quiz campaign, Z-Bat, 8-12 September 2026.">
-<title>Bat Fit Quiz Report — Z-Bat</title>
+<meta name="robots" content="noindex">
+<title>Bat Fit Quiz Report &mdash; Z-Bat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; }
@@ -243,303 +242,328 @@ td.hi { color: var(--ink); font-weight: 600; }
 footer { margin-top: 52px; border-top: 1px solid var(--rule); padding-top: 16px; }
 footer p { font-size: 12.5px; color: var(--ink-3); margin: 0 0 7px; max-width: 78ch; }
 footer code { font-family: "IBM Plex Mono", monospace; font-size: 11.5px; }
-
+.tile .k { display:block; }
+.tile .v { display:block; font-size:26px; font-weight:600; letter-spacing:-.01em; margin:4px 0 2px; }
+.tile .n { display:block; font-size:12.5px; color:var(--ink-3); }
+.bars .qual { font-weight:400; color:var(--ink-3); font-size:12px; margin-left:7px; }
+.bars .nums { font-size:12.5px; color:var(--ink-2); font-variant-numeric:tabular-nums; }
+.fill.is-crit { background:var(--warn); }
+tr.ph td { color:var(--ink-3); }
+tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
+.chip { font-size:11px; }
+.tscroll { overflow-x:auto; margin-top:14px; }
+.tscroll table { width:100%; border-collapse:collapse; font-size:13px; }
+.tscroll th, .tscroll td { padding:7px 10px; text-align:right; border-bottom:1px solid var(--rule-soft); white-space:nowrap; }
+.tscroll th:first-child, .tscroll td:first-child { text-align:left; }
+.tscroll th { font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-3); font-weight:600; }
 </style>
 </head>
 <body>
 <div class="wrap">
-
   <header class="masthead">
     <div class="masthead-top">
-      <span class="eyebrow">Shah Sports Tech · zbats · act 1811409506889048</span>
-      <span class="eyebrow">Days 1–5 · 8–12 Sep 2026 · INR</span>
+      <h1>AI Bat Fit Quiz &mdash; Website Leads</h1>
+      <p class="note" id="period"></p>
     </div>
-    <h1>AI Bat Fit Quiz — Website Leads</h1>
-    <p class="sub">One quiz, three reels, five days. Day two broke and was rebuilt the same afternoon; every day since has been cheaper than the one before it. The store checkout started working on day three.</p>
-    <hr class="rule-double">
+    <p class="note" id="snapline"></p>
   </header>
 
-  <div class="notice">
-    <svg class="glyph" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.5 4.5L6.2 11.8 2.5 8.1"/></svg>
-    <p><strong>Two things were fixed, and both held.</strong> The campaign rebuild on the afternoon of 9 Sep took cost per lead from &#8377;176.95 back to &#8377;9.17, and it has fallen every day since — <strong>&#8377;4.34 on 11 Sep</strong>. Separately, the store checkout began completing from 10 Sep: 147 checkouts started in three days against 3 in the first two, and <strong>the first 3 orders came through on 11 Sep</strong>.</p>
-  </div>
+  <div class="tiles" id="tiles"></div>
 
-  <div class="hero">
-    <div class="hero-figure">634</div>
-    <div class="hero-side">
-      <p class="lede">quiz leads in five days, at <b>&#8377;6.91</b> each.</p>
-      <p>That blended figure still carries the broken morning of 9 Sep. The last two full days ran at <b>&#8377;6.12</b> and <b>&#8377;4.34</b>.</p>
-    </div>
-  </div>
-
-  <div class="tiles">
-    <div class="tile"><span class="k eyebrow">Spend, 5 days</span><span class="v mono">&#8377;4,379</span><span class="n">&#8377;169.43 of it today so far</span></div>
-    <div class="tile"><span class="k eyebrow">Leads</span><span class="v mono">634</span><span class="n">442 of them on 10–11 Sep</span></div>
-    <div class="tile"><span class="k eyebrow">Blended cost per lead</span><span class="v mono">&#8377;6.91</span><span class="n">&#8377;4.34 on the last full day</span></div>
-    <div class="tile"><span class="k eyebrow">Landing-page views</span><span class="v mono">1,622</span><span class="n">&#8377;2.70 each</span></div>
-    <div class="tile"><span class="k eyebrow">Checkouts started</span><span class="v mono">147</span><span class="n">3 became orders</span></div>
-    <div class="tile"><span class="k eyebrow">Impressions</span><span class="v mono">90,696</span><span class="n">a third in one wasted hour</span></div>
-  </div>
-
-  <!-- ────────────── FIVE DAYS ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>Five days, and the shape of them</h2>
-      <p class="note">Cost per lead has halved since the rebuild</p>
-    </div>
-    <p class="sec-intro">Day one set the benchmark at &#8377;9.12. Day two broke in the morning and was rebuilt the same afternoon. The three days since have all come in under day one, and the last full day is less than half of it.</p>
-
-    <div class="card">
-      <p class="chart-title">Leads a day, with what each one cost</p>
-      <p class="chart-sub">Bar length is leads. The red bar is the day that broke.</p>
-<div class="bars">
-    <div class="brow" tabindex="0"><span class="lab">8 Sep</span><span class="track"><span class="fill" style="--w:53.4%; width:53.4%"></span><span class="tip-lab" style="--w:53.4%">119</span></span><span class="nums"><span>&#8377;1,085.72</span><b>&#8377;9.12</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">9 Sep</span><span class="track"><span class="fill is-crit" style="--w:15.2%; width:15.2%"></span><span class="tip-lab" style="--w:15.2%">34</span></span><span class="nums"><span>&#8377;814.99</span><b>&#8377;23.97</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">10 Sep</span><span class="track"><span class="fill" style="--w:98.2%; width:98.2%"></span><span class="tip-lab" style="--w:98.2%">219</span></span><span class="nums"><span>&#8377;1,341.00</span><b>&#8377;6.12</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">11 Sep</span><span class="track"><span class="fill" style="--w:100.0%; width:100.0%"></span><span class="tip-lab" style="--w:100.0%">223</span></span><span class="nums"><span>&#8377;967.74</span><b>&#8377;4.34</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">12 Sep</span><span class="track"><span class="fill" style="--w:17.5%; width:17.5%"></span><span class="tip-lab" style="--w:17.5%">39</span></span><span class="nums"><span>&#8377;169.43</span><b>&#8377;4.34</b></span></div>
-  </div>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Day</th><th>Spend</th><th>Impressions</th><th>Landing-page views</th><th>Leads</th><th>Cost per lead</th></tr></thead>
-          <tbody>
-            <tr><td>8 Sep</td><td>&#8377;1,085.72</td><td>13,051</td><td>304</td><td class="hi">119</td><td class="hi">&#8377;9.12</td></tr>
-            <tr><td>9 Sep</td><td>&#8377;814.99</td><td>34,208</td><td>282</td><td class="hi">34</td><td class="hi">&#8377;23.97</td></tr>
-            <tr><td>10 Sep</td><td>&#8377;1,341.00</td><td>19,216</td><td>494</td><td class="hi">219</td><td class="hi">&#8377;6.12</td></tr>
-            <tr><td>11 Sep</td><td>&#8377;967.74</td><td>20,434</td><td>470</td><td class="hi">223</td><td class="hi">&#8377;4.34</td></tr>
-            <tr><td>12 Sep <span class="qual">part-day</span></td><td>&#8377;169.43</td><td>3,787</td><td>72</td><td class="hi">39</td><td class="hi">&#8377;4.34</td></tr>
-            <tr><td class="hi">5 days</td><td class="hi">&#8377;4,378.88</td><td class="hi">90,696</td><td class="hi">1,622</td><td class="hi">634</td><td class="hi">&#8377;6.91</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">12 September is a part-day — it covers the morning only and is still accruing.</p>
-    </div>
+    <div class="sec-head"><h2 id="latest-h"></h2></div>
+    <div class="card" id="latest"></div>
   </section>
 
-  <!-- ────────────── THE BROKEN MORNING ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>The morning that went wrong</h2>
-      <p class="note">9 September, hour by hour</p>
-    </div>
-    <p class="sec-intro">Worth keeping on the record, because it is the only bad stretch in the five days and it explains why the blended number is higher than any recent day. A restart at 07:00 sent the campaign after very cheap, very low-quality traffic: <strong>&#8377;527.83 in a single hour bought 28,563 impressions and one lead</strong>. The campaign was rebuilt that afternoon.</p>
-
-    <div class="card">
-      <p class="chart-title">Spend and leads by hour, 9 September</p>
-      <p class="chart-sub">Advertiser time zone. The shaded stretch is before the rebuild.</p>
-      <div class="hourly">
-        <div class="hband">
-          <div class="hlab"><span class="t">Spend</span><span class="s">0 – &#8377;528</span></div>
-          <div>
-            <div class="plot">
-              <div class="hshade" style="width:35%"></div>
-              <div class="hshade-lab">before the rebuild</div>
-              <div class="col" tabindex="0" data-tip="07:00|&#8377;527.83|28,563 impressions|1 lead"><span class="mark" style="height:100.0%"></span></div><div class="col" tabindex="0" data-tip="08:00|&#8377;0.71|143 impressions|0 leads"><span class="mark" style="height:0.1%"></span></div><div class="col" tabindex="0" data-tip="09:00|&#8377;0.07|11 impressions|0 leads"><span class="mark" style="height:0.0%"></span></div><div class="col" tabindex="0" data-tip="10:00|&#8377;0.13|21 impressions|1 lead"><span class="mark" style="height:0.0%"></span></div><div class="col" tabindex="0" data-tip="11:00|&#8377;0.59|59 impressions|0 leads"><span class="mark" style="height:0.1%"></span></div><div class="col" tabindex="0" data-tip="12:00|&#8377;1.52|153 impressions|1 lead"><span class="mark" style="height:0.3%"></span></div><div class="col" tabindex="0" data-tip="13:00|&#8377;32.63|654 impressions|0 leads"><span class="mark" style="height:6.2%"></span></div><div class="col" tabindex="0" data-tip="14:00|&#8377;50.46|1,061 impressions|2 leads"><span class="mark" style="height:9.6%"></span></div><div class="col" tabindex="0" data-tip="15:00|&#8377;43.58|817 impressions|5 leads"><span class="mark" style="height:8.3%"></span></div><div class="col" tabindex="0" data-tip="16:00|&#8377;13.01|232 impressions|3 leads"><span class="mark" style="height:2.5%"></span></div><div class="col" tabindex="0" data-tip="17:00|&#8377;22.57|380 impressions|3 leads"><span class="mark" style="height:4.3%"></span></div><div class="col" tabindex="0" data-tip="18:00|&#8377;20.71|354 impressions|4 leads"><span class="mark" style="height:3.9%"></span></div><div class="col" tabindex="0" data-tip="19:00|&#8377;20.05|332 impressions|2 leads"><span class="mark" style="height:3.8%"></span></div><div class="col" tabindex="0" data-tip="20:00|&#8377;22.60|405 impressions|6 leads"><span class="mark" style="height:4.3%"></span></div><div class="col" tabindex="0" data-tip="21:00|&#8377;20.97|398 impressions|1 lead"><span class="mark" style="height:4.0%"></span></div><div class="col" tabindex="0" data-tip="22:00|&#8377;20.23|343 impressions|3 leads"><span class="mark" style="height:3.8%"></span></div><div class="col" tabindex="0" data-tip="23:00|&#8377;17.33|282 impressions|2 leads"><span class="mark" style="height:3.3%"></span></div>
-            </div>
-          </div>
-        </div>
-        <div class="hband">
-          <div class="hlab"><span class="t">Leads</span><span class="s">0 – 6</span></div>
-          <div>
-            <div class="plot">
-              <div class="hshade" style="width:35%"></div>
-              <div class="col" tabindex="0" data-tip="07:00|&#8377;527.83|28,563 impressions|1 lead"><span class="mark" style="height:16.7%"></span></div><div class="col" tabindex="0" data-tip="08:00|&#8377;0.71|143 impressions|0 leads"><span class="none"></span></div><div class="col" tabindex="0" data-tip="09:00|&#8377;0.07|11 impressions|0 leads"><span class="none"></span></div><div class="col" tabindex="0" data-tip="10:00|&#8377;0.13|21 impressions|1 lead"><span class="mark" style="height:16.7%"></span></div><div class="col" tabindex="0" data-tip="11:00|&#8377;0.59|59 impressions|0 leads"><span class="none"></span></div><div class="col" tabindex="0" data-tip="12:00|&#8377;1.52|153 impressions|1 lead"><span class="mark" style="height:16.7%"></span></div><div class="col" tabindex="0" data-tip="13:00|&#8377;32.63|654 impressions|0 leads"><span class="none"></span></div><div class="col" tabindex="0" data-tip="14:00|&#8377;50.46|1,061 impressions|2 leads"><span class="mark" style="height:33.3%"></span></div><div class="col" tabindex="0" data-tip="15:00|&#8377;43.58|817 impressions|5 leads"><span class="mark" style="height:83.3%"></span></div><div class="col" tabindex="0" data-tip="16:00|&#8377;13.01|232 impressions|3 leads"><span class="mark" style="height:50.0%"></span></div><div class="col" tabindex="0" data-tip="17:00|&#8377;22.57|380 impressions|3 leads"><span class="mark" style="height:50.0%"></span></div><div class="col" tabindex="0" data-tip="18:00|&#8377;20.71|354 impressions|4 leads"><span class="mark" style="height:66.7%"></span></div><div class="col" tabindex="0" data-tip="19:00|&#8377;20.05|332 impressions|2 leads"><span class="mark" style="height:33.3%"></span></div><div class="col" tabindex="0" data-tip="20:00|&#8377;22.60|405 impressions|6 leads"><span class="mark" style="height:100.0%"></span></div><div class="col" tabindex="0" data-tip="21:00|&#8377;20.97|398 impressions|1 lead"><span class="mark" style="height:16.7%"></span></div><div class="col" tabindex="0" data-tip="22:00|&#8377;20.23|343 impressions|3 leads"><span class="mark" style="height:50.0%"></span></div><div class="col" tabindex="0" data-tip="23:00|&#8377;17.33|282 impressions|2 leads"><span class="mark" style="height:33.3%"></span></div>
-            </div>
-            <div class="haxis"><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span><span>23</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pair" style="margin-top:22px">
-        <div><p class="q">07:00–12:59, before the rebuild</p><div class="vals"><b>&#8377;176.95</b><span class="arrow">per lead</span></div><span class="cap">&#8377;530.85 and 28,950 impressions bought 3 leads.</span></div>
-        <div><p class="q">13:00–23:59, after it</p><div class="vals"><b>&#8377;9.17</b><span class="arrow">per lead</span></div><span class="cap">&#8377;284.14 and 5,258 impressions bought 31.</span></div>
-      </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">The cheap impressions are the tell. Paying roughly three times as much per thousand impressions for the right audience was <b>nineteen times cheaper per lead</b>.</p>
-    </div>
+    <div class="sec-head"><h2>Day by day</h2></div>
+    <p class="sec-intro" id="daily-intro"></p>
+    <div id="daily-bars"></div>
+    <div class="tscroll" id="daily-table"></div>
   </section>
 
-  <!-- ────────────── THE QUIZ ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>The quiz is converting better than it did on day one</h2>
-      <p class="note">Store events, all traffic — not only visitors from ads</p>
-    </div>
-    <p class="sec-intro">Two separate things decide whether an ad becomes a lead: how many people who land actually start the quiz, and how many who start it finish. Both are measured on the site itself, so they cover every visitor, not just the ones Meta attributes. Start rate has risen from 9.3% on day one to 13.6%; completion has held near 60% throughout.</p>
-
-    <div class="card">
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Day</th><th>Page views</th><th>Quiz starts</th><th>Start rate</th><th>Completed</th><th>Completion</th></tr></thead>
-          <tbody>
-            <tr><td>8 Sep</td><td>2,258</td><td>211</td><td>9.3%</td><td>126</td><td>59.7%</td></tr>
-            <tr><td>9 Sep</td><td>1,830</td><td>137</td><td>7.5%</td><td>78</td><td>56.9%</td></tr>
-            <tr><td>10 Sep</td><td>6,280</td><td>799</td><td class="hi">12.7%</td><td>497</td><td>62.2%</td></tr>
-            <tr><td>11 Sep</td><td>5,716</td><td>778</td><td class="hi">13.6%</td><td>448</td><td>57.6%</td></tr>
-            <tr><td>12 Sep</td><td>863</td><td>115</td><td class="hi">13.3%</td><td>72</td><td>62.6%</td></tr>
-            <tr><td class="hi">5 days</td><td class="hi">16,947</td><td class="hi">2,040</td><td class="hi">12.0%</td><td class="hi">1,221</td><td class="hi">59.9%</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">The dip on 9 September is the broken morning showing up on the site side: the traffic that arrived that hour barely started the quiz at all. Nothing on the website changed that day, and nothing needed to.</p>
-    </div>
+    <div class="sec-head"><h2>Creative</h2></div>
+    <p class="sec-intro" id="reels-intro"></p>
+    <div id="reels"></div>
   </section>
 
-  <!-- ────────────── WHERE THE MONEY STOPS ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>Where the money stops</h2>
-      <p class="note">Store events, all traffic</p>
-    </div>
-    <p class="sec-intro">This is the part that changed most. In the first two days 116 people added a bat to the cart and only 3 reached checkout. From 10 September checkout started completing normally, and the first orders followed.</p>
-
-    <div class="card">
-      <p class="chart-title">Cart to order, 8–12 September</p>
-      <p class="chart-sub">Everyone who reached the cart, from any source.</p>
-<div class="bars">
-    <div class="brow" tabindex="0"><span class="lab">Added to cart</span><span class="track"><span class="fill" style="--w:100.0%; width:100.0%"></span><span class="tip-lab" style="--w:100.0%">436</span></span><span class="nums"><b>436</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Started checkout</span><span class="track"><span class="fill" style="--w:33.7%; width:33.7%"></span><span class="tip-lab" style="--w:33.7%">147</span></span><span class="nums"><span>33.7% of adds</span><b>147</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Bought</span><span class="track"><span class="fill is-crit" style="--w:0.7%; width:0.7%"></span><span class="tip-lab" style="--w:0.7%">3</span></span><span class="nums"><span>2.0% of checkouts</span><b>3</b></span></div>
-  </div>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Day</th><th>Added to cart</th><th>Started checkout</th><th>Bought</th></tr></thead>
-          <tbody>
-            <tr><td>8 Sep</td><td>70</td><td class="hi">0</td><td>0</td></tr>
-            <tr><td>9 Sep</td><td>46</td><td class="hi">3</td><td>0</td></tr>
-            <tr><td>10 Sep</td><td>148</td><td class="hi">58</td><td>0</td></tr>
-            <tr><td>11 Sep</td><td>172</td><td class="hi">86</td><td>3</td></tr>
-            <tr><td>12 Sep</td><td>0</td><td class="hi">0</td><td>0</td></tr>
-            <tr><td class="hi">5 days</td><td class="hi">436</td><td class="hi">147</td><td class="hi">3</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">Keep it in proportion: the campaign is buying quiz leads, not orders, and a bat is a considered purchase that rarely closes on the first visit. 3 orders on 147 checkouts is still a thin rate, and the step from cart to checkout is where the largest group is lost.</p>
-    </div>
+    <div class="sec-head"><h2>Where the money went</h2></div>
+    <p class="sec-intro" id="place-intro"></p>
+    <div id="place"></div>
   </section>
 
-  <!-- ────────────── PLACEMENTS ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>Placements</h2>
-      <p class="note">Where the five days were spent</p>
-    </div>
-    <p class="sec-intro">Facebook Reels is carrying the campaign: 75% of the spend and 84% of the leads, at &#8377;6.14 each. Instagram does not appear at all.</p>
-
-    <div class="card">
-      <p class="chart-title">Spend by placement, with what it bought</p>
-      <p class="chart-sub">Bar length is spend. Red marks a placement costing more than &#8377;40 a lead, or returning none.</p>
-<div class="bars">
-    <div class="brow" tabindex="0"><span class="lab">Facebook Reels<span class="qual">the engine</span></span><span class="track"><span class="fill" style="--w:100.0%; width:100.0%"></span><span class="tip-lab" style="--w:100.0%">&#8377;3,272</span></span><span class="nums"><span>51,045 impr</span><span>533 leads</span><b>&#8377;6.14</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Facebook feed</span><span class="track"><span class="fill" style="--w:24.7%; width:24.7%"></span><span class="tip-lab" style="--w:24.7%">&#8377;808</span></span><span class="nums"><span>27,663 impr</span><span>88 leads</span><b>&#8377;9.18</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Facebook Stories</span><span class="track"><span class="fill" style="--w:3.7%; width:3.7%"></span><span class="tip-lab" style="--w:3.7%">&#8377;120</span></span><span class="nums"><span>1,137 impr</span><span>11 leads</span><b>&#8377;10.92</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">WhatsApp Status<span class="qual">1 lead in five days</span></span><span class="track"><span class="fill is-crit" style="--w:2.5%; width:2.5%"></span><span class="tip-lab" style="--w:2.5%">&#8377;83</span></span><span class="nums"><span>10,294 impr</span><span>1 lead</span><b>&#8377;82.73</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Audience Network<span class="qual">classic + rewarded video</span></span><span class="track"><span class="fill is-crit" style="--w:2.5%; width:2.5%"></span><span class="tip-lab" style="--w:2.5%">&#8377;83</span></span><span class="nums"><span>301 impr</span><span>0 leads</span><b>&mdash;</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Facebook in-stream</span><span class="track"><span class="fill" style="--w:0.3%; width:0.3%"></span><span class="tip-lab" style="--w:0.3%">&#8377;8</span></span><span class="nums"><span>93 impr</span><span>1 lead</span><b>&#8377;8.27</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">Everything else<span class="qual">notifications, marketplace, search</span></span><span class="track"><span class="fill is-crit" style="--w:0.1%; width:0.1%"></span><span class="tip-lab" style="--w:0.1%">&#8377;3</span></span><span class="nums"><span>116 impr</span><span>0 leads</span><b>&mdash;</b></span></div>
-  </div>
-      <p class="sec-intro" style="margin:20px 0 0; font-size:13.5px;">&#8377;85.72 went to placements that returned no leads at all in five days, and WhatsApp Status added &#8377;82.73 for one.</p>
-    </div>
+    <div class="sec-head"><h2>Age</h2></div>
+    <p class="sec-intro" id="age-intro"></p>
+    <div id="age"></div>
   </section>
 
-  <!-- ────────────── THE THREE REELS ────────────── -->
   <section>
-    <div class="sec-head">
-      <h2>The three reels</h2>
-      <p class="note">Both campaigns combined</p>
-    </div>
-    <p class="sec-intro">Reel 2 is doing most of the work and doing it cheapest. Reel 1 has effectively never been given delivery — &#8377;20.10 across five days — so it remains untested rather than beaten.</p>
-
-    <div class="card">
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Ad</th><th>Spend</th><th>Impressions</th><th>Landing-page views</th><th>Leads</th><th>Cost per lead</th></tr></thead>
-          <tbody>
-            <tr><td>Reel 2 — Archetype</td><td>&#8377;2,687.99</td><td>53,055</td><td>1,038</td><td class="hi">474</td><td class="hi">&#8377;5.67</td></tr>
-            <tr><td>Reel 3 — Direct</td><td>&#8377;1,668.41</td><td>37,390</td><td>580</td><td class="hi">160</td><td class="hi">&#8377;10.43</td></tr>
-            <tr><td>Reel 1 Hook 1 — Mismatch</td><td>&#8377;20.10</td><td>204</td><td>4</td><td class="hi">0</td><td class="hi">&mdash;</td></tr>
-            <tr><td class="hi">All three</td><td class="hi">&#8377;4,376.50</td><td class="hi">90,649</td><td class="hi">1,622</td><td class="hi">634</td><td class="hi">&#8377;6.90</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- ────────────── WHO BOUGHT THE LEADS ────────────── -->
-  <section>
-    <div class="sec-head">
-      <h2>Who bought the leads</h2>
-      <p class="note">8–12 September, all genders</p>
-    </div>
-    <p class="sec-intro">35–44 is the largest band by both spend and leads, and it is close to the cheapest. The campaign is overwhelmingly reaching men: women account for &#8377;162.95 of spend and 7 of the 634 leads.</p>
-
-    <div class="card">
-      <p class="chart-title">Spend by age band, with cost per lead</p>
-      <p class="chart-sub">Bar length is spend.</p>
-<div class="bars">
-    <div class="brow" tabindex="0"><span class="lab">18–24</span><span class="track"><span class="fill" style="--w:27.7%; width:27.7%"></span><span class="tip-lab" style="--w:27.7%">&#8377;522</span></span><span class="nums"><span>55 leads</span><b>&#8377;9.49</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">25–34</span><span class="track"><span class="fill" style="--w:72.3%; width:72.3%"></span><span class="tip-lab" style="--w:72.3%">&#8377;1,366</span></span><span class="nums"><span>192 leads</span><b>&#8377;7.11</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">35–44</span><span class="track"><span class="fill" style="--w:100.0%; width:100.0%"></span><span class="tip-lab" style="--w:100.0%">&#8377;1,888</span></span><span class="nums"><span>305 leads</span><b>&#8377;6.19</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">45–54</span><span class="track"><span class="fill" style="--w:26.2%; width:26.2%"></span><span class="tip-lab" style="--w:26.2%">&#8377;495</span></span><span class="nums"><span>73 leads</span><b>&#8377;6.77</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">55–64</span><span class="track"><span class="fill" style="--w:3.3%; width:3.3%"></span><span class="tip-lab" style="--w:3.3%">&#8377;62</span></span><span class="nums"><span>5 leads</span><b>&#8377;12.47</b></span></div>
-    <div class="brow" tabindex="0"><span class="lab">65+</span><span class="track"><span class="fill" style="--w:2.3%; width:2.3%"></span><span class="tip-lab" style="--w:2.3%">&#8377;44</span></span><span class="nums"><span>4 leads</span><b>&#8377;10.93</b></span></div>
-  </div>
-    </div>
+    <div class="sec-head"><h2>The quiz funnel</h2></div>
+    <p class="sec-intro" id="funnel-intro"></p>
+    <div class="tscroll" id="funnel"></div>
+    <p class="note" id="pixel-note"></p>
   </section>
 
   <footer>
-    <p>Meta Ads, account <code>1811409506889048</code>, campaigns <code>120252717199080067</code> and <code>120252739994540067</code>, 8–12 September 2026. 12 September is a part-day, reported to roughly 08:45 and still accruing. All amounts INR, ex-GST.</p>
-    <p>Leads are Meta's <code>offsite_conversion.fb_pixel_lead</code> on default attribution. The daily table was read a few minutes after the placement, reel and age tables, which is why those three total &#8377;4,376.50 against the daily &#8377;4,378.88 — a difference of &#8377;2.38 that Meta was still settling between the two reads. Lead counts are identical across all four.</p>
-    <p>Quiz and cart figures come from the store pixel <code>1380826504029254</code> and count <strong>all site traffic, not only visitors from ads</strong>, which is why the site-side lead count runs higher than Meta's attributed one. Pixel hours are stamped in Pacific time and are bucketed here into IST days, each running from 12:00 the previous day to 11:00 Pacific.</p>
+    <p class="note" id="recon"></p>
+    <p class="note">Figures are in the advertiser's time zone, currency INR. The most recent
+    day is still accruing and is shown separately rather than folded into any total.</p>
   </footer>
+
 </div>
-
-<div id="tip" role="status" aria-live="polite"></div>
 <script>
-(function () {
-  var tip = document.getElementById('tip');
-  var current = null;
+/* Figures. Everything above is rendered from these; no prose is hardcoded. */
+const SNAP_DAY = "2026-09-12";
+const SNAP_TS = "12 September 2026, 7:30 pm IST";
+const PLACE_DRIFT = 3.75;
+const ACCOUNT = "1811409506889048";
+const DATASET = "1380826504029254";
+const CAMPS = [["120252717199080067", "AI Bat Fit Quiz — Website Leads — Sep 2026", "CAMPAIGN_PAUSED"], ["120252739994540067", "AI Bat Fit Quiz — Website Leads — Sep 2026 – Copy", "ACTIVE"]];
+const DAILY = [["2026-09-08", 1085.72, 13051, 304, 33, 119], ["2026-09-09", 814.99, 34208, 282, 12, 34], ["2026-09-10", 1341.0, 19216, 494, 39, 219], ["2026-09-11", 970.43, 20522, 470, 37, 223], ["2026-09-12", 390.97, 9457, 218, 12, 102]];
+const REELS = [["Reel 2 — Archetype", 2895.42, 58307, 1173, 88, 531, [0, 1]], ["Reel 3 — Direct", 1687.59, 37943, 591, 45, 166, [0, 1]], ["Reel 1 Hook 1 — Mismatch", 20.1, 204, 4, 0, 0, [0, 1]]];
+const PLACE = [["audience_network", "an_classic", 72.11, 227, 16, 0], ["audience_network", "rewarded_video", 10.86, 74, 8, 0], ["facebook", "facebook_notification", 0.36, 4, 0, 0], ["facebook", "facebook_profile_feed", 1.06, 38, 0, 0], ["facebook", "facebook_reels", 3456.79, 55748, 1250, 578], ["facebook", "facebook_reels_overlay", 0.5, 37, 0, 0], ["facebook", "facebook_stories", 123.78, 1183, 63, 13], ["facebook", "feed", 841.79, 28716, 362, 104], ["facebook", "instream_video", 8.72, 98, 5, 1], ["facebook", "marketplace", 0.73, 32, 0, 0], ["facebook", "search", 0.02, 5, 0, 0], ["whatsapp", "status", 82.64, 10292, 64, 1]];
+const AGE = [["18-24", "female", 46.5, 2508, 15, 1], ["18-24", "male", 505.09, 18745, 197, 63], ["18-24", "unknown", 1.98, 80, 0, 0], ["25-34", "female", 51.57, 2309, 12, 1], ["25-34", "male", 1403.07, 33661, 559, 218], ["25-34", "unknown", 3.08, 70, 0, 0], ["35-44", "female", 42.45, 1321, 19, 5], ["35-44", "male", 1927.84, 27983, 693, 320], ["35-44", "unknown", 4.38, 62, 1, 0], ["45-54", "female", 13.06, 423, 6, 1], ["45-54", "male", 493.75, 6875, 205, 78], ["45-54", "unknown", 1.91, 17, 1, 0], ["55-64", "female", 6.54, 181, 5, 1], ["55-64", "male", 57.04, 1271, 22, 4], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 6.77, 145, 5, 0], ["65+", "male", 37.8, 797, 27, 5], ["65+", "unknown", 0.24, 4, 0, 0]];
+const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 2851, 1095, 337, 192, 69, 24, 1, 0, 34, 22, 18]];
+const EV = ["PV", "VC", "BFS", "LD", "ATC", "IC", "API", "PUR", "CBO", "CSP", "SCH"];
+const rs  = v => "₹" + v.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2});
+const rs0 = v => "₹" + Math.round(v).toLocaleString("en-IN");
+const n   = v => v.toLocaleString("en-IN");
+const pct = (a,b) => b ? (100*a/b) : 0;
+const esc = s => String(s).replace(/[&<>]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const plural = (k, one, many) => k === 1 ? one : many;
 
-  function show(el, x, y) {
-    var raw = el.getAttribute('data-tip');
-    if (!raw) return;
-    var head = el.getAttribute('data-h');
-    var parts = raw.split('|');
-    var html = head ? '<span class="th">' + head + '</span>' : '';
-    if (!head) { html = '<span class="th">' + parts.shift() + '</span>'; }
-    html += parts.join('<br>');
-    tip.innerHTML = html;
-    tip.classList.add('on');
-    place(x, y);
-    current = el;
-  }
+const dayLabel = iso => {
+  const [, mo, d] = iso.split("-").map(Number);
+  return d + " " + ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][mo-1];
+};
 
-  function place(x, y) {
-    var w = tip.offsetWidth, pad = 10;
-    var left = Math.min(Math.max(x, w / 2 + pad), window.innerWidth - w / 2 - pad);
-    var top = y - 12;
-    if (top - tip.offsetHeight < pad) { top = y + tip.offsetHeight + 22; }
-    tip.style.left = left + 'px';
-    tip.style.top = top + 'px';
-  }
+/* The snapshot day is still accruing, so it never sets a headline number. */
+const PART   = DAILY.find(r => r[0] === SNAP_DAY) || null;
+const FULL   = DAILY.filter(r => r[0] !== SNAP_DAY);
+const NDAYS  = FULL.length;
+const sum    = (rows, i) => rows.reduce((a, r) => a + r[i], 0);
+const SPEND  = Math.round(sum(FULL,1)*100)/100, IMPR = sum(FULL,2),
+      LPV    = sum(FULL,3), ATC = sum(FULL,4), LEADS = sum(FULL,5);
+const CPL    = LEADS ? SPEND/LEADS : 0;
+const cplOf  = r => r[5] ? r[1]/r[5] : null;
 
-  function hide() { tip.classList.remove('on'); current = null; }
+const last   = FULL[FULL.length-1], first = FULL[0];
+const ranked = FULL.filter(r => r[5]).slice().sort((a,b) => cplOf(a)-cplOf(b));
+const best   = ranked[0], worst = ranked[ranked.length-1];
+const span   = FULL.length > 1 ? dayLabel(first[0]) + " – " + dayLabel(last[0]) : dayLabel(last[0]);
 
-  document.addEventListener('mousemove', function (e) {
-    var el = e.target.closest('[data-tip]');
-    if (el) { if (el !== current) { show(el, e.clientX, e.clientY); } else { place(e.clientX, e.clientY); } }
-    else if (current) { hide(); }
-  });
+/* Longest bar stops at 88% so the end-label always has room in the track. */
+const BARW = 88;
+const el = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
 
-  document.addEventListener('focusin', function (e) {
-    var el = e.target.closest('[data-tip]');
-    if (!el) { hide(); return; }
-    var r = el.getBoundingClientRect();
-    show(el, r.left + r.width / 2, r.top);
-  });
-  document.addEventListener('focusout', hide);
-  document.addEventListener('scroll', hide, true);
-  window.addEventListener('resize', hide);
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+/* -- masthead -------------------------------------------------------- */
+el("period", esc(span) + " · " + NDAYS + " full " + plural(NDAYS,"day","days")
+   + (PART ? " · " + esc(dayLabel(PART[0])) + " still running" : ""));
+el("snapline", "Snapshot " + esc(SNAP_TS) + " · Meta ad account " + esc(ACCOUNT));
+
+/* -- headline tiles -------------------------------------------------- */
+el("tiles", [
+  ["Spend", rs0(SPEND), NDAYS + " full " + plural(NDAYS,"day","days")
+     + (PART ? ", plus " + rs(PART[1]) + " today so far" : "")],
+  ["Quiz leads", n(LEADS), PART ? n(PART[5]) + " more today so far" : "across the period"],
+  ["Cost per lead", rs(CPL), best && worst && best !== worst
+     ? "ranged " + rs(cplOf(best)) + " – " + rs(cplOf(worst)) + " by day" : "blended"],
+  ["Landing page views", n(LPV), pct(LEADS,LPV).toFixed(0) + "% of them became leads"],
+].map(([k,v,note]) =>
+  '<div class="tile"><span class="k eyebrow">' + esc(k) + '</span>'
+  + '<span class="v mono">' + v + '</span><span class="n">' + esc(note) + '</span></div>'
+).join(""));
+
+/* -- latest day ------------------------------------------------------ */
+(() => {
+  const r = PART || last, isPart = !!PART;
+  const cpl = cplOf(r);
+  const vs = (!isPart && FULL.length > 1) ? (() => {
+    const p = FULL[FULL.length-2], a = cplOf(p);
+    if (!a || !cpl) return "";
+    const d = (cpl-a)/a*100;
+    return " That is " + Math.abs(d).toFixed(0) + "% " + (d < 0 ? "cheaper" : "dearer")
+         + " than " + dayLabel(p[0]) + ".";
+  })() : "";
+  el("latest-h", (isPart ? "Today so far" : "Latest full day") + " — " + esc(dayLabel(r[0])));
+  el("latest", "<p>" + rs(r[1]) + " spent, " + n(r[2]) + " impressions, " + n(r[3])
+    + " landing page views and <strong>" + n(r[5]) + " " + plural(r[5],"lead","leads") + "</strong>"
+    + (cpl ? " at <strong>" + rs(cpl) + "</strong> each." : ".")
+    + esc(vs)
+    + (isPart ? " Today is still accruing, so it is excluded from every total above." : "")
+    + "</p>");
 })();
+
+/* -- day by day ------------------------------------------------------ */
+(() => {
+  const rows = DAILY;
+  const maxSpend = Math.max(...rows.map(r => r[1]));
+  el("daily-bars", '<div class="bars">' + rows.map(r => {
+    const cpl = cplOf(r), part = r[0] === SNAP_DAY;
+    const w = BARW*r[1]/maxSpend;
+    return '<div class="brow" tabindex="0"><span class="lab">' + esc(dayLabel(r[0]))
+      + (part ? '<span class="qual">so far</span>' : '') + '</span>'
+      + '<span class="track"><span class="fill' + (part ? '' : (cpl && cpl <= CPL ? '' : ' is-crit'))
+      + '" style="--w:' + w.toFixed(1) + '%; width:' + w.toFixed(1) + '%"></span>'
+      + '<span class="tip-lab" style="--w:' + w.toFixed(1) + '%">' + rs(r[1]) + '</span></span>'
+      + '<span class="nums">' + n(r[5]) + ' ' + plural(r[5],'lead','leads') + ' · <b>' + (cpl ? rs(cpl) : "—") + '</b></span></div>';
+  }).join("") + '</div>');
+
+  el("daily-table",
+    '<table><thead><tr><th>Day</th><th>Spend</th><th>Impressions</th><th>LPV</th>'
+    + '<th>Cart adds</th><th>Leads</th><th>Cost / lead</th></tr></thead><tbody>'
+    + rows.map(r => {
+        const cpl = cplOf(r), part = r[0] === SNAP_DAY;
+        return '<tr' + (part ? ' class="ph"' : '') + '><td>' + esc(dayLabel(r[0]))
+          + (part ? ' <span class="chip">so far</span>' : '') + '</td><td class="mono">' + rs(r[1])
+          + '</td><td class="mono">' + n(r[2]) + '</td><td class="mono">' + n(r[3])
+          + '</td><td class="mono">' + n(r[4]) + '</td><td class="mono">' + n(r[5])
+          + '</td><td class="mono">' + (cpl ? rs(cpl) : "—") + '</td></tr>';
+      }).join("")
+    + '<tr class="hi"><td>' + NDAYS + ' full ' + plural(NDAYS,"day","days") + '</td><td class="mono">' + rs(SPEND)
+    + '</td><td class="mono">' + n(IMPR) + '</td><td class="mono">' + n(LPV)
+    + '</td><td class="mono">' + n(ATC) + '</td><td class="mono">' + n(LEADS)
+    + '</td><td class="mono">' + rs(CPL) + '</td></tr></tbody></table>');
+
+  el("daily-intro", best && worst && best !== worst
+    ? "Cost per lead has run between <strong>" + rs(cplOf(best)) + "</strong> on " + esc(dayLabel(best[0]))
+      + " and <strong>" + rs(cplOf(worst)) + "</strong> on " + esc(dayLabel(worst[0]))
+      + ", against a blended " + rs(CPL) + " across the " + NDAYS + " full "
+      + plural(NDAYS,"day","days") + "."
+    : "One full day of delivery so far.");
+})();
+
+/* -- creatives ------------------------------------------------------- */
+(() => {
+  const maxS = Math.max(...REELS.map(r => r[1]));
+  const told = REELS.filter(r => r[1] < SPEND*0.01);
+  el("reels", '<div class="bars">' + REELS.map(r => {
+    const cpl = r[5] ? r[1]/r[5] : null, w = BARW*r[1]/maxS;
+    return '<div class="brow" tabindex="0"><span class="lab">' + esc(r[0])
+      + '<span class="qual">' + r[6].length + ' ' + plural(r[6].length,"campaign","campaigns") + '</span></span>'
+      + '<span class="track"><span class="fill' + (cpl && cpl <= CPL ? '' : ' is-crit')
+      + '" style="--w:' + w.toFixed(1) + '%; width:' + w.toFixed(1) + '%"></span>'
+      + '<span class="tip-lab" style="--w:' + w.toFixed(1) + '%">' + rs(r[1]) + '</span></span>'
+      + '<span class="nums">' + n(r[5]) + ' ' + plural(r[5],'lead','leads') + ' · <b>' + (cpl ? rs(cpl) : "—") + '</b></span></div>';
+  }).join("") + '</div>');
+  const top = REELS[0], cplTop = top[5] ? top[1]/top[5] : null;
+  el("reels-intro", "<strong>" + esc(top[0]) + "</strong> carries "
+    + pct(top[1], sum(REELS,1)).toFixed(0) + "% of the spend"
+    + (cplTop ? " at " + rs(cplTop) + " a lead" : "") + "."
+    + (told.length ? " " + told.map(r => esc(r[0])).join(" and ") + " "
+        + plural(told.length,"has","have") + " taken under 1% of budget, so "
+        + plural(told.length,"it remains","they remain") + " untested rather than beaten." : ""));
+})();
+
+/* -- placements ------------------------------------------------------ */
+(() => {
+  const LBL = {
+    "facebook|facebook_reels":"Facebook Reels", "facebook|feed":"Facebook feed",
+    "facebook|facebook_stories":"Facebook Stories", "facebook|instream_video":"Facebook in-stream",
+    "facebook|facebook_profile_feed":"Facebook profile feed",
+    "facebook|facebook_notification":"Facebook notifications",
+    "facebook|marketplace":"Facebook Marketplace", "facebook|search":"Facebook search",
+    "facebook|facebook_reels_overlay":"Facebook Reels overlay",
+    "whatsapp|status":"WhatsApp Status",
+    "audience_network|an_classic":"Audience Network classic",
+    "audience_network|rewarded_video":"Audience Network rewarded video"
+  };
+  const rows = PLACE.map(p => [LBL[p[0]+"|"+p[1]] || (p[0]+" / "+p[1]), p[2], p[3], p[4], p[5]])
+                    .sort((a,b) => b[1]-a[1]);
+  const maxS = Math.max(...rows.map(r => r[1]));
+  el("place", '<div class="bars">' + rows.map(r => {
+    const cpl = r[4] ? r[1]/r[4] : null, w = BARW*r[1]/maxS;
+    return '<div class="brow" tabindex="0"><span class="lab">' + esc(r[0]) + '</span>'
+      + '<span class="track"><span class="fill' + (r[4] ? '' : ' is-crit')
+      + '" style="--w:' + w.toFixed(1) + '%; width:' + w.toFixed(1) + '%"></span>'
+      + '<span class="tip-lab" style="--w:' + w.toFixed(1) + '%">' + rs(r[1]) + '</span></span>'
+      + '<span class="nums">' + n(r[4]) + ' ' + plural(r[4],'lead','leads') + ' · <b>' + (cpl ? rs(cpl) : "—") + '</b></span></div>';
+  }).join("") + '</div>');
+  const dead = rows.filter(r => !r[4]), deadSpend = dead.reduce((a,r) => a+r[1], 0);
+  const top = rows[0], allLeads = LEADS + (PART ? PART[5] : 0);
+  el("place-intro", "<strong>" + esc(top[0]) + "</strong> is the engine: "
+    + pct(top[1], sum(rows,1)).toFixed(0) + "% of spend and "
+    + pct(top[4], allLeads).toFixed(0) + "% of leads."
+    + (dead.length ? " " + rs(deadSpend) + " went to " + dead.length + " "
+        + plural(dead.length,"placement that returned","placements that returned")
+        + " no leads at all." : "")
+    + " Instagram returned no rows for this period — that is an eligibility or identity"
+    + " problem on the account, not a performance result.");
+})();
+
+/* -- age ------------------------------------------------------------- */
+(() => {
+  const by = {};
+  AGE.forEach(a => {
+    const k = a[0], v = by[k] || (by[k] = [0,0,0,0]);
+    v[0]+=a[2]; v[1]+=a[3]; v[2]+=a[4]; v[3]+=a[5];
+  });
+  const rows = Object.entries(by).map(([b,v]) => [b, Math.round(v[0]*100)/100, v[1], v[2], v[3]]);
+  const maxS = Math.max(...rows.map(r => r[1]));
+  el("age", '<div class="bars">' + rows.map(r => {
+    const cpl = r[4] ? r[1]/r[4] : null, w = BARW*r[1]/maxS;
+    return '<div class="brow" tabindex="0"><span class="lab">' + esc(r[0].replace("-","–")) + '</span>'
+      + '<span class="track"><span class="fill' + (cpl && cpl <= CPL ? '' : ' is-crit')
+      + '" style="--w:' + w.toFixed(1) + '%; width:' + w.toFixed(1) + '%"></span>'
+      + '<span class="tip-lab" style="--w:' + w.toFixed(1) + '%">' + rs(r[1]) + '</span></span>'
+      + '<span class="nums">' + n(r[4]) + ' ' + plural(r[4],'lead','leads') + ' · <b>' + (cpl ? rs(cpl) : "—") + '</b></span></div>';
+  }).join("") + '</div>');
+  const totSpend = AGE.reduce((a,r) => a+r[2], 0);
+  const w = AGE.filter(a => a[1] === "female");
+  const wS = Math.round(w.reduce((a,r)=>a+r[2],0)*100)/100, wL = w.reduce((a,r)=>a+r[5],0);
+  const bestBand = rows.filter(r=>r[4]).sort((a,b) => a[1]/a[4] - b[1]/b[4])[0];
+  el("age-intro", (bestBand ? "<strong>" + esc(bestBand[0].replace("-","–"))
+      + "</strong> is the cheapest band at " + rs(bestBand[1]/bestBand[4]) + " a lead. " : "")
+    + "Women account for " + rs(wS) + " of spend and " + n(wL) + " "
+    + plural(wL,"lead","leads") + " — " + pct(wS, totSpend).toFixed(1) + "% of budget.");
+})();
+
+/* -- quiz funnel ----------------------------------------------------- */
+(() => {
+  const I = {}; EV.forEach((e,i) => I[e] = i+1);
+  const P = PIXEL, tot = e => P.reduce((a,r) => a + r[I[e]], 0);
+  const PV = tot("PV"), BFS = tot("BFS"), LD = tot("LD"),
+        ATCp = tot("ATC"), IC = tot("IC"), PUR = tot("PUR");
+  el("funnel", '<table><thead><tr><th>Day</th><th>Page views</th><th>Quiz starts</th>'
+    + '<th>Start rate</th><th>Leads</th><th>Completion</th><th>Cart</th><th>Checkout</th>'
+    + '<th>Orders</th></tr></thead><tbody>'
+    + P.map(r => {
+        const part = r[0] === SNAP_DAY;
+        return '<tr' + (part ? ' class="ph"' : '') + '><td>' + esc(dayLabel(r[0]))
+          + (part ? ' <span class="chip">so far</span>' : '') + '</td>'
+          + '<td class="mono">' + n(r[I.PV]) + '</td><td class="mono">' + n(r[I.BFS]) + '</td>'
+          + '<td class="mono">' + pct(r[I.BFS], r[I.PV]).toFixed(1) + '%</td>'
+          + '<td class="mono">' + n(r[I.LD]) + '</td>'
+          + '<td class="mono">' + pct(r[I.LD], r[I.BFS]).toFixed(1) + '%</td>'
+          + '<td class="mono">' + n(r[I.ATC]) + '</td><td class="mono">' + n(r[I.IC])
+          + '</td><td class="mono">' + n(r[I.PUR]) + '</td></tr>';
+      }).join("")
+    + '<tr class="hi"><td>Period</td><td class="mono">' + n(PV) + '</td><td class="mono">' + n(BFS)
+    + '</td><td class="mono">' + pct(BFS,PV).toFixed(1) + '%</td><td class="mono">' + n(LD)
+    + '</td><td class="mono">' + pct(LD,BFS).toFixed(1) + '%</td><td class="mono">' + n(ATCp)
+    + '</td><td class="mono">' + n(IC) + '</td><td class="mono">' + n(PUR)
+    + '</td></tr></tbody></table>');
+
+  const clinic = tot("CBO"), sched = tot("SCH");
+  el("funnel-intro", n(PV) + " page views produced " + n(BFS) + " quiz starts ("
+    + pct(BFS,PV).toFixed(1) + "%), of which " + pct(LD,BFS).toFixed(1) + "% finished and left details. "
+    + (PUR ? n(PUR) + " " + plural(PUR,"order has","orders have") + " completed from "
+             + n(IC) + " " + plural(IC,"checkout","checkouts") + "."
+           : "No orders have completed yet from " + n(IC) + " " + plural(IC,"checkout","checkouts") + ".")
+    + (clinic ? " The clinic booking flow began firing this period: " + n(clinic)
+        + " " + plural(clinic,"booking opened","bookings opened") + " and " + n(sched)
+        + " " + plural(sched,"slot scheduled","slots scheduled") + "." : ""));
+  el("pixel-note", "These figures count all site traffic on dataset " + esc(DATASET)
+    + ", not only visitors arriving from ads, so they run ahead of the Meta lead count."
+    + " Events are stamped −7:00 and bucketed to IST days.");
+})();
+
+el("recon", "Creative, age and day totals agree exactly with the account daily rows on spend,"
+  + " impressions and leads. Placement rows carry " + rs(Math.abs(PLACE_DRIFT))
+  + " of Meta's own breakdown rounding against the same total, and match exactly on leads.");
 </script>
 </body>
 </html>
