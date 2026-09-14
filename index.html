@@ -266,6 +266,7 @@ tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
       <p class="note" id="period"></p>
     </div>
     <p class="note" id="snapline"></p>
+    <p class="note" id="scope"></p>
   </header>
 
   <div class="tiles" id="tiles"></div>
@@ -316,18 +317,19 @@ tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
 </div>
 <script>
 /* Figures. Everything above is rendered from these; no prose is hardcoded. */
-const SNAP_DAY = "2026-09-13";
-const SNAP_TS = "13 September 2026, 8:40 am IST";
-const PLACE_DRIFT = 0.0;
+const SNAP_DAY = "2026-09-14";
+const SNAP_TS = "14 September 2026, 8:45 am IST";
+const PLACE_DRIFT = -0.0;
 const ACCOUNT = "1811409506889048";
 const DATASET = "1380826504029254";
 const CAMPS = [["120252717199080067", "AI Bat Fit Quiz — Website Leads — Sep 2026", "CAMPAIGN_PAUSED"], ["120252739994540067", "AI Bat Fit Quiz — Website Leads — Sep 2026 – Copy", "ACTIVE"]];
-const DAILY = [["2026-09-08", 1085.72, 13051, 304, 33, 119], ["2026-09-09", 814.99, 34208, 282, 12, 34], ["2026-09-10", 1341.0, 19216, 494, 39, 219], ["2026-09-11", 970.58, 20531, 470, 37, 223], ["2026-09-12", 535.55, 12954, 314, 27, 150], ["2026-09-13", 109.01, 1984, 48, 1, 25]];
-const REELS = [["Reel 2 — Archetype", 3134.92, 63316, 1308, 102, 601, [0, 1]], ["Reel 3 — Direct", 1701.83, 38424, 602, 47, 169, [0, 1]], ["Reel 1 Hook 1 — Mismatch", 20.1, 204, 4, 0, 0, [0, 1]]];
-const PLACE = [["audience_network", "an_classic", 72.16, 227, 16, 0], ["audience_network", "rewarded_video", 10.87, 74, 8, 0], ["facebook", "facebook_notification", 0.36, 4, 0, 0], ["facebook", "facebook_profile_feed", 1.2, 44, 0, 0], ["facebook", "facebook_reels", 3665.36, 60069, 1363, 642], ["facebook", "facebook_reels_overlay", 0.5, 37, 0, 0], ["facebook", "facebook_stories", 130.67, 1247, 68, 14], ["facebook", "feed", 882.1, 29805, 388, 112], ["facebook", "instream_video", 10.18, 112, 5, 1], ["facebook", "marketplace", 0.73, 32, 0, 0], ["facebook", "search", 0.02, 5, 0, 0], ["whatsapp", "status", 82.7, 10288, 64, 1]];
-const AGE = [["18-24", "female", 47.04, 2535, 16, 1], ["18-24", "male", 523.62, 19469, 211, 70], ["18-24", "unknown", 2.09, 83, 0, 0], ["25-34", "female", 52.53, 2343, 13, 1], ["25-34", "male", 1501.35, 35875, 603, 244], ["25-34", "unknown", 3.1, 72, 0, 0], ["35-44", "female", 43.41, 1357, 22, 7], ["35-44", "male", 2038.97, 30022, 765, 353], ["35-44", "unknown", 4.75, 67, 1, 0], ["45-54", "female", 13.16, 426, 6, 1], ["45-54", "male", 514.61, 7235, 213, 83], ["45-54", "unknown", 1.91, 17, 1, 0], ["55-64", "female", 6.6, 186, 5, 1], ["55-64", "male", 57.67, 1288, 22, 4], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 6.81, 146, 5, 0], ["65+", "male", 38.95, 817, 28, 5], ["65+", "unknown", 0.24, 4, 0, 0]];
-const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 4692, 1792, 542, 324, 176, 24, 1, 0, 0, 0, 32], ["2026-09-13", 475, 188, 66, 40, 3, 0, 0, 0, 0, 0, 0]];
+const DAILY = [["2026-09-08", 1085.72, 13051, 304, 33, 119], ["2026-09-09", 814.99, 34208, 282, 12, 34], ["2026-09-10", 1341.0, 19216, 494, 39, 219], ["2026-09-11", 970.58, 20531, 470, 37, 223], ["2026-09-12", 537.29, 13017, 314, 27, 150], ["2026-09-13", 434.32, 8764, 210, 8, 99], ["2026-09-14", 82.88, 1621, 34, 1, 14]];
+const REELS = [["Reel 2 — Archetype", 3518.63, 71098, 1487, 108, 685, [0, 1]], ["Reel 3 — Direct", 1727.59, 39097, 617, 49, 173, [0, 1]], ["Reel 1 Hook 1 — Mismatch", 20.56, 213, 4, 0, 0, [0, 1]]];
+const PLACE = [["audience_network", "an_classic", 72.1, 227, 16, 0], ["audience_network", "rewarded_video", 10.86, 74, 8, 0], ["facebook", "facebook_notification", 0.36, 4, 0, 0], ["facebook", "facebook_profile_feed", 1.22, 47, 0, 0], ["facebook", "facebook_reels", 4018.29, 67129, 1524, 717], ["facebook", "facebook_reels_overlay", 0.5, 37, 0, 0], ["facebook", "facebook_stories", 140.09, 1359, 74, 16], ["facebook", "feed", 928.97, 31092, 417, 123], ["facebook", "instream_video", 11.0, 119, 5, 1], ["facebook", "marketplace", 0.73, 32, 0, 0], ["facebook", "search", 0.02, 5, 0, 0], ["whatsapp", "status", 82.64, 10283, 64, 1]];
+const AGE = [["18-24", "female", 47.89, 2562, 16, 1], ["18-24", "male", 562.2, 20791, 230, 78], ["18-24", "unknown", 2.45, 90, 0, 0], ["25-34", "female", 54.67, 2395, 14, 2], ["25-34", "male", 1657.08, 39358, 684, 279], ["25-34", "unknown", 3.93, 81, 1, 0], ["35-44", "female", 45.68, 1437, 22, 7], ["35-44", "male", 2218.32, 32973, 839, 389], ["35-44", "unknown", 5.28, 77, 2, 0], ["45-54", "female", 13.49, 446, 6, 1], ["45-54", "male", 539.72, 7677, 228, 90], ["45-54", "unknown", 1.91, 17, 1, 0], ["55-64", "female", 6.69, 188, 5, 1], ["55-64", "male", 60.27, 1317, 25, 5], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 6.81, 146, 5, 0], ["65+", "male", 40.11, 847, 29, 5], ["65+", "unknown", 0.24, 4, 0, 0]];
+const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 4692, 1792, 542, 324, 176, 24, 1, 0, 0, 0, 32], ["2026-09-13", 3227, 1112, 344, 197, 26, 3, 0, 2, 0, 0, 14], ["2026-09-14", 344, 112, 52, 30, 3, 0, 0, 0, 0, 0, 0]];
 const EV = ["PV", "VC", "BFS", "LD", "ATC", "IC", "API", "PUR", "CBO", "CSP", "SCH"];
+const OTHER = [["Z-Bat Clinic · Parel · ₹199 Session Sales", 552.42, 2873, 66, "2026-09-13"]];
 const rs  = v => "₹" + v.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2});
 const rs0 = v => "₹" + Math.round(v).toLocaleString("en-IN");
 const n   = v => v.toLocaleString("en-IN");
@@ -363,6 +365,17 @@ const el = (id, html) => { const e = document.getElementById(id); if (e) e.inner
 el("period", esc(span) + " · " + NDAYS + " full " + plural(NDAYS,"day","days")
    + (PART ? " · " + esc(dayLabel(PART[0])) + " still running" : ""));
 el("snapline", "Snapshot " + esc(SNAP_TS) + " · Meta ad account " + esc(ACCOUNT));
+
+/* Other campaigns share this ad account. They sell something else and report no
+   quiz leads, so their spend is held out of every figure on this page. */
+el("scope", OTHER.length
+  ? "Quiz campaigns only. " + OTHER.map(o => esc(o[0]) + " (" + rs(o[1]) + " since "
+      + esc(dayLabel(o[4])) + ")").join(", ")
+    + " " + plural(OTHER.length,"runs","run") + " on the same ad account and "
+    + plural(OTHER.length,"is","are") + " excluded here, because "
+    + plural(OTHER.length,"it reports","they report") + " no quiz leads and would make"
+    + " every lead look dearer than it is."
+  : "");
 
 /* -- headline tiles -------------------------------------------------- */
 el("tiles", [
@@ -561,9 +574,12 @@ el("tiles", [
     + " Events are stamped −7:00 and bucketed to IST days.");
 })();
 
-el("recon", "Creative, age and day totals agree exactly with the account daily rows on spend,"
-  + " impressions and leads. Placement rows carry " + rs(Math.abs(PLACE_DRIFT))
-  + " of Meta's own breakdown rounding against the same total, and match exactly on leads.");
+el("recon", "Creative, placement, age and day totals agree exactly with each other on spend,"
+  + " impressions and leads"
+  + (PLACE_DRIFT ? ", except placement spend which carries " + rs(Math.abs(PLACE_DRIFT))
+      + " of Meta's own breakdown rounding" : "") + "."
+  + (OTHER.length ? " " + rs(OTHER.reduce((a,o) => a+o[1], 0)) + " of non-quiz spend on this"
+      + " account is excluded, as noted at the top." : ""));
 </script>
 </body>
 </html>
