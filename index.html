@@ -267,6 +267,7 @@ tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
     </div>
     <p class="note" id="snapline"></p>
     <p class="note" id="scope"></p>
+    <p class="note" id="change"></p>
   </header>
 
   <div class="tiles" id="tiles"></div>
@@ -317,19 +318,20 @@ tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
 </div>
 <script>
 /* Figures. Everything above is rendered from these; no prose is hardcoded. */
-const SNAP_DAY = "2026-09-16";
-const SNAP_TS = "16 September 2026, 8:55 am IST";
-const PLACE_DRIFT = -0.01;
+const SNAP_DAY = "2026-09-17";
+const SNAP_TS = "17 September 2026, 9:00 am IST";
+const PLACE_DRIFT = -0.16;
 const ACCOUNT = "1811409506889048";
 const DATASET = "1380826504029254";
-const CAMPS = [["120252717199080067", "AI Bat Fit Quiz — Website Leads — Sep 2026", "CAMPAIGN_PAUSED"], ["120252739994540067", "AI Bat Fit Quiz — Website Leads — Sep 2026 – Copy", "ACTIVE"]];
-const DAILY = [["2026-09-08", 1085.72, 13051, 304, 33, 119], ["2026-09-09", 814.99, 34208, 282, 12, 34], ["2026-09-10", 1341.0, 19216, 494, 39, 219], ["2026-09-11", 970.58, 20531, 470, 37, 223], ["2026-09-12", 537.29, 13017, 314, 27, 150], ["2026-09-13", 435.3, 8795, 210, 8, 99], ["2026-09-14", 194.89, 4159, 85, 7, 40], ["2026-09-15", 0.0, 2, 0, 0, 1], ["2026-09-16", 0.0, 0, 0, 0, 0]];
-const REELS = [["Reel 2 — Archetype", 3627.04, 73571, 1536, 114, 711, [0, 1]], ["Reel 3 — Direct", 1732.17, 39195, 619, 49, 174, [0, 1]], ["Reel 1 Hook 1 — Mismatch", 20.56, 213, 4, 0, 0, [0, 1]]];
-const PLACE = [["audience_network", "an_classic", 72.1, 227, 16, 0], ["audience_network", "rewarded_video", 10.86, 74, 8, 0], ["facebook", "facebook_notification", 0.36, 4, 0, 0], ["facebook", "facebook_profile_feed", 1.23, 49, 0, 0], ["facebook", "facebook_reels", 4109.97, 68944, 1558, 734], ["facebook", "facebook_reels_overlay", 0.5, 37, 0, 0], ["facebook", "facebook_stories", 142.38, 1390, 77, 17], ["facebook", "feed", 947.83, 31811, 431, 132], ["facebook", "instream_video", 11.16, 123, 5, 1], ["facebook", "marketplace", 0.73, 32, 0, 0], ["facebook", "search", 0.02, 5, 0, 0], ["whatsapp", "status", 82.64, 10283, 64, 1]];
-const AGE = [["18-24", "female", 48.04, 2568, 16, 1], ["18-24", "male", 572.9, 21214, 236, 83], ["18-24", "unknown", 2.47, 91, 0, 0], ["25-34", "female", 55.15, 2410, 14, 2], ["25-34", "male", 1700.01, 40442, 705, 286], ["25-34", "unknown", 3.93, 81, 1, 0], ["35-44", "female", 46.67, 1455, 22, 7], ["35-44", "male", 2267.91, 33837, 859, 402], ["35-44", "unknown", 5.28, 77, 2, 0], ["45-54", "female", 13.52, 448, 6, 1], ["45-54", "male", 546.48, 7817, 230, 91], ["45-54", "unknown", 1.91, 17, 1, 0], ["55-64", "female", 6.69, 188, 5, 1], ["55-64", "male", 60.78, 1329, 26, 5], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 6.82, 147, 5, 0], ["65+", "male", 40.93, 852, 30, 6], ["65+", "unknown", 0.24, 4, 0, 0]];
-const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 4692, 1792, 542, 324, 176, 24, 1, 0, 0, 0, 32], ["2026-09-13", 3227, 1112, 344, 197, 26, 3, 0, 2, 0, 0, 14], ["2026-09-14", 1433, 547, 146, 100, 36, 0, 0, 0, 0, 0, 0], ["2026-09-15", 477, 157, 0, 8, 6, 3, 3, 0, 0, 0, 0], ["2026-09-16", 34, 21, 0, 0, 0, 0, 0, 0, 0, 0, 0]];
+const CAMPS = [["120252717199080067", "AI Bat Fit Quiz — Website Leads — Sep 2026", "PAUSED"], ["120252739994540067", "AI Bat Fit Quiz — Website Leads — Sep 2026 – Copy", "PAUSED"], ["120252852329300067", "AI Bat Fit Quiz · Add to Cart optimisation · Sep 2026", "ACTIVE"]];
+const DAILY = [["2026-09-08", 1085.72, 13051, 304, 33, 119], ["2026-09-09", 814.99, 34208, 282, 12, 34], ["2026-09-10", 1341.0, 19216, 494, 39, 219], ["2026-09-11", 970.58, 20531, 470, 37, 223], ["2026-09-12", 537.29, 13017, 314, 27, 150], ["2026-09-13", 435.3, 8795, 210, 8, 99], ["2026-09-14", 194.89, 4159, 85, 7, 40], ["2026-09-15", 0.0, 2, 0, 0, 1], ["2026-09-16", 348.45, 4076, 96, 4, 34], ["2026-09-17", 231.52, 2637, 68, 9, 24]];
+const REELS = [["Reel 2 — Archetype", 3627.04, 73571, 1536, 114, 711, [0, 1]], ["Reel 3 — Direct", 1732.17, 39195, 619, 49, 174, [0, 1]], ["Reel 3 — Direct (ATC)", 290.77, 3324, 85, 2, 29, [2]], ["Reel 2 — Archetype (ATC)", 278.07, 3285, 78, 11, 28, [2]], ["Reel 1 Hook 1 — Mismatch", 20.56, 213, 4, 0, 0, [0, 1]], ["Reel 1 Hook 1 — Mismatch (ATC)", 11.13, 104, 1, 0, 1, [2]]];
+const PLACE = [["audience_network", "an_classic", 72.1, 227, 16, 0], ["audience_network", "rewarded_video", 10.86, 74, 8, 0], ["facebook", "facebook_notification", 0.39, 6, 0, 0], ["facebook", "facebook_profile_feed", 1.9, 56, 0, 0], ["facebook", "facebook_reels", 4498.43, 73692, 1659, 774], ["facebook", "facebook_reels_overlay", 0.5, 37, 0, 0], ["facebook", "facebook_stories", 184.87, 1626, 92, 21], ["facebook", "feed", 1088.97, 33210, 476, 146], ["facebook", "instream_video", 12.65, 140, 6, 1], ["facebook", "marketplace", 0.73, 32, 0, 0], ["facebook", "search", 0.15, 9, 0, 0], ["whatsapp", "status", 88.35, 10583, 66, 1]];
+const AGE = [["18-24", "female", 49.28, 2611, 16, 1], ["18-24", "male", 610.55, 21955, 246, 85], ["18-24", "unknown", 2.75, 99, 0, 0], ["25-34", "female", 58.95, 2471, 15, 2], ["25-34", "male", 1881.4, 42794, 755, 307], ["25-34", "unknown", 4.11, 86, 2, 0], ["35-44", "female", 50.73, 1515, 24, 9], ["35-44", "male", 2539.22, 36568, 944, 430], ["35-44", "unknown", 5.48, 82, 2, 0], ["45-54", "female", 13.71, 455, 6, 1], ["45-54", "male", 618.45, 8442, 244, 96], ["45-54", "unknown", 2.25, 19, 1, 0], ["55-64", "female", 6.9, 191, 5, 1], ["55-64", "male", 62.87, 1364, 26, 5], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 7.22, 150, 5, 0], ["65+", "male", 45.59, 884, 31, 6], ["65+", "unknown", 0.24, 4, 0, 0]];
+const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 4692, 1792, 542, 324, 176, 24, 1, 0, 0, 0, 32], ["2026-09-13", 3227, 1112, 344, 197, 26, 3, 0, 2, 0, 0, 14], ["2026-09-14", 1433, 547, 146, 100, 36, 0, 0, 0, 0, 0, 0], ["2026-09-15", 477, 157, 0, 8, 6, 3, 3, 0, 0, 0, 0], ["2026-09-16", 1472, 604, 117, 77, 15, 0, 0, 0, 0, 0, 0], ["2026-09-17", 878, 380, 93, 47, 27, 3, 0, 0, 0, 0, 0]];
 const EV = ["PV", "VC", "BFS", "LD", "ATC", "IC", "API", "PUR", "CBO", "CSP", "SCH"];
 const OTHER = [["Z-Bat Clinic · Parel · ₹199 Session Sales", 552.42, 2873, 66, "2026-09-13", "2026-09-13"]];
+const CHANGE = ["2026-09-16", "The quiz was relaunched on a new campaign optimising for <strong>Add to Cart</strong> rather than leads. The two lead-optimised campaigns were paused after 15 Sep. Cost per lead before and after that line is not measuring the same thing."];
 const rs  = v => "₹" + v.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2});
 const rs0 = v => "₹" + Math.round(v).toLocaleString("en-IN");
 const n   = v => v.toLocaleString("en-IN");
@@ -367,6 +369,12 @@ const el = (id, html) => { const e = document.getElementById(id); if (e) e.inner
 el("period", esc(span) + " · " + NDAYS + " full " + plural(NDAYS,"day","days")
    + (PART ? " · " + esc(dayLabel(PART[0])) + " still running" : ""));
 el("snapline", "Snapshot " + esc(SNAP_TS) + " · Meta ad account " + esc(ACCOUNT));
+
+/* A mid-run change in what Meta optimised for. Flag it rather than let the
+   reader compare two halves that are not measuring the same thing. */
+el("change", CHANGE
+  ? "<strong>Optimisation changed on " + esc(dayLabel(CHANGE[0])) + ".</strong> " + CHANGE[1]
+  : "");
 
 /* Other campaigns share this ad account. They sell something else and report no
    quiz leads, so their spend is held out of every figure on this page. */
@@ -460,12 +468,23 @@ el("tiles", [
     + '</td><td class="mono">' + n(ATC) + '</td><td class="mono">' + n(LEADS)
     + '</td><td class="mono">' + rs(CPL) + '</td></tr></tbody></table>');
 
-  el("daily-intro", best && worst && best !== worst
+  const splitNote = CHANGE ? (() => {
+    const before = FULL.filter(d => d[0] < CHANGE[0] && d[1] > 0);
+    const after  = FULL.filter(d => d[0] >= CHANGE[0] && d[1] > 0);
+    if (!before.length || !after.length) return "";
+    const cplOfSet = set => sum(set,1) / sum(set,5);
+    return " Split at the optimisation change, that is <strong>" + rs(cplOfSet(before))
+      + "</strong> a lead over the " + before.length + " lead-optimised "
+      + plural(before.length,"day","days") + " and <strong>" + rs(cplOfSet(after))
+      + "</strong> over the " + after.length + " since &mdash; a different goal, not"
+      + " necessarily worse buying.";
+  })() : "";
+  el("daily-intro", (best && worst && best !== worst
     ? "Cost per lead has run between <strong>" + rs(cplOf(best)) + "</strong> on " + esc(dayLabel(best[0]))
       + " and <strong>" + rs(cplOf(worst)) + "</strong> on " + esc(dayLabel(worst[0]))
       + ", against a blended " + rs(CPL) + " across the " + NDAYS + " full "
       + plural(NDAYS,"day","days") + "."
-    : "One full day of delivery so far.");
+    : "One full day of delivery so far.") + splitNote);
 })();
 
 /* -- creatives ------------------------------------------------------- */
