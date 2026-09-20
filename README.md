@@ -9,6 +9,12 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
+**Status as of 20 Sep 2026: all three quiz campaigns are paused.** The last quiz
+spend was 17 September. The page detects this from `CAMPS` status and says so
+itself — do not hand-write a note about it. The account is running
+`Z-Bat Clinic · Parel · ₹199 Session Sales` instead, which sits in `OTHER` and
+is excluded from every quiz figure.
+
 ## Shape
 
 `index.html` is a **single self-contained file**. Figures live in flat arrays in
