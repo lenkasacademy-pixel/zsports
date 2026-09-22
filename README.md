@@ -9,11 +9,14 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 20 Sep 2026: all three quiz campaigns are paused.** The last quiz
-spend was 17 September. The page detects this from `CAMPS` status and says so
-itself — do not hand-write a note about it. The account is running
-`Z-Bat Clinic · Parel · ₹199 Session Sales` instead, which sits in `OTHER` and
-is excluded from every quiz figure.
+**Status as of 22 Sep 2026: all three quiz campaigns read PAUSED, but the Add to
+Cart one spent again on 20 and 21 September** (₹407.47 and ₹308.85) after three
+dark days. Do not assume a PAUSED status means a campaign is finished — always
+re-pull the days, and re-pull the days either side of the last snapshot too.
+The page works all of this out from `CAMPS` status and the `DAILY` rows and says
+it in its own words — do not hand-write a note about it. The account also runs
+`Z-Bat Clinic · Parel · ₹199 Session Sales`, which sits in `OTHER` and is
+excluded from every quiz figure.
 
 ## Shape
 
