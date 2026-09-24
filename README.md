@@ -17,10 +17,16 @@ re-pull the days, and re-pull the days either side of the last snapshot too
 The page works all of this out from `CAMPS` status and the `DAILY` rows and says
 it in its own words — do not hand-write a note about it.
 
-Two other campaigns on the account, both in `OTHER` or excluded entirely:
-`Z-Bat Clinic · Parel · ₹199 Session Sales` is running daily, and
-**`Dream Bat · Direct Sales · India · ₹600/day` went ACTIVE on 22 Sep** with no
-spend yet — check it next refresh.
+**Dream Bat started spending on 23 Sep** and is now the second entry in `OTHER`:
+₹1,154.35, 189 landing page views, 27 adds to cart, 13 site leads, no purchases
+yet. It sells the bat directly rather than through the quiz, so like the clinic
+it is held out of every quiz figure and named in the scope line. The clinic has
+also picked up — ₹5,952.18 and **7 purchases**, up from 1 two days ago.
+
+Non-quiz spend on this account is now ₹7,106.53, more than the quiz has ever
+spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
+smaller share of what the account is doing — worth saying to the client rather
+than letting the page look idle.
 
 ## Shape
 
