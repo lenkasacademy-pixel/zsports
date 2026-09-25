@@ -4,7 +4,7 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 
 | Report | Period | Live |
 |---|---|---|
-| AI Bat Fit Quiz — Website Leads | from 8 Sep 2026, rolling | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
+| Z-Bat — every Meta campaign | from 8 Sep 2026, rolling | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
 
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
@@ -34,6 +34,34 @@ Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
 spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
 smaller share of what the account is doing — worth saying to the client rather
 than letting the page look idle.
+
+## Every campaign is tracked (changed 25 Sep 2026)
+
+The report used to cover the three quiz campaigns only, with the clinic and Dream
+Bat reduced to a footnote in an `OTHER` list. **That list is gone.** All six
+campaigns on account `1811409506889048` are now first-class: `CAMPS_ALL`,
+`DAILY_ALL` (a row per campaign per day) and `ADS_ALL` (a row per ad) drive a new
+account section at the top, and every campaign gets its own creative table.
+
+**Leads and purchases are never blended.** The account sells three different
+things — quiz leads, ₹199 clinic sessions, and bats — so each group is priced in
+its own currency and there is deliberately no single account-wide "cost per
+result". `CAMPS_ALL[i][5]` says which result kind a campaign reports.
+
+**Reach is carried, not derived.** `CAMPS_ALL[i][6]` is Meta's own de-duplicated
+lifetime reach per campaign. It can never be obtained by adding the day rows up,
+so the account table shows it per campaign and leaves the total blank.
+
+The quiz keeps its own sections below the account view, because it is the only
+funnel on the account with site events behind it — the placement, age and pixel
+breakdowns exist for the quiz and nothing else. Those arrays (`DAILY`, `ADS`,
+`PLACE`, `AGE`, `H`) stay quiz-only and are unchanged.
+
+**What the builder asserts before writing the file:** for every campaign, its day
+rows and its ad rows must agree on spend, impressions, link clicks, page views,
+adds to cart, purchases and leads; and the three quiz campaigns in `DAILY_ALL`
+must reconcile against the quiz-only `DAILY` on both spend and leads. Reach is
+excluded from these checks on purpose.
 
 ## Shape
 

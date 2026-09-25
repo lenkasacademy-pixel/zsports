@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Bat Fit Quiz Report &mdash; Z-Bat</title>
+<title>Z-Bat Meta Ads Report</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -262,13 +262,32 @@ tr.hi td { font-weight:600; border-top:1px solid var(--rule); }
 <div class="wrap">
   <header class="masthead">
     <div class="masthead-top">
-      <h1>AI Bat Fit Quiz &mdash; Website Leads</h1>
+      <h1>Z-Bat &mdash; every Meta campaign</h1>
       <p class="note" id="period"></p>
     </div>
     <p class="note" id="snapline"></p>
     <p class="note" id="scope"></p>
     <p class="note" id="change"></p>
   </header>
+
+  <section>
+    <div class="sec-head"><h2>The whole account</h2></div>
+    <p class="sec-intro" id="acct-intro"></p>
+    <div class="tiles" id="acct-tiles"></div>
+    <div class="tscroll" id="acct-table"></div>
+    <p class="note" id="acct-note"></p>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>Creative, campaign by campaign</h2></div>
+    <p class="sec-intro" id="acct-ads-intro"></p>
+    <div id="acct-ads"></div>
+  </section>
+
+  <section>
+    <div class="sec-head"><h2>The quiz funnel in detail</h2></div>
+    <p class="sec-intro" id="quiz-lead"></p>
+  </section>
 
   <div class="tiles" id="tiles"></div>
 
@@ -330,7 +349,11 @@ const PLACE = [["audience_network", "an_classic", 72.1, 227, 16, 0], ["audience_
 const AGE = [["18-24", "female", 49.92, 2627, 16, 1], ["18-24", "male", 644.82, 22487, 256, 91], ["18-24", "unknown", 2.75, 99, 0, 0], ["25-34", "female", 61.94, 2496, 16, 3], ["25-34", "male", 2091.65, 44810, 809, 332], ["25-34", "unknown", 4.33, 92, 3, 0], ["35-44", "female", 55.68, 1564, 25, 9], ["35-44", "male", 2931.62, 39634, 1027, 464], ["35-44", "unknown", 6.4, 88, 2, 0], ["45-54", "female", 13.8, 459, 6, 1], ["45-54", "male", 700.44, 9025, 263, 106], ["45-54", "unknown", 2.61, 20, 1, 0], ["55-64", "female", 7.02, 192, 5, 1], ["55-64", "male", 64.81, 1387, 26, 5], ["55-64", "unknown", 0.04, 2, 0, 0], ["65+", "female", 7.28, 152, 5, 0], ["65+", "male", 47.35, 908, 32, 6], ["65+", "unknown", 0.24, 4, 0, 0]];
 const PIXEL = [["2026-09-08", 2258, 697, 211, 126, 70, 0, 0, 0, 0, 0, 0], ["2026-09-09", 1830, 416, 137, 78, 46, 3, 3, 0, 0, 0, 0], ["2026-09-10", 6280, 2408, 799, 497, 148, 58, 12, 0, 0, 0, 0], ["2026-09-11", 5716, 1982, 778, 448, 172, 86, 18, 3, 0, 0, 0], ["2026-09-12", 4692, 1792, 542, 324, 176, 24, 1, 0, 0, 0, 32], ["2026-09-13", 3227, 1112, 344, 197, 26, 3, 0, 2, 0, 0, 14], ["2026-09-14", 1433, 547, 146, 100, 36, 0, 0, 0, 0, 0, 0], ["2026-09-15", 477, 157, 0, 8, 6, 3, 3, 0, 0, 0, 0], ["2026-09-16", 1472, 604, 117, 77, 15, 0, 0, 0, 0, 0, 0], ["2026-09-17", 1582, 553, 109, 61, 73, 17, 0, 2, 30, 10, 6], ["2026-09-18", 715, 127, 6, 2, 3, 3, 3, 0, 49, 16, 14], ["2026-09-19", 565, 55, 12, 4, 12, 9, 3, 0, 24, 10, 8], ["2026-09-20", 1504, 515, 86, 74, 44, 6, 0, 0, 20, 4, 2], ["2026-09-21", 1701, 646, 114, 93, 21, 0, 0, 0, 18, 0, 0], ["2026-09-22", 647, 138, 10, 8, 18, 6, 0, 0, 18, 6, 4], ["2026-09-23", 1761, 996, 26, 18, 86, 27, 18, 6, 14, 10, 6], ["2026-09-24", 1213, 744, 22, 19, 47, 0, 0, 2, 14, 6, 2], ["2026-09-25", 202, 101, 2, 2, 30, 0, 0, 0, 2, 2, 2]];
 const EV = ["PV", "VC", "BFS", "LD", "ATC", "IC", "API", "PUR", "CBO", "CSP", "SCH"];
-const OTHER = [["Z-Bat Clinic · Parel · ₹199 Session Sales", 6377.06, 47529, 474, "2026-09-13", null], ["Dream Bat · Direct Sales · India", 1337.01, 12957, 222, "2026-09-23", null]];
+const CAMPS_ALL = [["120252717199080067", "Quiz · Website Leads", "quiz", "PAUSED", 500, "lead", 40930], ["120252739994540067", "Quiz · Website Leads (Copy)", "quiz", "PAUSED", 600, "lead", 38562], ["120252852329300067", "Quiz · Add to Cart optimisation", "quiz", "PAUSED", 600, "lead", 8549], ["120252806490920067", "Clinic · Parel ₹199 sessions", "clinic", "ACTIVE", 600, "purchase", 22500], ["120252832409690067", "Clinic · Parel ₹199 (Copy)", "clinic", "PAUSED", 500, "purchase", 0], ["120252874237940067", "Dream Bat · Direct sales", "dream", "ACTIVE", 500, "purchase", 8724]];
+const DAILY_ALL = [[0, "2026-09-08", 1085.72, 13051, 11041, 349, 304, 33, 0, 119], [0, "2026-09-09", 549.44, 29437, 29295, 330, 178, 0, 0, 6], [0, "2026-09-10", 0.0, 0, 0, 0, 0, 4, 0, 1], [1, "2026-09-09", 265.55, 4771, 3766, 114, 104, 12, 0, 28], [1, "2026-09-10", 1341.0, 19216, 13190, 523, 494, 35, 0, 218], [1, "2026-09-11", 970.58, 20531, 14503, 484, 470, 37, 0, 223], [1, "2026-09-12", 537.29, 13017, 10241, 324, 314, 27, 0, 150], [1, "2026-09-13", 435.3, 8795, 7034, 219, 210, 8, 0, 99], [1, "2026-09-14", 194.89, 4159, 3797, 87, 85, 7, 0, 40], [1, "2026-09-15", 0.0, 2, 2, 0, 0, 0, 0, 1], [2, "2026-09-16", 352.7, 4094, 3158, 109, 96, 4, 0, 34], [2, "2026-09-17", 243.63, 2800, 2301, 78, 72, 13, 0, 27], [2, "2026-09-20", 407.73, 3247, 2650, 89, 82, 9, 0, 35], [2, "2026-09-21", 308.87, 2926, 2499, 85, 84, 4, 0, 38], [3, "2026-09-13", 552.42, 2873, 2129, 66, 66, 0, 0, 0], [3, "2026-09-17", 699.61, 5172, 4433, 60, 57, 4, 1, 2], [3, "2026-09-18", 1025.82, 7693, 5818, 110, 97, 0, 1, 0], [3, "2026-09-19", 1026.0, 9870, 7013, 72, 72, 0, 0, 0], [3, "2026-09-20", 464.72, 3689, 2949, 39, 36, 0, 0, 1], [3, "2026-09-21", 574.07, 4143, 3367, 35, 35, 0, 1, 0], [3, "2026-09-22", 550.42, 4330, 3719, 37, 34, 2, 0, 0], [3, "2026-09-23", 771.2, 5699, 4903, 45, 42, 0, 2, 0], [3, "2026-09-24", 699.51, 3931, 3413, 35, 34, 0, 3, 0], [3, "2026-09-25", 13.29, 129, 124, 1, 1, 0, 0, 1], [5, "2026-09-23", 872.2, 9362, 6775, 163, 149, 23, 0, 8], [5, "2026-09-24", 461.84, 3557, 2821, 78, 73, 13, 0, 6], [5, "2026-09-25", 2.97, 38, 37, 0, 0, 0, 0, 0]];
+const ADS_ALL = [["Reel 2 — Archetype", 0, "CAMPAIGN_PAUSED", 771.99, 20156, 19513, 318, 233, 22, 0, 76], ["Reel 3 — Direct", 0, "CAMPAIGN_PAUSED", 853.45, 22270, 21074, 359, 247, 15, 0, 50], ["Reel 1 Hook 1 — Mismatch", 0, "CAMPAIGN_PAUSED", 9.72, 62, 61, 2, 2, 0, 0, 0], ["Reel 2 — Archetype", 1, "CAMPAIGN_PAUSED", 2855.05, 53415, 32404, 1355, 1303, 92, 0, 635], ["Reel 3 — Direct", 1, "CAMPAIGN_PAUSED", 878.72, 16925, 13929, 394, 372, 34, 0, 124], ["Reel 1 Hook 1 — Mismatch", 1, "CAMPAIGN_PAUSED", 10.84, 151, 112, 2, 2, 0, 0, 0], ["Reel 2 — Archetype (ATC)", 2, "CAMPAIGN_PAUSED", 833.86, 7865, 5603, 216, 201, 24, 0, 87], ["Reel 3 — Direct (ATC)", 2, "CAMPAIGN_PAUSED", 464.29, 5081, 3775, 142, 130, 6, 0, 45], ["Reel 1 Hook 1 — Mismatch (ATC)", 2, "CAMPAIGN_PAUSED", 14.78, 121, 104, 3, 3, 0, 0, 2], ["Clinic ₹199 · Video 4 · Copy 3 Local offer", 3, "ACTIVE", 6377.06, 47529, 22500, 500, 474, 6, 8, 4], ["Clinic ₹199 · Video 4 · Copy 2 Stop guessing", 3, "PAUSED", 0.0, 0, 0, 0, 0, 0, 0, 0], ["Clinic ₹199 · Video 4 · Copy 1 Measured", 3, "PAUSED", 0.0, 0, 0, 0, 0, 0, 0, 0], ["Clinic ₹199 · Video 4 · Copy 2 Stop guessing", 4, "CAMPAIGN_PAUSED", 0.0, 0, 0, 0, 0, 0, 0, 0], ["Dream · Value · front", 5, "ACTIVE", 846.51, 6622, 4955, 146, 136, 28, 0, 6], ["Dream · catalog ad", 5, "ACTIVE", 454.15, 6132, 4727, 91, 83, 5, 0, 6], ["Dream · Carousel · 3 angles", 5, "ACTIVE", 36.35, 203, 187, 4, 3, 3, 0, 2]];
+const ACCOUNT_SPEND = 14406.77;
+const ALL_DAYS = ["2026-09-08", "2026-09-09", "2026-09-10", "2026-09-11", "2026-09-12", "2026-09-13", "2026-09-14", "2026-09-15", "2026-09-16", "2026-09-17", "2026-09-18", "2026-09-19", "2026-09-20", "2026-09-21", "2026-09-22", "2026-09-23", "2026-09-24", "2026-09-25"];
 const CHANGE = ["2026-09-16", "The quiz was relaunched on a new campaign optimising for <strong>Add to Cart</strong> rather than leads. Cost per lead before and after that line is not measuring the same thing."];
 const rs  = v => "₹" + v.toLocaleString("en-IN", {minimumFractionDigits:2, maximumFractionDigits:2});
 const rs0 = v => "₹" + Math.round(v).toLocaleString("en-IN");
@@ -366,28 +389,161 @@ const BARW = 88;
 const el = (id, html) => { const e = document.getElementById(id); if (e) e.innerHTML = html; };
 
 /* -- masthead -------------------------------------------------------- */
-el("period", esc(span) + " · " + NDAYS + " full " + plural(NDAYS,"day","days")
-   + (PART ? " · " + esc(dayLabel(PART[0])) + " still running" : ""));
+el("period", esc(dayLabel(ALL_DAYS[0])) + " – " + esc(dayLabel(ALL_DAYS[ALL_DAYS.length-1]))
+   + " · 6 campaigns · " + esc(dayLabel(SNAP_DAY)) + " still running");
 el("snapline", "Snapshot " + esc(SNAP_TS) + " · Meta ad account " + esc(ACCOUNT));
 
-/* A mid-run change in what Meta optimised for. Flag it rather than let the
-   reader compare two halves that are not measuring the same thing. */
-el("change", CHANGE
-  ? "<strong>Optimisation changed on " + esc(dayLabel(CHANGE[0])) + ".</strong> " + CHANGE[1]
-  : "");
+/* A mid-run change in what Meta optimised for. It applies to the quiz only, so
+   it is rendered inside the quiz section rather than in the account masthead. */
+el("change", "");
 
 /* Other campaigns share this ad account. They sell something else and report no
    quiz leads, so their spend is held out of every figure on this page. */
-el("scope", OTHER.length
-  ? "Quiz campaigns only. " + OTHER.map(o => esc(o[0]) + " (" + rs(o[1])
-      + (o[5] ? (o[4] === o[5] ? " on " + esc(dayLabel(o[4])) : " to " + esc(dayLabel(o[5])))
-                + ", since paused"
-              : " since " + esc(dayLabel(o[4]))) + ")").join(", ")
-    + " " + plural(OTHER.length,"runs","run") + " on the same ad account and "
-    + plural(OTHER.length,"is","are") + " excluded here, because "
-    + plural(OTHER.length,"it reports","they report") + " no quiz leads and would make"
-    + " every lead look dearer than it is."
-  : "");
+el("scope", "Every campaign on ad account " + ACCOUNT + " is tracked here. "
+  + "The account view comes first; the quiz sections after it stay quiz-only, because "
+  + "the quiz is the one funnel with its own site events. Leads and purchases are kept "
+  + "apart throughout \u2014 a quiz lead and a \u20b9199 clinic session are not the same thing "
+  + "and are never added together.");
+
+/* ===================================================================
+   THE WHOLE ACCOUNT — every campaign, leads and purchases kept apart
+   =================================================================== */
+const CIDX   = CAMPS_ALL.map((_, i) => i);
+const cRows  = i => DAILY_ALL.filter(r => r[0] === i);
+const cAds   = i => ADS_ALL.filter(a => a[1] === i);
+const cSum   = (i, j) => cRows(i).reduce((a, r) => a + r[j], 0);
+const cSpend = i => Math.round(cSum(i, 2) * 100) / 100;
+const cRes   = i => CAMPS_ALL[i][5] === "lead" ? cSum(i, 9) : cSum(i, 8);
+const cDays  = i => cRows(i).filter(r => r[2] > 0 || r[3] > 0).length;
+const cFirst = i => { const r = cRows(i); return r.length ? r[0][1] : null; };
+const cLast  = i => { const r = cRows(i); return r.length ? r[r.length-1][1] : null; };
+
+const GROUPS = [
+  { key:"quiz",   name:"AI Bat Fit Quiz",  sells:"quiz leads",
+    unit:"lead",    units:"leads" },
+  { key:"clinic", name:"Z-Bat Clinic",     sells:"₹199 fitting sessions",
+    unit:"session", units:"sessions" },
+  { key:"dream",  name:"Dream Bat",        sells:"bats, direct",
+    unit:"sale",    units:"sales" },
+];
+GROUPS.forEach(g => {
+  g.idx    = CIDX.filter(i => CAMPS_ALL[i][2] === g.key);
+  g.spend  = Math.round(g.idx.reduce((a,i) => a + cSpend(i), 0) * 100) / 100;
+  g.res    = g.idx.reduce((a,i) => a + cRes(i), 0);
+  g.live   = g.idx.some(i => CAMPS_ALL[i][3] === "ACTIVE");
+  g.days   = new Set(g.idx.flatMap(i => cRows(i).filter(r => r[2] > 0).map(r => r[1]))).size;
+});
+const ACCT_RES_KINDS = GROUPS.filter(g => g.spend > 0).length;
+
+el("acct-intro",
+  "Six campaigns have run on this account, " + n(GROUPS.reduce((a,g)=>a+g.idx.filter(i=>cSpend(i)>0).length,0))
+  + " of them with any spend behind them. Together they have taken "
+  + rs(ACCOUNT_SPEND) + " across " + ALL_DAYS.length + " days. They sell "
+  + ACCT_RES_KINDS + " different things, so the figures below are never added into one"
+  + " “cost per result” — each line is priced in its own currency.");
+
+el("acct-tiles", [
+  ["Account spend", rs0(ACCOUNT_SPEND),
+   dayLabel(ALL_DAYS[0]) + " to " + dayLabel(ALL_DAYS[ALL_DAYS.length-1])],
+].concat(GROUPS.map(g => [
+  g.name,
+  g.res ? rs(g.spend / g.res) : "—",
+  g.res ? "per " + g.unit + " · " + n(g.res) + " " + plural(g.res, g.unit, g.units)
+          + " on " + rs0(g.spend)
+        : rs0(g.spend) + " spent, no " + g.unit + " yet"
+])).map(([k,v,note]) =>
+  '<div class="tile"><span class="k eyebrow">' + esc(k) + '</span>'
+  + '<span class="v mono">' + v + '</span><span class="n">' + esc(note) + '</span></div>'
+).join(""));
+
+/* -- campaign table -------------------------------------------------- */
+(() => {
+  const order = CIDX.slice().sort((a,b) => cSpend(b) - cSpend(a));
+  const head = "<tr><th>Campaign</th><th>Status</th><th>Ran</th><th>Spend</th>"
+    + "<th>Impressions</th><th>People reached</th><th>Link clicks</th>"
+    + "<th>Page views</th><th>Result</th><th>Each</th></tr>";
+  const body = order.map(i => {
+    const c = CAMPS_ALL[i], sp = cSpend(i), res = cRes(i), never = sp === 0;
+    const kind = c[5] === "lead" ? "lead" : "purchase";
+    const resTxt = never ? "—"
+      : res ? n(res) + " " + plural(res, kind, kind + "s")
+            : '<span class="chip">none</span>';
+    return '<tr' + (never ? ' class="ph"' : '') + '>'
+      + "<td>" + esc(c[1]) + "</td>"
+      + '<td><span class="chip">' + (c[3] === "ACTIVE" ? "live" : "paused") + "</span></td>"
+      + "<td>" + (never ? "never delivered"
+          : cDays(i) + " " + plural(cDays(i), "day", "days")
+            + '<span class="qual"> ' + esc(dayLabel(cFirst(i)))
+            + (cFirst(i) === cLast(i) ? "" : "–" + esc(dayLabel(cLast(i)))) + "</span>") + "</td>"
+      + '<td class="mono">' + (never ? "—" : rs(sp)) + "</td>"
+      + '<td class="mono">' + (never ? "—" : n(cSum(i,3))) + "</td>"
+      + '<td class="mono">' + (c[6] ? n(c[6]) : "—") + "</td>"
+      + '<td class="mono">' + (never ? "—" : n(cSum(i,5))) + "</td>"
+      + '<td class="mono">' + (never ? "—" : n(cSum(i,6))) + "</td>"
+      + '<td class="mono">' + resTxt + "</td>"
+      + '<td class="mono">' + (res ? rs(sp/res) : "—") + "</td></tr>";
+  }).join("");
+  const tot = '<tr class="hi"><td>All six</td><td></td><td>'
+    + ALL_DAYS.length + " days</td>"
+    + '<td class="mono">' + rs(ACCOUNT_SPEND) + "</td>"
+    + '<td class="mono">' + n(DAILY_ALL.reduce((a,r)=>a+r[3],0)) + "</td>"
+    + '<td class="mono">—</td>'
+    + '<td class="mono">' + n(DAILY_ALL.reduce((a,r)=>a+r[5],0)) + "</td>"
+    + '<td class="mono">' + n(DAILY_ALL.reduce((a,r)=>a+r[6],0)) + "</td>"
+    + '<td class="mono">—</td><td class="mono">—</td></tr>';
+  el("acct-table", "<table>" + head + body + tot + "</table>");
+})();
+
+el("acct-note",
+  "People reached is Meta's own de-duplicated figure for each campaign; it cannot be got"
+  + " by adding the days up and so has no total. The two blanks in the result column are"
+  + " deliberate: " + esc(CAMPS_ALL[4][1]) + " was built and never switched on, and "
+  + esc(CAMPS_ALL[5][1]) + " has "
+  + (cRes(5) ? "" : "taken " + n(cSum(5,7)) + " adds to cart and " + n(cSum(5,9))
+       + " site leads but not one sale yet")
+  + ".");
+
+/* -- creative, campaign by campaign ---------------------------------- */
+el("acct-ads-intro",
+  "Every ad that has run on the account, grouped under the campaign it belongs to and"
+  + " priced against that campaign's own result. Ads that never spent are listed so the"
+  + " picture is complete, not because they tell you anything.");
+
+el("acct-ads", CIDX
+  .slice().sort((a,b) => cSpend(b) - cSpend(a))
+  .filter(i => cAds(i).length)
+  .map(i => {
+    const c = CAMPS_ALL[i], kind = c[5] === "lead" ? "lead" : "purchase";
+    const ads = cAds(i).slice().sort((x,y) => y[3] - x[3]);
+    const rows = ads.map(a => {
+      const res = c[5] === "lead" ? a[10] : a[9], dead = a[3] === 0;
+      return '<tr' + (dead ? ' class="ph"' : '') + ">"
+        + "<td>" + esc(a[0]) + (a[2] === "PAUSED" ? ' <span class="chip">paused</span>' : "") + "</td>"
+        + '<td class="mono">' + (dead ? "never ran" : rs(a[3])) + "</td>"
+        + '<td class="mono">' + (dead ? "—" : n(a[4])) + "</td>"
+        + '<td class="mono">' + (dead ? "—" : n(a[7])) + "</td>"
+        + '<td class="mono">' + (dead ? "—" : n(res)) + "</td>"
+        + '<td class="mono">' + (res ? rs(a[3]/res) : "—") + "</td></tr>";
+    }).join("");
+    return '<div class="card" style="margin-top:14px">'
+      + '<h3 style="margin:0 0 2px;font-size:15px">' + esc(c[1]) + "</h3>"
+      + '<p class="note" style="margin:0 0 4px">' + rs(cSpend(i)) + " · "
+      + (cRes(i) ? n(cRes(i)) + " " + plural(cRes(i), kind, kind + "s")
+                   + " at " + rs(cSpend(i)/cRes(i)) + " each"
+                 : "no " + kind + " recorded") + "</p>"
+      + '<div class="tscroll"><table><tr><th>Creative</th><th>Spend</th>'
+      + "<th>Impressions</th><th>Page views</th><th>" + esc(kind[0].toUpperCase()+kind.slice(1)) + "s</th>"
+      + "<th>Each</th></tr>" + rows + "</table></div></div>";
+  }).join(""));
+
+el("quiz-lead",
+  (CHANGE ? "<strong>Optimisation changed on " + esc(dayLabel(CHANGE[0])) + ".</strong> "
+            + CHANGE[1] + " " : "")
+  + "Everything from here down is the quiz alone — " + rs(GROUPS[0].spend)
+  + " over " + GROUPS[0].days + " spending days for " + n(GROUPS[0].res)
+  + " leads. It gets its own sections because it is the only funnel on the account"
+  + " with site events behind it: the placement, age and pixel breakdowns below exist"
+  + " for the quiz and for nothing else.");
 
 /* -- headline tiles -------------------------------------------------- */
 el("tiles", [
@@ -620,8 +776,10 @@ el("recon", "Creative, placement, age and day totals agree exactly with each oth
   + " impressions and leads"
   + (PLACE_DRIFT ? ", except placement spend which carries " + rs(Math.abs(PLACE_DRIFT))
       + " of Meta's own breakdown rounding" : "") + "."
-  + (OTHER.length ? " " + rs(OTHER.reduce((a,o) => a+o[1], 0)) + " of non-quiz spend on this"
-      + " account is excluded, as noted at the top." : ""));
+  + " Every campaign's day rows and its creative rows agree on spend, impressions,"
+  + " page views, adds to cart, purchases and leads, and the three quiz campaigns in the"
+  + " account table reconcile against the quiz-only arrays; all of this is asserted"
+  + " before the file is written.");
 </script>
 </body>
 </html>
