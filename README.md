@@ -9,21 +9,28 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 23 Sep 2026: all three quiz campaigns read PAUSED and none has
-spent since 21 September.** They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published).
-The page works all of this out from `CAMPS` status and the `DAILY` rows and says
-it in its own words — do not hand-write a note about it.
+**Status as of 25 Sep 2026: all three quiz campaigns read PAUSED and none has
+spent since 21 September** — five refreshes now at exactly ₹6,692.70 and 1,019
+leads, with not even a late-attributed lead moving. They also read PAUSED on 20
+and 21 September while spending, so do not assume a PAUSED status means a
+campaign is finished — always re-pull the days, and re-pull the days either side
+of the last snapshot too (Meta revised both of those days up by ₹0.28 after they
+were published). The page works all of this out from `CAMPS` status and the
+`DAILY` rows and says it in its own words — do not hand-write a note about it.
 
-**Dream Bat started spending on 23 Sep** and is now the second entry in `OTHER`:
-₹1,154.35, 189 landing page views, 27 adds to cart, 13 site leads, no purchases
-yet. It sells the bat directly rather than through the quiz, so like the clinic
-it is held out of every quiz figure and named in the scope line. The clinic has
-also picked up — ₹5,952.18 and **7 purchases**, up from 1 two days ago.
+**The whole account has nearly stopped today.** The Clinic took ₹13.29 on 25 Sep
+and Dream Bat ₹2.97 — ₹16.26 between them against ₹1,100/day of budget, with both
+campaigns ACTIVE. Halcyon showed the same shape on the same day. Worth watching
+rather than acting on yet; a single quiet day is not a billing problem.
 
-Non-quiz spend on this account is now ₹7,106.53, more than the quiz has ever
+**Dream Bat**, the second entry in `OTHER`, is at ₹1,337.01 over three days:
+222 landing page views, 36 adds to cart, 14 site leads, **still no purchase**.
+That is the quiz funnel's old cart problem appearing again on a campaign that
+does not touch the quiz — worth flagging before it spends more. It sells the bat
+directly, so like the clinic it is held out of every quiz figure and named in the
+scope line. The clinic is at ₹6,377.06 and **8 purchases**.
+
+Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
 spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
 smaller share of what the account is doing — worth saying to the client rather
 than letting the page look idle.
