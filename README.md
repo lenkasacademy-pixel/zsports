@@ -9,26 +9,30 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 25 Sep 2026: all three quiz campaigns read PAUSED and none has
-spent since 21 September** — five refreshes now at exactly ₹6,692.70 and 1,019
-leads, with not even a late-attributed lead moving. They also read PAUSED on 20
-and 21 September while spending, so do not assume a PAUSED status means a
-campaign is finished — always re-pull the days, and re-pull the days either side
-of the last snapshot too (Meta revised both of those days up by ₹0.28 after they
-were published). The page works all of this out from `CAMPS` status and the
-`DAILY` rows and says it in its own words — do not hand-write a note about it.
+**Status as of 27 Sep 2026: the whole account has stopped serving.** The last
+day with any delivery was 25 Sep and it took ₹16.26. Nothing at all on the 26th
+or so far on the 27th, with the Clinic and Dream Bat both still ACTIVE and
+carrying ₹1,100/day between them. The activity log shows no status change, no
+budget change, nothing but two billing events — so this is a delivery or billing
+stop at account level, not a decision anybody made. **Check the payment method on
+`1811409506889048`.** Halcyon showed exactly this shape on 24–25 Sep and came back
+on its own on the 26th, so it may well resolve; the page detects the condition and
+says so itself rather than being told.
 
-**The whole account has nearly stopped today.** The Clinic took ₹13.29 on 25 Sep
-and Dream Bat ₹2.97 — ₹16.26 between them against ₹1,100/day of budget, with both
-campaigns ACTIVE. Halcyon showed the same shape on the same day. Worth watching
-rather than acting on yet; a single quiet day is not a billing problem.
+**All three quiz campaigns read PAUSED and none has spent since 21 September** —
+six refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+late-attributed lead moving. They also read PAUSED on 20 and 21 September while
+spending, so do not assume a PAUSED status means a campaign is finished — always
+re-pull the days, and re-pull the days either side of the last snapshot too
+(Meta revised both of those days up by ₹0.28 after they were published). The page
+works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
+own words — do not hand-write a note about it.
 
-**Dream Bat**, the second entry in `OTHER`, is at ₹1,337.01 over three days:
-222 landing page views, 36 adds to cart, 14 site leads, **still no purchase**.
-That is the quiz funnel's old cart problem appearing again on a campaign that
-does not touch the quiz — worth flagging before it spends more. It sells the bat
-directly, so like the clinic it is held out of every quiz figure and named in the
-scope line. The clinic is at ₹6,377.06 and **8 purchases**.
+**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
+cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
+problem appearing again on a campaign that does not touch the quiz — worth
+flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
+Neither has moved since the 25th because neither has served anything.
 
 Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
 spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
@@ -56,6 +60,14 @@ The quiz keeps its own sections below the account view, because it is the only
 funnel on the account with site events behind it — the placement, age and pixel
 breakdowns exist for the quiz and nothing else. Those arrays (`DAILY`, `ADS`,
 `PLACE`, `AGE`, `H`) stay quiz-only and are unchanged.
+
+**The page detects a delivery stop on its own.** If every ACTIVE campaign serves
+nothing on the trailing days, the account section says so, names the budget those
+campaigns are still carrying, and points at the payment method. It is computed
+from `CAMPS_ALL` status and `DAILY_ALL`, so it clears itself when delivery
+resumes — do not hand-write or hand-remove that note. Explicit zero rows are
+added to `DAILY_ALL` for live campaigns on dead days so the stop is visible as
+data rather than as a gap.
 
 **What the builder asserts before writing the file:** for every campaign, its day
 rows and its ad rows must agree on spend, impressions, link clicks, page views,
