@@ -9,18 +9,26 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 27 Sep 2026: the whole account has stopped serving.** The last
-day with any delivery was 25 Sep and it took ₹16.26. Nothing at all on the 26th
-or so far on the 27th, with the Clinic and Dream Bat both still ACTIVE and
-carrying ₹1,100/day between them. The activity log shows no status change, no
-budget change, nothing but two billing events — so this is a delivery or billing
-stop at account level, not a decision anybody made. **Check the payment method on
-`1811409506889048`.** Halcyon showed exactly this shape on 24–25 Sep and came back
-on its own on the 26th, so it may well resolve; the page detects the condition and
-says so itself rather than being told.
+**Status as of 28 Sep 2026: the account has now been dark for two full days and
+counting.** The last day with any delivery was 25 Sep and it took ₹16.26. Nothing
+on the 26th, nothing on the 27th, nothing so far today, with the Clinic and Dream
+Bat both still ACTIVE and carrying ₹1,100/day between them.
+
+**The activity log is now completely empty** — not even a billing event since
+26 Sep, when Meta charged ₹16.30 for the 25th's delivery. No status change, no
+budget change, no charge. An account that has stopped being billed as well as
+stopped delivering points at the payment method rather than at anything in the
+campaigns. **Check the payment method on `1811409506889048`.**
+
+Halcyon showed the same shape on 24–25 Sep and came back on its own on the 26th
+after two days. Z-Bat is now past that mark.
+
+**Worth knowing while the ads are off:** the store pixel recorded **7 purchases
+on 27 September** with zero ad spend behind them. The shop is still selling; it
+is the advertising that has stopped.
 
 **All three quiz campaigns read PAUSED and none has spent since 21 September** —
-six refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+seven refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
 late-attributed lead moving. They also read PAUSED on 20 and 21 September while
 spending, so do not assume a PAUSED status means a campaign is finished — always
 re-pull the days, and re-pull the days either side of the last snapshot too
