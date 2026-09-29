@@ -9,26 +9,27 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 28 Sep 2026: the account has now been dark for two full days and
-counting.** The last day with any delivery was 25 Sep and it took ₹16.26. Nothing
-on the 26th, nothing on the 27th, nothing so far today, with the Clinic and Dream
-Bat both still ACTIVE and carrying ₹1,100/day between them.
+**Status as of 29 Sep 2026: the account has been dark for three full days, and
+Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
+between them) report delivery `off` with substatus
+**`account_spend_limit_reached`**. The ad account has hit its **account spending
+limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
+only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
+a limit on the account, not a fault in the campaigns. **Raise or remove the account
+spending limit on `1811409506889048` (Billing → Payment settings) and delivery
+resumes.** The exact limit value cannot be read through the API tools used here;
+check it in Ads Manager.
 
-**The activity log is now completely empty** — not even a billing event since
-26 Sep, when Meta charged ₹16.30 for the 25th's delivery. No status change, no
-budget change, no charge. An account that has stopped being billed as well as
-stopped delivering points at the payment method rather than at anything in the
-campaigns. **Check the payment method on `1811409506889048`.**
+The activity log is still empty since the 26 Sep billing event (₹16.30 for the
+25th): no status, budget or limit change has been logged. The page carries the
+reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
 
-Halcyon showed the same shape on 24–25 Sep and came back on its own on the 26th
-after two days. Z-Bat is now past that mark.
-
-**Worth knowing while the ads are off:** the store pixel recorded **7 purchases
-on 27 September** with zero ad spend behind them. The shop is still selling; it
-is the advertising that has stopped.
+**Worth knowing while the ads are off:** the store pixel still records sales with
+no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
+selling; it is the advertising that has stopped.
 
 **All three quiz campaigns read PAUSED and none has spent since 21 September** —
-seven refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
 late-attributed lead moving. They also read PAUSED on 20 and 21 September while
 spending, so do not assume a PAUSED status means a campaign is finished — always
 re-pull the days, and re-pull the days either side of the last snapshot too
@@ -71,7 +72,8 @@ breakdowns exist for the quiz and nothing else. Those arrays (`DAILY`, `ADS`,
 
 **The page detects a delivery stop on its own.** If every ACTIVE campaign serves
 nothing on the trailing days, the account section says so, names the budget those
-campaigns are still carrying, and points at the payment method. It is computed
+campaigns are still carrying, and gives Meta's own reason when `STOP_REASON` is
+set (otherwise it points at the payment method). It is computed
 from `CAMPS_ALL` status and `DAILY_ALL`, so it clears itself when delivery
 resumes — do not hand-write or hand-remove that note. Explicit zero rows are
 added to `DAILY_ALL` for live campaigns on dead days so the stop is visible as
