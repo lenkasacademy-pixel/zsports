@@ -9,26 +9,37 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 28 Sep 2026: the account has now been dark for two full days and
+**Status as of 29 Sep 2026: the account has now been dark for three full days and
 counting.** The last day with any delivery was 25 Sep and it took ₹16.26. Nothing
-on the 26th, nothing on the 27th, nothing so far today, with the Clinic and Dream
-Bat both still ACTIVE and carrying ₹1,100/day between them.
+on the 26th, 27th or 28th, nothing so far today, with the Clinic and Dream Bat
+both still ACTIVE and carrying ₹1,100/day between them.
 
-**The activity log is now completely empty** — not even a billing event since
-26 Sep, when Meta charged ₹16.30 for the 25th's delivery. No status change, no
-budget change, no charge. An account that has stopped being billed as well as
-stopped delivering points at the payment method rather than at anything in the
-campaigns. **Check the payment method on `1811409506889048`.**
+**The activity log is still completely empty** — re-checked on the 29th and the
+most recent entry is unchanged: `Account billed`, ₹16.30, 26 Sep 6:09 am, settling
+the 25th's delivery. No billing on the 27th, 28th or 29th. No status change, no
+budget change, no charge, by anyone. An account that has stopped being billed as
+well as stopped delivering points at the payment method rather than at anything
+in the campaigns. **Check the payment method on `1811409506889048`.** This is the
+second refresh carrying that recommendation and nothing has moved.
 
 Halcyon showed the same shape on 24–25 Sep and came back on its own on the 26th
-after two days. Z-Bat is now past that mark.
+after two days. Z-Bat is now well past that mark — and on the 29 Sep pull Halcyon
+was running normally again while this account still is not, so the two stops are
+not the same event.
 
 **Worth knowing while the ads are off:** the store pixel recorded **7 purchases
-on 27 September** with zero ad spend behind them. The shop is still selling; it
+on 27 September** with zero ad spend behind them, and on the 28th it recorded
+**352 page views and 12 clinic bookings opened, 10 of them picking a slot and 10
+reaching Schedule** — no purchase that day, but the clinic booking flow was the
+busiest it has been. The shop is still selling and the site is still working; it
 is the advertising that has stopped.
 
+Note the 28 September pixel row **more than quadrupled** after the last snapshot
+(74 page views → 352) because it was a part-day when it was written. Pixel days
+settle the same way ad days do.
+
 **All three quiz campaigns read PAUSED and none has spent since 21 September** —
-seven refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+**eight** refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
 late-attributed lead moving. They also read PAUSED on 20 and 21 September while
 spending, so do not assume a PAUSED status means a campaign is finished — always
 re-pull the days, and re-pull the days either side of the last snapshot too
@@ -36,11 +47,12 @@ re-pull the days, and re-pull the days either side of the last snapshot too
 works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
 own words — do not hand-write a note about it.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
+**Dream Bat** is unchanged at ₹1,337.01 over three days: 222 landing page views, 36 adds to
 cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
 problem appearing again on a campaign that does not touch the quiz — worth
 flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+Neither has moved since the 25th because neither has served anything — a fourth
+consecutive refresh at the same numbers.
 
 Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
 spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
