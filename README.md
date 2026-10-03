@@ -9,27 +9,36 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 3 Oct 2026: the spending limit was lifted, the account served
+one day, and then everything was paused.** The `account_spend_limit_reached`
+stop that held the account dark from 26 Sep is over — delivery resumed on
+**1 Oct** (₹614.83: Clinic ₹346.45, Dream Bat ₹268.38) after six dark days
+(26-30 Sep). Nothing served on 2 Oct and nothing has served on the 3rd. **All
+six campaigns on the account now read PAUSED**, so this is a decision, not a
+delivery fault, and `STOP_REASON` is back to `None`. Lifetime account spend is
+₹15,021.60.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+Because no campaign is ACTIVE any more, the page's delivery-stop note clears
+itself (the detector returns early when nothing is live) — that is the intended
+behaviour, so do not hand-write a replacement note. If a campaign is switched
+back on and then fails to serve, the note returns on its own.
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**Worth knowing while the ads are off:** the store pixel keeps recording sales
+with no ad spend behind them — **2 Oct: 9 raw Purchase events, 9 AddPaymentInfo,
+₹0 spent**. The shop is still selling; it is the advertising that has stopped.
+
+**One pixel day needs a human eye.** 29 Sep (IST) carries **239 AddToCart
+events**, 231 of them inside two hours (17:30-18:30 IST), against single digits
+on every day either side and with no ad spend at all behind them. Nothing else
+on that day moved - 350 PageViews, 4 quiz starts, 2 leads, zero purchases - so
+this looks like bot or scripted traffic rather than demand. It inflates the
+pixel cart column on the page, which already carries the caveat that these
+counts cover all site traffic, not only ad visitors. Note the previously
+published 29 Sep pixel row (`PV 83, ATC 3`) was a part-day captured at the
+11:10 am snapshot; this refresh is the complete 24-bucket day.
 
 **All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+nine refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
 late-attributed lead moving. They also read PAUSED on 20 and 21 September while
 spending, so do not assume a PAUSED status means a campaign is finished — always
 re-pull the days, and re-pull the days either side of the last snapshot too
@@ -37,13 +46,14 @@ re-pull the days, and re-pull the days either side of the last snapshot too
 works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
 own words — do not hand-write a note about it.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**Dream Bat** is at ₹1,605.39 over four serving days: 252 landing page views, 37
+adds to cart, 15 site leads, **still no purchase**. That is the quiz funnel's old
+cart problem appearing again on a campaign that does not touch the quiz — 37
+carts and nothing through checkout. The clinic is at ₹6,723.51 and **9
+purchases** (Meta late-attributed a ninth to 25 Sep after the last refresh); its
+1 Oct day took ₹346.45 for 24 landing page views and no purchase.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
+Non-quiz spend on this account is now ₹8,328.90, more than the quiz has ever
 spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
 smaller share of what the account is doing — worth saying to the client rather
 than letting the page look idle.
