@@ -9,44 +9,67 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 7 Oct 2026: the spending-limit stop is over, the account served
+one day, and then somebody paused everything.** The sequence, from the activity log:
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+- **1 Oct, 2:16 pm** — **Rs 10,000 added to the account balance**. That cleared the
+  `account_spend_limit_reached` condition that had held the account dark since 26 Sep.
+- **1 Oct** — delivery resumed: **Rs 614.83**, the Clinic on Rs 346.45 and Dream Bat
+  on Rs 268.38. First spend in six days.
+- **1 Oct, 8:18 pm** — **Abhijeet Lenka set both live campaigns to Inactive** (Power
+  Editor): `Z-Bat Clinic - Parel - Rs 199 Session Sales` and
+  `Dream Bat - Direct Sales`. Nothing has served since.
+- Billing followed on 2 Oct (Rs 611.92) and 3 Oct (Rs 2.91).
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**All six campaigns now read PAUSED**, so this is a deliberate pause, not a delivery
+or billing fault. **`STOP_REASON` is now `None`** and the page's delivery-stop note
+has cleared itself, exactly as designed — there are no ACTIVE campaigns for it to
+describe. Do not hand-write a replacement; if a campaign is switched back on and
+fails to serve, the note will reappear on its own.
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
+**Lifetime account spend is now Rs 15,021.60** (was Rs 14,406.77).
+
+**The clinic found a ninth sale.** It closes at Rs 6,723.51 for **9 purchases,
+Rs 747.06 each**. The ninth was attributed back to **25 September**, a day already
+published with zero — late attribution, not new delivery, so that `DAILY_ALL` row
+was corrected rather than appended to.
+
+**Dream Bat still has not sold anything.** Rs 1,605.39 over four days: 252 landing
+page views, 37 adds to cart, 15 site leads, **no purchase**. Its 1 Oct money went
+entirely to `Dream - Carousel - 3 angles`, which went from Rs 36.35 to Rs 304.73.
+That is the quiz funnel's old cart problem showing up a third time on a campaign
+that never touches the quiz. **Worth deciding before it spends again.**
+
+**Watch out: Dream Bat's campaign name lies about its budget.** Meta reports the
+name as `Dream Bat - Direct Sales - India - Rs 600/day - Sep 2026` while its actual
+`daily_budget` is **Rs 500**. `CAMPS_ALL[5][4]` carries the real 500. Someone
+renamed it without changing the budget, or changed the budget without renaming it.
+
+**All three quiz campaigns are still PAUSED and have not spent since 21 September**
+— **nine refreshes now** at exactly Rs 6,692.70 and 1,019 leads, with not even a
 late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+spending, so do not assume a PAUSED status means a campaign is finished - always
+re-pull the days. The page works all of this out from `CAMPS` status and the
+`DAILY` rows and says it in its own words - do not hand-write a note about it.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+Non-quiz spend on this account is now Rs 8,328.90 against the quiz's Rs 6,692.70.
+When the quiz is dark, this report describes a smaller and smaller share of what the
+account is doing - worth saying to the client rather than letting the page look idle.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**The shop keeps selling with no advertising behind it.** The store pixel recorded
+**18 raw Purchase events across 1-6 October** (9 on the 2nd, 3 on the 4th, 6 on the
+6th) while ad spend after 1 October was zero. The shop is fine; it is the advertising
+that has stopped.
+
+**Caveat on the store pixel's history.** Re-pulling IST 27 September now returns
+PageView 396, ViewContent 93, AddToCart 18, InitiateCheckout 21, Purchase 9 against
+the **448 / 116 / 15 / 18 / 7** published on 29 Sep. The low-volume clinic events
+reproduce exactly (`ClinicBookOpened` 10, `ClinicSlotPicked` 10, `Schedule` 6), so
+the -07:00 bucketing convention is still right - but Meta keeps re-deduplicating the
+high-volume browser events, so **older `PIXEL` rows are not reproducible**. This
+refresh therefore **left every published row before 29 Sep untouched** and rewrote
+only the 29 Sep part-day and the days after it. Do the same next time rather than
+silently rewriting figures the client has already seen.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
