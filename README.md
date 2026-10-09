@@ -4,49 +4,54 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 
 | Report | Period | Live |
 |---|---|---|
-| Z-Bat — every Meta campaign | from 8 Sep 2026, rolling | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
+| Z-Bat — every Meta campaign | 8 Sep – 9 Oct 2026, rolling | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
 
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 9 Oct 2026: the spend-limit block is gone, the account served for
+exactly one more day, and then everything was paused.** Delivery resumed on
+**1 October** — the Clinic took ₹346.45 and Dream Bat ₹268.38 — and has produced
+nothing since. All six campaigns now read **PAUSED**, and Meta reports delivery
+`off` with substatus `off` rather than `account_spend_limit_reached`. So
+`STOP_REASON` is set back to `None`/`null`: there is no delivery fault left to
+explain, only a decision. The page's own stop detector stands down for the same
+reason — it only fires when a campaign is still ACTIVE and still delivering
+nothing — so the "nothing has been served since" block no longer renders, and
+that is correct. Lifetime account spend is now **₹15,021.60**.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+**The clinic found a ninth session.** It closes at ₹6,723.51 for **9 purchases**
+(₹747.06 each) — up from ₹6,377.06 and 8. The extra purchase is a late
+attribution onto **25 September**, a day that had already been published with
+zero; its 1 October ₹346.45 bought 24 page views and no sale. `omni_purchase`
+for a settled day can still move, so re-pull the whole campaign rather than
+appending.
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**Dream Bat still has no sale.** ₹1,605.39 over four spending days, 252 landing
+page views, 37 adds to cart, 15 site leads, **zero purchases**. Its 1 October
+₹268.38 went entirely to `Dream · Carousel · 3 angles` (₹36.35 → ₹304.73) and
+bought one more cart add and one more lead. That is the quiz funnel's old cart
+problem showing up on a third campaign now, and it is worth saying before it
+spends more.
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+**All three quiz campaigns remain PAUSED and have not spent since 21 September** —
+**nine refreshes now at exactly ₹6,692.70 and 1,019 leads**, with not even a
+late-attributed lead moving, and 18 days dark. They also read PAUSED on 20 and 21
+September *while spending*, so do not assume a PAUSED status means a campaign is
+finished — always re-pull the days, and the days either side of the last snapshot
+too. The page works all of this out from `CAMPS_ALL` status and the `DAILY` rows
+and says it in its own words — do not hand-write a note about it.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+Non-quiz spend on this account is now ₹8,328.90, against the quiz's ₹6,692.70.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**Worth knowing while the ads are off: the shop kept selling.** The store pixel
+recorded **21 Purchase events across 1–8 October** with no ad spend behind any of
+them (9 on the 2nd, 6 on the 6th, 3 on the 4th, 3 on the 8th). Two AddToCart
+spikes also stand out — **239 on 29 September** and 66 on 6 October, against a
+single-digit-to-teens daily norm. Those counts cover all site traffic, not only
+visitors from ads, so they are not an advertising result; but 239 in a day is far
+enough outside the range to be worth checking against the shop's own orders in
+case something on the page is firing AddToCart that should not.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
@@ -132,3 +137,15 @@ lead count — the page says so.
 `ClinicBookOpened`, `ClinicSlotPicked` and `Schedule` began firing on 12 Sep 2026
 (the clinic booking flow) and are carried in `PIXEL`; the funnel note mentions
 them automatically once they have volume.
+
+**`aggregation: "event_total_counts"` is the cheap way to do this.** It returns one
+block of per-event totals for the whole range instead of 24 hourly buckets, which
+is all `PIXEL` needs — one call per IST day. It splits each event across several
+rows (by source), so **sum the rows per event name**.
+
+**`end_time` must be the top of the next hour, not `:59:59`.** A bucket is included
+only when it ends at or before `end_time`, so an IST day D runs
+`start = (D-1) 12:00:00 -07:00` to `end = D 12:00:00 -07:00`. With
+`end = D 11:59:59` the 11:00 bucket is silently dropped — on 28 Sep that lost 26
+PageViews, 4 BatFitStarted and 2 Leads out of 352/8/6. Verified on 9 Oct 2026 by
+reproducing the published 28 Sep row exactly with the corrected end time.
