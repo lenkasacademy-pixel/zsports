@@ -9,44 +9,49 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 22 Oct 2026: delivery has resumed and the account spending limit
+no longer binds.** A new campaign, **Air Light · Purchase · India** (`120253356448770067`),
+was created in October, started delivering on **9 October** and has run every day
+since. It reads `delivery: active`. `STOP_REASON` is therefore set back to `null`,
+as this file has always said it should be once delivery resumes — the page works
+the stop out from `CAMPS_ALL` status and `DAILY_ALL` and now shows none.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+The account went dark 26–30 Sep, took ₹614.83 on 1 Oct, was dark again 2–8 Oct,
+and has delivered daily from the 9th at roughly ₹600–1,070 a day. Lifetime account
+spend is now **₹25,228.47** (it was ₹14,406.77 at the 29 Sep snapshot).
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**Air Light is the best thing on the account.** ₹6,255.62 for **11 purchases at
+₹568.69**, plus 99 adds to cart and 941 landing page views in nine days. For
+comparison the clinic has taken ₹9,298.21 for its 11 sessions, **₹845.29 each**.
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+**Dream Bat finally sold one.** It closed at ₹2,981.94 for **1 purchase**, 72 adds
+to cart and 24 site leads, and is now PAUSED. The cart problem flagged at the last
+snapshot — adds to cart but no sales — did eventually break, but only once.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**The clinic is paused** at ₹9,298.21 and 11 purchases, and picked up two more
+sales on 9 and 10 October before stopping.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**The quiz is still completely dark and completely unchanged** — ₹6,692.70 and
+1,019 leads, the same figures as eight refreshes ago, with not even a
+late-attributed lead moving. Nothing has spent on it since 21 September. Because
+the quiz has not moved, `REELS`, `PLACE` and `AGE` are unchanged and still
+reconcile to `DAILY`.
+
+**One historical day was revised.** Meta added a purchase to **25 September** for
+the clinic campaign after the last snapshot (0 → 1). A full re-pull of 8–25
+September confirms every other historical row is unchanged. This is why the
+README says to re-pull the days either side of the last snapshot — the one-day
+overlap used at first was not enough to catch it.
+
+## Result groups
+
+`GROUPS` gained a fourth entry, `air`, so Air Light is priced in its own currency
+rather than blended with Dream Bat. Both sell bats direct, but they are different
+products and the account now reports **four** distinct result kinds. The page
+counts campaigns and result kinds from the data, so the masthead, the intro
+sentence, the table footer and the "blanks in the result column" note all update
+themselves — three of those were hard-coded to six campaigns and to a specific
+pair of blank rows, and were made data-driven in this refresh.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
@@ -124,7 +129,11 @@ Meta's ~48h revisions — a part-day must never set a headline number.
 ### Store pixel
 
 Pull with `ads_get_dataset_stats`, `aggregation: "event"`, unix
-`start_time`/`end_time`; max lookback 28 days. Events are stamped **−07:00**, and
+`start_time`/`end_time`; max lookback 28 days. **The 28-day limit is a hard
+ceiling on what can be refreshed**: on the 22 Oct refresh only 25 Sep onward
+could be re-pulled, so `PIXEL` rows before that date are carried forward from the
+previous snapshot and must not be assumed re-verified. The response comes back as
+hourly buckets, not days, so it has to be folded into IST days by the rule below. Events are stamped **−07:00**, and
 an IST day D is the 24 buckets from (D−1) 12:00 through D 11:00. These counts
 cover all site traffic, not only visitors from ads, so they run ahead of the Meta
 lead count — the page says so.
