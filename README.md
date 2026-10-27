@@ -4,49 +4,69 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 
 | Report | Period | Live |
 |---|---|---|
-| Z-Bat — every Meta campaign | from 8 Sep 2026, rolling | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
+| Z-Bat — every Meta campaign | from 8 Sep 2026, rolling (now to 27 Oct) | [index.html](https://lenkasacademy-pixel.github.io/zsports/) |
 
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 27 Oct 2026: delivery has resumed, and the account is spending
+again on something new.** The account spending limit that held it dark for the
+last three days of September no longer binds — lifetime spend has gone from
+₹14,406.77 to **₹28,578.60**, so the limit was raised or removed. `STOP_REASON`
+is now `None`/`null` and the page's delivery-stop note has cleared itself.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+**The money has moved to a new bat.** `Air Light · Purchase · India · ₹1000/day`
+(`120253356448770067`) was created in October, is the **only ACTIVE campaign**,
+and has taken **₹9,605.75 over 14 days (14–27 Oct) for 14 purchases — ₹686.13
+each**, the best cost per sale any bat campaign on this account has managed. Its
+five hooks are very unevenly matched: `Air Light - Hook1` alone is ₹7,124.65 of
+the spend and 9 of the 14 sales, `Hook3` has 4 sales on ₹1,123.72, and `Hook2`
+has none on ₹170.03.
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**Everything else is now PAUSED**, including the clinic and Dream Bat, which were
+ACTIVE at the last snapshot:
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+- **Z-Bat Clinic** ran 13 Sep–12 Oct and closes at **₹9,298.21 for 11 purchases**
+  (₹845.29 each), up from ₹6,377.06 and 8. Nine new `Reel * Hook * v2` creatives
+  were added in October; between them they took ₹2,559.07 for 2 purchases, while
+  the original `Video 4 · Copy 3 Local offer` holds ₹6,739.14 and 9.
+- **Dream Bat** ran 23 Sep–14 Oct and **finally converted**: ₹2,981.94 for
+  **1 purchase** (and 24 site leads, 72 adds to cart, 454 landing page views).
+  The README previously flagged this campaign as "still no purchase" after
+  ₹1,337.01 — it took another ₹1,645 to get one, so the cart problem is real but
+  not total.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**The quiz is still dark and still frozen — nine refreshes now at exactly
+₹6,692.70 and 1,019 leads.** Its last spending day was **21 September**; the page
+works out for itself that it has been dark for 36 days and says so. All three
+quiz campaigns read PAUSED. Not one late-attributed lead has moved, and the
+placement, age and creative breakdowns are **byte-identical** to the last
+snapshot — re-pulled and re-checked, not assumed.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+Non-quiz spend is now **₹21,885.90** against the quiz's ₹6,692.70 — more than
+three times it. The quiz sections below describe a shrinking share of what the
+account is doing.
+
+**Worth knowing: the store is selling far more than Meta is claiming.** The store
+pixel recorded **92 Purchase events between 30 Sep and 27 Oct** against the 14
+purchases Meta attributes to Air Light and the 1 to Dream Bat in the same window.
+These counts cover all site traffic, not only visitors from ads, so they always
+run ahead — but a gap that wide is worth a look at where the other sales come
+from.
+
+## A fourth product group (changed 27 Oct 2026)
+
+`GROUPS` gained a fourth entry, `air`, for the Air Light campaign. Air Light and
+Dream Bat are both bats and both report purchases, but they are **different
+products at different prices** (₹686.13 against ₹2,981.94 a sale), so blending
+them into one "bats" line would hide exactly the comparison that matters. The
+account now sells **four** things and the page says so — the count is computed
+from `GROUPS`, not written down.
+
+Two hard-coded counts were also removed while doing this: the masthead and the
+account intro both said "6 campaigns" in prose. They now read `CAMPS_ALL.length`,
+so they cannot go stale the next time a campaign is added. **`STOP_REASON` lives
+in `index.html`, not in a `zs_data.py`** — there is no such file in this repo.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
@@ -69,6 +89,13 @@ The quiz keeps its own sections below the account view, because it is the only
 funnel on the account with site events behind it — the placement, age and pixel
 breakdowns exist for the quiz and nothing else. Those arrays (`DAILY`, `ADS`,
 `PLACE`, `AGE`, `H`) stay quiz-only and are unchanged.
+
+**Zero rows are only added forward from a campaign's first active day.** The
+rule is "explicit zero rows for live campaigns on dead days so the stop is
+visible as data rather than a gap" — but applied to *every* day it made Air
+Light, created in October, report a range of "8 Sep–27 Oct". Fill zeros from the
+campaign's first active day onward only; `cFirst`/`cLast` read the raw first and
+last row, so leading zeros fake a start date.
 
 **The page detects a delivery stop on its own.** If every ACTIVE campaign serves
 nothing on the trailing days, the account section says so, names the budget those
