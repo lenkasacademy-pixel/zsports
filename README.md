@@ -9,44 +9,81 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 1 Nov 2026: the account spent again all through October, and has
+hit its account spending limit a second time.** Lifetime spend is now
+**₹31,356.15**, up from ₹14,406.77 at the last snapshot. The one still-ACTIVE
+campaign (Air Light, ₹700/day) reports delivery `off` with substatus
+**`account_spend_limit_reached`**, and nothing has served on 1 November. The exact
+limit value cannot be read through the API tools used here; check it in Ads
+Manager. `STOP_REASON` is still set to that substatus — clear it to `None` once
+delivery resumes.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+**The activity log is no longer silent, and the page no longer claims it is.** The
+hard-coded sentence "Nobody paused anything — the activity log shows no status or
+budget change" was true in September and is false now. It has been replaced by a
+`STOP_LOG` constant that carries what the log actually says:
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+- **27 Oct** — Air Light paused by hand (Abhijeet Lenka, Ads Manager iOS app)
+- **28 Oct** — `Dream · No AI Bat Test · Purchase` created (ads MCP server) and run
+- **31 Oct** — Air Light switched back on, that Dream campaign switched off
+- **31 Oct** — three of Air Light's five ads (Hook2, Hook4, Hook5) set Inactive
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+Set `STOP_LOG = null` when the log genuinely has nothing in it; the page falls back
+to the old sentence.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+### Two new campaigns, and the first real purchases
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**`Air Light · Purchase` is the biggest thing that has ever run on this account** —
+₹10,504.49 over 14–27 and 31 October for **14 purchases**, more than every other
+campaign on the account has produced put together. One ad does most of it:
+`Air Light - Hook1` took ₹7,464.70 for 9 of the 14.
+
+**`Dream · No AI Bat Test · Purchase`** ran 28–31 October for ₹1,878.81, 1 purchase
+and 12 site leads.
+
+Both are appended to `CAMPS_ALL` at indexes 6 and 7. **Air Light is a fourth
+product group**, so `GROUPS` gains an `airlight` entry — the account now sells four
+different things and the page says so on its own.
+
+**Dream Bat finally converted.** The old `Dream Bat · Direct Sales` campaign closed
+at ₹2,981.94 with **1 purchase** — in September it was ₹1,337.01 with none, and this
+README flagged the cart problem. One sale on ₹2,982 is still a cart problem, but it
+is no longer a zero.
+
+**The clinic closed at ₹9,298.21 and 11 purchases** and is now PAUSED. One of those
+eleven is new: **Meta late-attributed a purchase to 25 September**, a day published
+with zero. That single row is the only September figure that moved this refresh.
+
+**All three quiz campaigns are still dark and have not moved at all** — nine
+refreshes now at exactly ₹6,692.70 and 1,019 leads, and **41 days** since the quiz
+last spent (21 September). Every quiz campaign is paused at Meta. The quiz-only
+arrays (`DAILY`, `REELS`, `PLACE`, `AGE`) are byte-identical to the last snapshot
+apart from `DAILY` gaining trailing zero rows out to `SNAP_DAY`; they were re-pulled
+and confirmed, not assumed. The page works out the 41-day gap and the "deliberate
+stop rather than a delivery problem" reading from `CAMPS` status and the `DAILY`
+rows on its own.
+
+**The quiz now describes a small and shrinking share of the account**: ₹6,692.70 of
+₹31,356.15, under a quarter. Non-quiz spend is ₹24,663.45.
+
+### The store pixel has a five-day hole that cannot be filled
+
+`ads_get_dataset_stats` only looks **28 days** back. By the time this snapshot ran,
+**30 September to 4 October had fallen out of reach permanently**. `PIXEL` therefore
+runs 8–29 September, skips five days, and resumes 5 October–1 November.
+
+A new `PIXEL_GAP` constant carries those two dates and **the page reports the hole
+itself**, in the pixel note, so the period row is not read as a quiet spell in the
+shop. This is the same idiom as `PLACE_DRIFT` and `STOP_REASON`: put the caveat in
+the data and let the page say it.
+
+**The lesson for scheduling:** this report cannot be left for a month. Store-pixel
+days are lost 28 days after they happen and no later refresh can recover them. If
+the quiz or the store matters, this needs refreshing at least every three weeks.
+
+**The shop is selling well beyond the ads.** Over 5 Oct–1 Nov the pixel recorded
+**86 purchases** while Meta attributes **18** to advertising across the whole month.
+Most of what the shop sells is not coming from these campaigns.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
@@ -85,6 +122,13 @@ adds to cart, purchases and leads; and the three quiz campaigns in `DAILY_ALL`
 must reconcile against the quiz-only `DAILY` on both spend and leads. Reach is
 excluded from these checks on purpose.
 
+**Assert against Meta's own campaign totals too, not just day-rows against
+ad-rows.** On the 1 Nov refresh the clinic's day rows summed to 10 purchases while
+its ad rows and Meta's campaign total both said 11 — the day-vs-ad check alone
+would have passed once the stale day row was carried forward. The missing purchase
+turned out to be a late attribution Meta had added to 25 September after
+publication. Three-way agreement is what caught it.
+
 ## Shape
 
 `index.html` is a **single self-contained file**. Figures live in flat arrays in
@@ -108,6 +152,8 @@ Patch the arrays, nothing else:
 | `AGE` | `[band, gender, spend, impressions, lpv, leads]` |
 | `PIXEL` | `[date, ...counts in EV order]` — `EV` names the events |
 | `SNAP_DAY` | the still-running day; `SNAP_TS` the snapshot stamp |
+| `PIXEL_GAP` | `[from, to]` store-pixel days lost to the 28-day lookback, or `null` |
+| `STOP_LOG` | what the activity log says about the current stop, or `null` if silent |
 
 **The last `DAILY` row must be `SNAP_DAY`.** The page treats that day as still
 accruing: it is shown separately, labelled "so far", and excluded from every
@@ -132,3 +178,14 @@ lead count — the page says so.
 `ClinicBookOpened`, `ClinicSlotPicked` and `Schedule` began firing on 12 Sep 2026
 (the clinic booking flow) and are carried in `PIXEL`; the funnel note mentions
 them automatically once they have volume.
+
+**The 28-day lookback is a hard deadline, not a nuisance.** Days older than that
+cannot be retrieved by any later refresh. Set `PIXEL_GAP` whenever a hole opens so
+the page declares it; never let `PIXEL` present a gap as continuous.
+
+**Events are stamped −07:00, but check the offset each time.** The window for this
+refresh crossed the end of US daylight saving, so a response header can read
+`-0800` even though every bucket in it is still stamped `-0700`. Bucket on the
+**printed wall-clock hour** of each bucket, which is what the documented rule
+("(D−1) 12:00 through D 11:00") actually describes, rather than converting through
+a fixed offset.
