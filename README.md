@@ -9,44 +9,73 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 7 Nov 2026: the account spending limit was lifted and delivery is
+back.** The stop that held the account dark from 26 Sep is over - the first day
+with delivery again was **1 October**, and the account has spent on 36 of the 61
+days in the window. `STOP_REASON` is now `None` and the page's stop note has
+cleared itself, as it is built to.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+Lifetime account spend is **Rs 36,557.98** across 61 days and **8 campaigns**
+(up from Rs 14,406.77 and 6 campaigns at the last snapshot - the account has
+spent **Rs 22,151.21 more**, two and a half times everything before it).
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+**Two new campaigns, and one of them is now the whole account.**
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+| Campaign | Status | Ran | Spend | Result | Each |
+|---|---|---|---|---|---|
+| `Air Light - Purchase - India - Rs 1000/day - Oct 2026` | **ACTIVE** | 21 days, 14 Oct-7 Nov | Rs 14,868.80 | 21 purchases | **Rs 708.04** |
+| `Dream - No AI Bat Test - Purchase - Rs 700/day - Oct 2026` | PAUSED | 4 days, 28-31 Oct | Rs 1,878.81 | 1 purchase | Rs 1,878.81 |
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**Air Light is the only ACTIVE campaign and the only one serving.** It is
+carrying Rs 1,200/day, it spent on the part-day, and at Rs 14,868.80 it is now
+the largest line the account has ever run - bigger than the whole quiz. Within
+it, `Air Light - Hook1` has taken Rs 11,419.66 for 16 purchases (Rs 713.73) and
+`Air Light - Hook3` only Rs 1,947.72 for 4 (**Rs 486.93**, the account's best
+cost per sale). Hooks 2, 4 and 5 are paused on Rs 1,501.42 between them for one
+sale. Worth considering more budget behind Hook3.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**The clinic came back, spent, and stopped again.** `Z-Bat Clinic - Parel - Rs 199
+Session Sales` ran 1 Oct and 9-12 Oct and closed at **Rs 9,298.21 for 11 sessions
+(Rs 845.29)**, against Rs 6,377.06 and 8 at the last cut. Eight new
+`Reel ... v2` creatives were added to it and took Rs 2,559.07 between them for
+2 purchases; the original `Video 4 - Copy 3 Local offer` still carries the
+campaign at Rs 6,739.14 for 9. It is now PAUSED. Its sibling
+`... Sep 2026 - Copy`, which had never spent, finally ran on 2-3 Nov for
+**Rs 837.52 with no purchase**.
+
+**Dream Bat has its first sale.** The "still no purchase" flag from the last
+snapshot is resolved: `Dream Bat - Direct Sales` ran again 1 Oct and 11-14 Oct
+and closed at **Rs 2,981.94 for 1 purchase**, 72 adds to cart and 24 site leads.
+One sale on nearly three thousand rupees is still the cart problem, not a fix -
+and `Dream - No AI Bat Test` repeated it almost exactly: Rs 1,878.81, 45 adds to
+cart, 12 leads, 1 sale. **Two separate Dream campaigns have now spent
+Rs 4,860.75 for two sales between them.** That is the finding to put in front of
+the client.
+
+**The quiz has not moved at all - nine refreshes now.** All three quiz campaigns
+read PAUSED and none has spent since 21 September: still exactly **Rs 6,692.70
+and 1,019 leads**, to the paisa, with no late-attributed lead. The page works out
+on its own that the quiz has been dark for 47 days and says so. Because the quiz
+totals are frozen, `DAILY`, `REELS`, `PLACE` and `AGE` are unchanged except for
+zero rows extending `DAILY` to the new `SNAP_DAY`; their checks still pass.
+
+**Non-quiz spend is now Rs 29,865.28 against the quiz's Rs 6,692.70** - the quiz
+is 18% of the account. This report's quiz sections describe a smaller and smaller
+share of what the account does, which is exactly why the account view at the top
+exists.
+
+**The part-day guard is doing its job, and we watched it work.** Reading 7 Nov
+three times within minutes gave Rs 168.82, then Rs 174.29, then Rs 178.81 at
+account level - the day moved by **Rs 9.99 while we looked at it**. It is the
+last `DAILY` row, so the page shows it separately as "so far" and keeps it out of
+every headline.
+
+**The store pixel is busy and the shop is selling.** Over the 28 days the API
+still reaches (10 Oct-6 Nov, in the dataset's own -07:00/-08:00 day buckets):
+29,854 page views, 17,278 view-contents, 1,491 adds to cart, 511 checkouts and
+**104 purchases**, plus 423 quiz starts and 183 leads with no quiz ad spend
+behind them at all. See the `PIXEL` note below for why none of this is on the
+page yet.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
@@ -132,3 +161,18 @@ lead count — the page says so.
 `ClinicBookOpened`, `ClinicSlotPicked` and `Schedule` began firing on 12 Sep 2026
 (the clinic booking flow) and are carried in `PIXEL`; the funnel note mentions
 them automatically once they have volume.
+
+**`PIXEL` still stops at 29 Sep, deliberately — read this before "fixing" it.**
+The 28-day lookback is hard: on the 7 Nov 2026 refresh the earliest reachable
+bucket was 10 Oct, so **30 Sep – 9 Oct can never be recovered**. Appending the
+reachable days would put a permanent ten-day hole in the middle of the series
+*and* blend two different regimes into the funnel's Period row — the quiz ran ads
+in September and has run none since 21 Sep, so "page views → quiz starts → leads"
+would stop describing anything. `PIXEL` therefore holds the September quiz
+window, which is the period the quiz funnel section is about, and the recent
+store numbers are quoted in the status notes above instead.
+
+If the client wants the shop's current traffic on the page, that is a **second,
+separately-labelled pixel window**, not an extension of this array — and it needs
+pulling at `granularity: "hour"` to rebuild IST days under the convention above.
+**Pull it monthly from now on**, or the gap grows every time.
