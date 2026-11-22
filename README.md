@@ -9,57 +9,72 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 22 Nov 2026: the account is running again, and it is now an Air Light
+bat account.** The account spending limit that stopped delivery on 26 Sep was lifted:
+spend resumed on 1 Oct and has run almost every day since. Lifetime spend is
+**₹57,401.61** across 8 Sep - 22 Nov, up from ₹14,406.77 at the last snapshot.
+`STOP_REASON` is back to `None` and the page's stop note has cleared itself.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+**Five new campaigns have appeared, and they are the account now.** All five sell the
+**Air Light** bat or test the Dream Bat without the AI angle:
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+| Campaign | Ran | Spend | Purchases | Each |
+|---|---|---|---|---|
+| Air Light - Purchase - Oct | 14 Oct - 13 Nov | ₹21,613.12 | 31 | ₹697.20 |
+| Air Light - Purchase (Copy) | 13 - 20 Nov | ₹10,476.40 | 29 | **₹361.26** |
+| Air Light - Purchase (Copy 2) | 21 - 22 Nov, LIVE | ₹2,353.96 | 6 | ₹392.33 |
+| Air Light - Bid Cap ₹340/₹320 | 20 - 22 Nov, LIVE | ₹199.72 | 1 | ₹199.72 |
+| Dream - No AI Bat Test | 28 Oct - 14 Nov | ₹2,948.04 | 1 | ₹2,948.04 |
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+Air Light has taken **₹34,643.20 for 67 purchases, ₹517.06 each**, and it is getting
+cheaper as it is iterated: the first campaign bought a sale for ₹697, its copy for
+₹361. That copy is the best bat line the account has ever run. The **No AI Bat Test**
+answered its own question the other way: ₹2,948.04 for a single sale, against the
+Dream Bat original's ₹2,981.94 for one - neither works, and the AI angle was not the
+problem.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**The bid-cap test is throttled, not cheap.** `Air Light - Purchase - Bid Cap ₹340/₹320`
+carries **₹3,000/day on each of its two ad sets, ₹6,000/day in all**, and has spent
+₹199.72 in three days. One sale at ₹199.72 looks like the account's best number; it is
+a bid cap holding delivery down, not an efficiency. Judge it when it has spent.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**The quiz is still frozen** - nine refreshes now at exactly **₹6,692.70 and 1,019
+leads**, last delivery 21 Sep. All three quiz campaigns read PAUSED. Its `REELS`, `PLACE`
+and `AGE` arrays were re-pulled in full this refresh and came back identical to the
+published ones, to the paisa, which is what a genuinely stopped funnel should look like.
+
+**The clinic spent again and then stopped.** `Clinic - Parel ₹199 sessions` ran to
+12 Oct and closes at ₹9,298.21 for 11 sessions (₹845.29 each, up from ₹797 at the
+last cut). Its **Copy** was switched on for 2-3 Nov, took ₹837.52 and produced **no
+sale at all** - the one blank in the result column, and the page now says so on its own.
+
+**The shop is selling far more than the ads claim.** Over the 28 days of pixel history
+that can still be fetched, the store recorded **190 Purchase events** while Meta
+attributed 67 purchases to ads in the same stretch. Worth saying to the client rather
+than letting the ad numbers stand as the whole picture.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
 The report used to cover the three quiz campaigns only, with the clinic and Dream
-Bat reduced to a footnote in an `OTHER` list. **That list is gone.** All six
+Bat reduced to a footnote in an `OTHER` list. **That list is gone.** All eleven
 campaigns on account `1811409506889048` are now first-class: `CAMPS_ALL`,
 `DAILY_ALL` (a row per campaign per day) and `ADS_ALL` (a row per ad) drive a new
 account section at the top, and every campaign gets its own creative table.
 
-**Leads and purchases are never blended.** The account sells three different
-things — quiz leads, ₹199 clinic sessions, and bats — so each group is priced in
-its own currency and there is deliberately no single account-wide "cost per
-result". `CAMPS_ALL[i][5]` says which result kind a campaign reports.
+**Leads and purchases are never blended.** The account sells four different
+things — quiz leads, ₹199 clinic sessions, Dream Bats and Air Light bats — so
+each group is priced in its own currency and there is deliberately no single
+account-wide "cost per result". `CAMPS_ALL[i][5]` says which result kind a campaign
+reports, and `CAMPS_ALL[i][2]` which group it belongs to. **A new product line means a
+new entry in `GROUPS`** (`air` was added on 22 Nov); without one its campaigns would
+carry no tile and no group total.
+
+**New campaigns are appended to `CAMPS_ALL`, never inserted.** `DAILY_ALL` and `ADS_ALL`
+index into it by position, so reordering it re-labels every historical row. The five
+Air Light / No-AI campaigns went on the end as indexes 6–10. One campaign is
+deliberately left out: `OLD · DO NOT USE · Z-Bat Clinic Leads` is ARCHIVED and has
+never spent a rupee, so it would only add a dead row. Add it the day it spends, on the
+end.
 
 **Reach is carried, not derived.** `CAMPS_ALL[i][6]` is Meta's own de-duplicated
 lifetime reach per campaign. It can never be obtained by adding the day rows up,
@@ -124,11 +139,42 @@ Meta's ~48h revisions — a part-day must never set a headline number.
 ### Store pixel
 
 Pull with `ads_get_dataset_stats`, `aggregation: "event"`, unix
-`start_time`/`end_time`; max lookback 28 days. Events are stamped **−07:00**, and
-an IST day D is the 24 buckets from (D−1) 12:00 through D 11:00. These counts
-cover all site traffic, not only visitors from ads, so they run ahead of the Meta
-lead count — the page says so.
+`start_time`/`end_time`; **max lookback 28 days**. An IST day D is the 24 hourly
+buckets from **UTC (D-1) 19:00 through UTC D 18:00**. The README used to state this as
+"(D-1) 12:00 to D 11:00, stamps are -07:00", which is the same window - but the stamps
+moved to **-08:00** when US daylight saving ended on 1 Nov 2026, so the rule is now
+written in UTC, where it holds all year. Bucketing by the old local-time rule would shift
+every November day by an hour.
+
+**There is a permanent hole in `PIXEL`: 29 Sep to 26 Oct.** The 28-day lookback had
+already passed those days by the time this refresh ran, so they can never be fetched.
+The published September rows are kept and the new 26 Oct - 22 Nov rows appended; the page
+detects the discontinuity itself and says in the pixel note how many days are missing and
+that the table's totals exclude them. **Do not let the window lapse again** - refresh at
+least every 28 days or the series keeps losing months.
+
+A `Search` event (3 events in the window) now fires on the site and is **not** carried in
+`PIXEL`: adding it to `EV` would change the row shape, and the historical September rows
+could not be back-filled with a value for it.
+
+These counts cover all site traffic, not only visitors from ads, so they run ahead of the
+Meta lead count - the page says so.
 
 `ClinicBookOpened`, `ClinicSlotPicked` and `Schedule` began firing on 12 Sep 2026
 (the clinic booking flow) and are carried in `PIXEL`; the funnel note mentions
 them automatically once they have volume.
+
+## Prose is derived, and two numbers had been hand-written
+
+The page's promise is that every sentence is rendered from the arrays. Two places were
+not, and both had gone stale by this refresh:
+
+- the account intro and the masthead both said **"six campaigns"** as a literal. They now
+  count `CAMPS_ALL`.
+- the note under the account table named campaign indexes 4 and 5 by hand and assumed
+  exactly **two** blanks in the result column. Both assumptions had expired - the clinic
+  copy has since spent, and Dream Bat has its first sale - and the sentence rendered
+  broken ("Dream Bat - Direct sales has ."). It now derives the blanks, and what to say
+  about each, from the data.
+
+If you add a fact to this page, compute it; do not type it.
