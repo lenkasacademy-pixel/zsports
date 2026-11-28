@@ -9,57 +9,91 @@ Client-facing Meta ads reports for **Shah Sports Tech Private Limited** (Z-Bat).
 Source: Meta Ads API, ad account `1811409506889048` (zbats), plus store pixel
 dataset `1380826504029254`. Figures are in the advertiser's time zone, currency INR.
 
-**Status as of 29 Sep 2026: the account has been dark for three full days, and
-Meta now says why.** Both ACTIVE campaigns (the Clinic and Dream Bat, ₹1,100/day
-between them) report delivery `off` with substatus
-**`account_spend_limit_reached`**. The ad account has hit its **account spending
-limit** — lifetime spend is ₹14,406.77 — which also explains why the 25th took
-only ₹16.26 before stopping and why Meta has billed nothing since 26 Sep. It is
-a limit on the account, not a fault in the campaigns. **Raise or remove the account
-spending limit on `1811409506889048` (Billing → Payment settings) and delivery
-resumes.** The exact limit value cannot be read through the API tools used here;
-check it in Ads Manager.
+**Status as of 28 Nov 2026: the account is running again, it is four times the
+size it was, and it is selling a different product.** The spending limit that
+stopped everything in September is gone — ₹10,000 was added to the balance on
+21 November and Meta has billed every day since. Lifetime spend is now
+**₹65,253.79 across 82 days**, against ₹14,406.77 at the last snapshot. Five
+campaigns have been built since, all optimising
+`actions:offsite_conversion.fb_pixel_purchase` against product catalogue
+`1069890358754783`; four of them carry the **Air Light** bat and have taken
+**₹42,495.38 for 79 website purchases, ₹537.92 each**. `STOP_REASON` is now
+`None` and the page's stop notice clears itself.
 
-The activity log is still empty since the 26 Sep billing event (₹16.30 for the
-25th): no status, budget or limit change has been logged. The page carries the
-reason as `STOP_REASON` in `zs_data.py`; set it to `None` once delivery resumes.
+**Air Light is the account now, and one creative is Air Light.** `Air Light -
+Hook1` runs in three of the four Air Light campaigns and has taken ₹34,451.02 —
+81% of that group's spend — for **67 of its 79 purchases, ₹514.19 each**. Hook3
+is a distant second (₹6,333.29, 9 purchases, ₹703.70). Hooks 2, 4 and 5 are
+effectively untested: Meta set them Inactive at review on 20 and 23 November and
+they have spent ₹636.25 between them. The four campaigns are the same two
+creatives rebought at different bids, and they price very differently —
+₹406.00 (Copy), ₹523.44 (Copy 2), ₹697.20 (the original), ₹104.83 on 2 purchases
+from the bid-cap test. **The cheap one is the one that is paused.**
 
-**Worth knowing while the ads are off:** the store pixel still records sales with
-no ad spend behind them (27 Sep: 7 raw Purchase events). The shop is still
-selling; it is the advertising that has stopped.
+> **Check this before anything else.** On 26 November the owner paused
+> `Air Light · Purchase (Copy 2)` at 7:13 am and switched
+> `Air Light · Purchase (Copy)` back on at 9:49 am, at the same time changing its
+> ad set from "Automatically bid for actions" to a **₹400 cost-per-result goal**.
+> That campaign's own cost per purchase is ₹406. Spend went ₹1,121.34 on the
+> 26th → **₹175.42 on the 27th → ₹0.48 by 8:58 am on the 28th**. A cost goal set
+> below what the campaign actually achieves throttles delivery, and that is what
+> this looks like. The page does not call it a stop, correctly — the campaign is
+> delivering, just barely.
 
-**All three quiz campaigns read PAUSED and none has spent since 21 September** —
-eight refreshes now at exactly ₹6,692.70 and 1,019 leads, with not even a
-late-attributed lead moving. They also read PAUSED on 20 and 21 September while
-spending, so do not assume a PAUSED status means a campaign is finished — always
-re-pull the days, and re-pull the days either side of the last snapshot too
-(Meta revised both of those days up by ₹0.28 after they were published). The page
-works all of this out from `CAMPS` status and the `DAILY` rows and says it in its
-own words — do not hand-write a note about it.
+**The quiz is finished unless someone restarts it.** All three quiz campaigns
+read PAUSED, none has spent since 21 September, and the figures have not moved
+across ten refreshes: exactly ₹6,692.70 and 1,019 leads at ₹6.57. It has now
+been dark for **68 days**. The quiz-only sections below the account view
+(`DAILY`, `REELS`, `PLACE`, `AGE`, `PIXEL`) are unchanged for that reason — only
+zero rows were appended to `DAILY` so the series still ends on `SNAP_DAY`. The
+page works this out from `CAMPS` status and the `DAILY` rows and says it in its
+own words; do not hand-write a note about it.
 
-**Dream Bat** is at ₹1,337.01 over three days: 222 landing page views, 36 adds to
-cart, 14 site leads, **still no purchase**. That is the quiz funnel's old cart
-problem appearing again on a campaign that does not touch the quiz — worth
-flagging before it spends more. The clinic is at ₹6,377.06 and **8 purchases**.
-Neither has moved since the 25th because neither has served anything.
+**The clinic sold three more sessions, two of them after it stopped.**
+`Clinic · Parel ₹199 sessions` is at ₹9,298.21 and **11 sessions (₹845.29)**, up
+from ₹6,377.06 and 8. It ran again from 1 to 12 October with nine new `Reel … v2`
+creatives, then stopped. One of the three extra sessions is not new spend at all:
+Meta has **late-attributed a purchase to 25 September**, a day that was published
+with none. Its copy, `Clinic · Parel ₹199 (Copy)`, finally delivered on 2–3
+November and took ₹837.52 for nothing — no purchase, no lead, no add to cart.
 
-Non-quiz spend on this account is now ₹7,714.07, more than the quiz has ever
-spent (₹6,692.70). When the quiz is dark, this report describes a smaller and
-smaller share of what the account is doing — worth saying to the client rather
-than letting the page look idle.
+**Dream Bat still cannot sell a bat.** The old campaign added ₹1,644.93 (now
+₹2,981.94 lifetime) for its **first ever purchase**. A new one,
+`Dream · No AI Bat Test · Purchase`, ran 28 October – 14 November for ₹2,948.04
+and **one purchase**. Between them that is ₹5,929.98 for 2 sales, ₹2,964.99 each,
+against Air Light's ₹537.92. Same account, same catalogue, same checkout — the
+difference is the product.
+
+**The quiz is now 10% of this account.** Non-quiz spend is ₹58,561.09 against the
+quiz's ₹6,692.70. The report is named after the quiz and the quiz is the smallest
+thing on it; the account view at the top is what the client should be reading.
+
+**The store sells far more than Meta is credited with.** The pixel recorded
+**227 Purchase events in the 28 days to 27 November** (33,904 page views, 2,388
+adds to cart, 881 checkouts) while Meta attributed 83 purchases to ads across the
+whole of 30 September – 28 November. That gap is not in `index.html` and should
+not be read as ad performance — it is the shop's own traffic — but it is worth
+saying to the client before they judge the campaigns on Meta's number alone.
 
 ## Every campaign is tracked (changed 25 Sep 2026)
 
 The report used to cover the three quiz campaigns only, with the clinic and Dream
-Bat reduced to a footnote in an `OTHER` list. **That list is gone.** All six
-campaigns on account `1811409506889048` are now first-class: `CAMPS_ALL`,
-`DAILY_ALL` (a row per campaign per day) and `ADS_ALL` (a row per ad) drive a new
-account section at the top, and every campaign gets its own creative table.
+Bat reduced to a footnote in an `OTHER` list. **That list is gone.** Every
+campaign on account `1811409506889048` is first-class — **twelve** of them as of
+28 Nov 2026: `CAMPS_ALL`, `DAILY_ALL` (a row per campaign per day) and `ADS_ALL`
+(a row per ad) drive a new account section at the top, and every campaign that
+has an ad gets its own creative table. Nothing in the page hard-codes how many
+campaigns there are; the masthead, the intro and the table footer all count
+`CAMPS_ALL`.
 
-**Leads and purchases are never blended.** The account sells three different
-things — quiz leads, ₹199 clinic sessions, and bats — so each group is priced in
-its own currency and there is deliberately no single account-wide "cost per
-result". `CAMPS_ALL[i][5]` says which result kind a campaign reports.
+**Leads and purchases are never blended.** The account sells four different
+things — quiz leads, ₹199 clinic sessions, Dream bats and Air Light bats — so
+each group is priced in its own currency and there is deliberately no single
+account-wide "cost per result". `CAMPS_ALL[i][5]` says which result kind a
+campaign reports and `CAMPS_ALL[i][2]` which group it belongs to; **adding a
+group means one entry in the `GROUPS` array and nothing else.** Dream and Air
+Light are kept apart even though both report `purchase`, because they are
+different bats at very different prices.
 
 **Reach is carried, not derived.** `CAMPS_ALL[i][6]` is Meta's own de-duplicated
 lifetime reach per campaign. It can never be obtained by adding the day rows up,
@@ -84,6 +118,12 @@ rows and its ad rows must agree on spend, impressions, link clicks, page views,
 adds to cart, purchases and leads; and the three quiz campaigns in `DAILY_ALL`
 must reconcile against the quiz-only `DAILY` on both spend and leads. Reach is
 excluded from these checks on purpose.
+
+**Which campaigns show a blank result is read off the data, not written down.**
+A campaign can start spending between refreshes — `Clinic · Parel ₹199 (Copy)`
+did — so the note under the account table derives "never switched on" and "spent
+with no result" from `CAMPS_ALL`/`DAILY_ALL` each time the page loads. Do not put
+campaign indexes back into that sentence.
 
 ## Shape
 
@@ -120,6 +160,37 @@ Meta's ~48h revisions — a part-day must never set a headline number.
 - `AGE` totals equal `DAILY` totals on spend and leads.
 - `PLACE` matches `DAILY` exactly on leads; a few rupees of spend drift is
   Meta's own breakdown rounding and is reported on the page (`PLACE_DRIFT`).
+- Campaign-level day rows summed per day equal the `level: "ad_account"` daily
+  totals on spend **and** impressions, for every day in `ALL_DAYS`. On the
+  28 Nov refresh that held on all 82 days with no drift at all, including the
+  two most recent — re-read them anyway, because the ~48h revision window is
+  real even when a given pull happens to be stable.
+
+### Traps that cost time on the 28 Nov refresh
+
+- **A campaign-daily pull of 8 campaigns × 20 days overflows the response cap.**
+  Let it spill to a file and aggregate the files with a script; three calls of
+  ~160 campaign-days each covered 30 Sep – 28 Nov.
+- **Do not drop day rows just because spend is zero.** Meta attributes views,
+  adds to cart and leads to days a campaign did not spend on, and four of the
+  per-campaign ad-vs-day checks failed until those rows were kept. Keep a row if
+  *any* field is non-zero, not only spend or impressions.
+- **Late-attributed conversions reach back weeks.** `Clinic · Parel ₹199
+  sessions` gained a purchase on **25 September** between the two snapshots.
+  Re-pull a campaign's whole history, not just the new days, and let the
+  ad-vs-day assertion find the day for you.
+- **ARCHIVED campaigns and ads are invisible to an unfiltered listing.** Filter
+  `effective_status IN [… "ARCHIVED", "DELETED"]` or you will miss
+  `OLD · DO NOT USE · Z-Bat Clinic Leads` and the archived clinic creatives.
+- **Duplicate ad names inside one campaign.** `Quiz · Add to Cart optimisation`
+  carries three zero-spend ads with exactly the names of its three spending
+  ones. `ADS_ALL` keeps every ad that spent, plus zero-spend ads that are not
+  ARCHIVED and whose name is not already in that campaign — otherwise the
+  creative table shows the same line twice.
+- **`PIXEL` cannot be back-filled.** The event API reaches back 28 days from
+  whenever it is called, so 30 Sep – 31 Oct is permanently unavailable. `PIXEL`
+  therefore still covers 8–29 Sep, which is when the quiz ran, and the page now
+  states that window and the reason itself.
 
 ### Store pixel
 
